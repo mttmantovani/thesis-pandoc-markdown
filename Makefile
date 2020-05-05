@@ -1,4 +1,4 @@
-NAME      := thesis
+MAIN      := thesis
 DATADIR   := $(shell pwd)
 DEFAULTS  := defaults
 TEMPLATES := templates
@@ -16,35 +16,21 @@ CSL       := $(DATADIR)/aps.csl
 MDS       := $(wildcard $(SOURCE)/*.md)
 MDS2      := $(patsubst $(SOURCE)/%,$(PARTS)/%,$(MDS))
 
-# Build target directories if needed
-$(info $(shell mkdir -p $(PARTS) $(BUILD)))
 
-all: $(NAME).pdf
+all: $(MAIN).pdf
 
-$(NAME).pdf: $(NAME).tex
+$(MAIN).pdf: $(MAIN).tex
 	@$(LATEX) $< 
 	@cp $(BUILD)/$@ $@
 
-$(NAME).tex: $(MDS2) config.yaml $(TEMPLATES)/$(NAME).latex $(DEFAULTS)/$(NAME).yaml
+$(MAIN).tex: $(MDS2) config.yaml $(TEMPLATES)/$(MAIN).latex $(DEFAULTS)/$(MAIN).yaml
 	@$(PANDOC) \
-			   --defaults thesis \
+			   --defaults $(MAIN) \
 			   --output=$@ \
-			   --bibliography=/Users/mattia/library.bib 
-		# 	   config.yaml \
-		# 	   parts/titlepage.md parts/preface.md parts/abstract.md \
-		# 	   parts/zusammenfassung.md parts/toc.md parts/introduction.md \
-		# 	   parts/theory.md parts/qdlaser.md parts/cps.md \
-		# 	   parts/jjcavity.md \
-		# 	   --bibliography=/Users/mattia/library.bib \
-		# 	   --biblatex \
-		# 	   --template=thesis.latex \
-		# 	   --filter=pandoc-xnos
-		# #	   parts/zusammenfassung.md parts/introduction.md \
-		# #	   parts/theory.md parts/qdlaser.md parts/cps.md \
-		# #	   parts/jjcavity.md \
+			   --bibliography=$(BIB)
 			   
 
-$(PARTS)/%.md: $(SOURCE)/%.md $(TEMPLATES)/%.markdown config.yaml
+$(PARTS)/%.md: $(SOURCE)/%.md $(TEMPLATES)/%.markdown config.yaml | $(PARTS)
 	@$(PANDOC) --from=markdown --to=gfm \
 			   --template=$*.markdown \
 			   --output=$@ \
@@ -52,23 +38,19 @@ $(PARTS)/%.md: $(SOURCE)/%.md $(TEMPLATES)/%.markdown config.yaml
 			   --defaults empty-input \
 			   --include-after $<
 
+$(PARTS):
+	@mkdir -p $@
 
-
-#thesis-print.pdf: thesis-print.tex 
-#	@$(LATEX) $< && cp $(BUILD)/$@ $@
-	
-#thesis-print.tex: $(MDS) $(PARTS)/titlepage.tex $(DEFAULTS)/thesis-print.yaml
-#	@$(PANDOC) --defaults thesis-print --variable print
-
-#$(PARTS)/titlepage.tex: $(TEMPLATES)/titlepage.latex $(DEFAULTS)/titlepage.yaml metadata.yaml
-#	@$(PANDOC) --defaults titlepage
-
+exportbib: $(BUILD)/$(MAIN).bcf
+	@biber --output-format=bibtex --output-resolve --output-fieldcase=lower \
+		   --output-directory=$(DATADIR) --output-file=references.bib -w -q \
+		   $< 
 clean:
-	latexmk -c $(NAME)
+	latexmk -c $(MAIN)
 	rm -f $(PARTS)/*
 
 cleanall:
-	latexmk -C $(NAME)
+	latexmk -C $(MAIN)
 	rm -f *.pdf
 	rm -rf $(PARTS) $(BUILD)
 

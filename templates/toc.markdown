@@ -1,4 +1,4 @@
-\cleardoublepage\phantomsection\pdfbookmark{\contentsname}{toc}
+\phantomsection\pdfbookmark{\contentsname}{toc}
 \tableofcontents
 
 $if(print)$

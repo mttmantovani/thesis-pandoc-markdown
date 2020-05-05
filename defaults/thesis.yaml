@@ -16,12 +16,14 @@ input-files:
     - parts/qdlaser.md
     - parts/cps.md
     - parts/jjcavity.md
+#    - parts/spinboson.md
     - parts/conclusions.md
-    - parts/appendix.md
-    - parts/contrib.md
-    - parts/cv.md
-    - parts/acknowledgments.md
+#    - parts/appendix.md
+#    - parts/contrib.md
+#    - parts/cv.md
+#    - parts/acknowledgments.md
 
+abbreviations: abbreviations
 
 top-level-division: chapter
 

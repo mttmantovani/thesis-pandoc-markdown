@@ -23,3 +23,4 @@ This is a Figure:
 ![Caption](./figures/cqed.pdf){#fig:one}
 
 This is the reference to the Fig. @fig:one.
+Figure @fig:one is.... Chapter @introdution is... Equation @eq:one is....

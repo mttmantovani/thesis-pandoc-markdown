@@ -108,3 +108,4 @@ intermediate/*-converted-to.*
 ## Misc
 .nfs*
 __latexindent_*
+references.bib
