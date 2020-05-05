@@ -1,0 +1,213 @@
+\documentclass[
+$if(fontsize)$
+$fontsize$,
+$endif$
+$if(lang)$
+$lang$,
+$endif$
+$if(papersize)$
+$papersize$,
+$endif$
+$if(print)$
+twoside,openright,
+$else$
+oneside,openany,
+$endif$
+]{$documentclass$}
+
+$if(geometry)$
+\usepackage[
+  $for(geometry)$
+  $geometry$$sep$,
+  $endfor$
+]{geometry}
+$endif$
+
+% fix for pandoc 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{newtxtext,newtxmath}
+
+$if(biblatex)$
+\usepackage[
+  $for(biboption)$
+  $biboption$$sep$,
+  $endfor$
+]{biblatex}
+$if(biblio-files)$
+\addbibresource{$biblio-files$}
+$endif$
+$endif$
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+
+\usepackage[unicode=true,
+            bookmarksopen,
+            bookmarksdepth=3]{hyperref}
+
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            $if(print)$
+            hidelinks=true,
+            $else$
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            $endif$
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+$if(lang)$
+\usepackage[$lang$]{babel}
+$endif$
+
+% Headers and page numbering
+\usepackage{fancyhdr}
+\pagestyle{plain}
+
+% Adjust spacing between lines to 1.5
+\usepackage{setspace}
+\onehalfspacing
+\raggedbottom
+
+% Additional packages
+\usepackage{siunitx}
+\usepackage{dsfont}
+\usepackage{letltxmacro}
+
+%===============================CUSTOM COMMANDS===============================%
+
+% Blank page
+\newcommand{\blankpage}{%
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
+    \newpage
+}
+
+% Return local fontsize
+\newlength{\fsize}
+% https://tex.stackexchange.com/q/88001/5764
+\LetLtxMacro\oldselectfont\selectfont
+\makeatletter
+\DeclareRobustCommand{\selectfont}{\oldselectfont\setlength{\fsize}{\f@size pt}}
+\makeatother
+
+% Change toc depth
+\newcommand{\changelocaltocdepth}[1]{%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{#1}}%
+  \setcounter{tocdepth}{#1}%
+}
+
+%==============================BIBLATEX TWEAKS================================%
+
+% Exclude fullcited refs from bibliography (but keeps them with \cite)
+% \DeclareBibliographyCategory{inbib}
+
+% \makeatletter
+% \AtEveryCitekey{%
+%   \ifcsstring{blx@delimcontext}{fullcite}
+%     {}
+%     {\addtocategory{inbib}{\thefield{entrykey}}}}
+% \makeatother
+
+% Remove quotes from thesis and inbook titles
+\DeclareFieldFormat[article]{title}{\emph{#1}}
+\DeclareFieldFormat[inbook,thesis]{citetitle}{\emph{#1}}
+\DeclareFieldFormat[inbook,thesis]{title}{\emph{#1}}
+
+% Redefine DOI field printing when pages are undefined
+\DeclareFieldFormat{doi}{%
+  \iffieldundef{pages}{\addcomma\addthinspace}{}
+  \mkbibacro{doi}\addcolon
+  \ifhyperref
+    {\href{https://doi.org/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}%
+}
+
+% Make my name bold
+\newcommand*{\boldname}[3]{%
+  \def\lastname{#1}%
+  \def\firstname{#2}%
+  \def\firstinit{#3}}
+\boldname{}{}{}
+
+\renewcommand{\mkbibnamegiven}[1]{%
+  \ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and test {\ifdefequal{\lastname}{\namepartfamily}} }
+  {\mkbibbold{#1}}{#1}%
+}
+
+\renewcommand{\mkbibnamefamily}[1]{%
+  \ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and test {\ifdefequal{\lastname}{\namepartfamily}} }
+  {\mkbibbold{#1}}{#1}%
+}
+\boldname{Mantovani}{Mattia}{M.}
+
+% Fullcite with all authors
+\makeatletter
+\DeclareCiteCommand{\fullcite}
+  {\defcounter{maxnames}{\blx@maxbibnames}%
+    \usebibmacro{prenote}}
+  {\usedriver
+     {\DeclareNameAlias{sortname}{default}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+\makeatother
+
+% Onlinecite command
+\DeclareCiteCommand{\onlinecite}%[\mkbibbrackets]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}
+
+%=============================================================================%
+
+
+
+\begin{document}
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\cleardoublepage\phantomsection\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+\cleardoublepage
+}
+$endif$
+
+$body$
+
+$if(biblatex)$
+\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{References}
+\printbibliography[$if(biblio-title)$title=$biblio-title$$endif$]
+$endif$
+\end{document}

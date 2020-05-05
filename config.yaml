@@ -1,0 +1,36 @@
+---
+print: false
+
+title: Nonequilibrium dynamics in nanoscale resonators driven by mesoscopic conductors
+title-alt: |
+    Nonequilibrium dynamics \\  
+    in nanoscale resonators \\ 
+    driven by mesoscopic conductors 
+date: Konstanz, 2020
+name: Mattia
+surname: Mantovani
+
+fontsize: 11pt
+papersize: a4paper
+documentclass: book
+geometry:
+    - top=1in
+    - bottom=1in
+    - left=1in
+    - right=1in
+biblatex: True
+biblio-files: /Users/mattia/library.bib
+biboption:
+    - style=phys
+    - autocite=plain
+    - articletitle=true
+    - biblabel=brackets
+    - chaptertitle=false
+    - pageranges=false
+    - backend=biber
+    - mcite=true
+    - defernumbers=true
+biblio-title: References
+link-citations: True
+
+...

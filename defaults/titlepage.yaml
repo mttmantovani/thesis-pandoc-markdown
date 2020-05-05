@@ -1,0 +1,18 @@
+from: latex
+to: latex
+
+output-file: parts/titlepage.tex
+input-files:
+    - templates/titlepage.latex
+metadata-file: metadata.yaml
+template: titlepage
+
+variables: 
+    name: Mattia
+    surname: Mantovani
+
+standalone: true
+
+strip-comments: false
+
+

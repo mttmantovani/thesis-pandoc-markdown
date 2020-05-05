@@ -1,0 +1,36 @@
+from: markdown+tex_math_double_backslash
+to: html
+
+template: thesis
+
+resource-path: ["source", "."]
+
+include-in-header: ["style.css"]
+
+input-files:
+    - source/preface.md
+    - source/abstract.md
+    - source/introduction.md
+
+metadata-file:
+    - metadata.yaml
+
+top-level-division: chapter
+
+cite-method: citeproc
+
+filters:
+    - pandoc-xnos
+
+table-of-contents: true
+number-sections: True
+
+variables: 
+    link-citations: True
+
+strip-comments: false
+
+standalone: true
+
+output-file: thesis.html
+
