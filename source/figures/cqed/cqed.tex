@@ -1,0 +1,77 @@
+\documentclass[11pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{fontspec}
+\usepackage{xunicode,xltxtra}
+\setmainfont{Palatino}
+\setmathsfont(Digits,Latin,Greek,Special){Palatino}
+
+\usetikzlibrary{shapes.arrows}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+%\tikzset{
+%    between/.style args={#1 and #2}{
+%         at = ($(#1)!0.5!(#2)$)
+%    },
+%    universe/.style = {draw, rounded rectangle, 
+%                       minimum width=10cm, minimum height=7cm,
+%    },
+%    system/.style = {draw, rounded rectangle, anchor=west, 
+%                     minimum width=2cm, minimum height=2cm
+%    },
+%    environment/.style = {draw, rounded rectangle, anchor=east,
+%                          minimum width=6cm, minimum height=5cm
+%    },
+%    interaction arrow/.style = {double arrow, minimum height=1.5cm, 
+%                                double arrow head extend=1ex, fill=black!10
+%    },
+%}
+\def\widthA{5}
+\def\heightA{3}
+\def\widthB{5}
+\def\heightB{4}
+
+\begin{document}
+    \begin{tikzpicture}
+        %\draw [help lines] (0, 0) grid ($(\widthA+\widthB, -\heightA)$);
+
+        \node[anchor=north west, inner sep=0pt] {(a)};
+
+ %       \node[anchor=north west, inner sep=0pt] at (\widthA,0) {(b)};
+
+        \begin{scope}[shift={($(\widthA*0.5,-\heightA*0.5)$)}]
+            \shade[inner color=white, outer color=red!40] (-1.5, 1) to[bend
+            right=20] (1.5, 1) to[bend left=20] (1.5, -1)
+            to[bend right=20] node[below]
+            {$\omega$} (-1.5, -1) to[bend left=20] (-1.5, 1);
+
+            \fill[gray] (-1.5, 1) -- (-2, 1) -- (-2, -1) -- (-1.5, -1) to[bend left=20]
+            (-1.5, 1);
+
+            \fill[gray] (1.5, 1) -- (2, 1) -- (2, -1) -- (1.5, -1) to[bend
+            right=20]
+            (1.5, 1);
+
+            \draw[very thick] (-0.3, 0.3) -- (0.3, 0.3) node[right] {$|e\rangle$};
+            \draw[very thick] (-0.3, -0.3) -- (0.3, -0.3) node[right]
+            {$|g\rangle$};
+            \draw[thin, gray] (0,0) circle (0.5);
+
+
+            \node[shade, inner color=white, outer color=blue!40,double arrow, minimum height=5mm, double arrow head extend=1.5,label=left:$g$] at (-0.5,0) {};
+
+            \draw[->,>=stealth,very thick,orange,decorate,decoration={snake,post
+            length=1mm}] (1.5, 0) -- (2.5,
+            0) node[midway,below right,black] {$\kappa$};
+
+            \draw[->,>=stealth,thick,green!50!black!50,decorate,decoration={snake,
+            amplitude=.6mm,segment length=2mm,post length=1mm}] (0, 0.3) --
+            (0,-0.3) node[midway,right,black] {$\gamma$};
+        \end{scope}
+    \end{tikzpicture}
+\end{document}
