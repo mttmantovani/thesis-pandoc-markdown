@@ -1,17 +1,17 @@
 FIGPATH := ../../../figures
 FIGNAME := $(notdir $(shell pwd))
-LATEX   := latexmk -pdf  
+LATEX := latexmk -pdf
 
 .PHONY: clean cleanall
 
 all: $(FIGNAME).pdf
 	@cp $< $(FIGPATH)
 
-$(FIGNAME).pdf: $(FIGNAME).tex
+$(FIGNAME).pdf: $(FIGNAME).tex $(FIGNAME).tikz
 	@$(LATEX) $<
 
 clean:
-	latexmk -c $(FIGNAME)
+	@latexmk -c $(FIGNAME)
 
 cleanall:
 	@latexmk -C $(FIGNAME)

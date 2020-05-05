@@ -1,4 +1,4 @@
-# Conclusions and outlook {#conclusions}
+# Conclusions and outlook {#ch:conclusions}
 
 In this work, I have presented different hybrid quantum circuits composed of quantum dots
 or Josephson junctions coupled to electromagnetic or mechanical cavities. 

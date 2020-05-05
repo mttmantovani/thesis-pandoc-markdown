@@ -1,4 +1,4 @@
-# Single-photon pump by Cooper-pair splitting {#cps}
+# Single-photon pump by Cooper-pair splitting {#sec:cps}
 
 *The results presented in this Chapter are published in Ref. \onlinecite{Mantovani2019a}.*
 

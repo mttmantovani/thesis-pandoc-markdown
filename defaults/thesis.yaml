@@ -27,12 +27,25 @@ abbreviations: abbreviations
 
 top-level-division: chapter
 
+metadata:
+    figPrefix: 
+        - Fig.
+        - Figs.
+    eqnPrefix:
+        - Eq.
+        - Eqs.
+    secPrefix:
+        - Sec.
+        - Secs.
+
+
+
 metadata-file: config.yaml
 
 cite-method: biblatex
 
 filters:
-    - pandoc-xnos
+    - pandoc-crossref
 
 number-sections: True
 

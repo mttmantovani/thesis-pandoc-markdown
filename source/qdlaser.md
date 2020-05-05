@@ -1,4 +1,4 @@
-# Dynamical multistability in a quantum-dot laser {#qdlaser}
+# Dynamical multistability in a quantum-dot laser {#sec:qdlaser}
 
 
 *The results presented in this Chapter are published in Ref. \onlinecite{Mantovani2019}.*

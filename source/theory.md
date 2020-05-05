@@ -1,4 +1,4 @@
-# Theory of the quantum master equation {#theory}
+# Theory of the quantum master equation {#sec:theory}
 
 ## Introduction
 Any realistic investigation of a quantum system requires taking into account its

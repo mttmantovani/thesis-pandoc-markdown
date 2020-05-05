@@ -1,0 +1,83 @@
+\documentclass[11pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{newtxtext,newtxmath}
+
+\newlength{\totalwidth}
+\newlength{\totalheight}
+\newlength{\widthA}
+\newlength{\widthB}
+\newlength{\widthC}
+
+\setlength\totalwidth{15.92cm}
+\setlength\totalheight{4cm}
+
+
+\def\widthA{9}
+\def\heightA{4}
+\def\widthB{5}
+\def\heightB{4}
+\def\circuitwidth{5}
+\def\circuitheight{3}
+\def\LCwidth{2}
+\def\LCheight{2}
+
+\input{jjcavity.tikz}
+
+\begin{document}
+    \begin{tikzpicture}
+        %\draw [help lines] (0, 0) grid ($(\totalwidth, -\totalheight)$);
+
+        \node[letter] {(a)};
+        \node[letter] at ($(0,0)!0.6!(\totalwidth,0)$) {(b)};
+        
+        \begin{scope}[shift={($(\widthA*0.5-1,-\heightA*0.5-0.3)$)}]
+            \draw ($(-\circuitwidth*0.5,\circuitheight*0.5)$)
+            to[josephsonjunction, l=JJ]
+            ($(0,\circuitheight*0.5)$)
+            to[generic, l=$Z(\omega)$, pos=0.3] 
+            ($(\circuitwidth*0.5,\circuitheight*0.5)$) -- ($(\circuitwidth*0.5,\LCheight*0.5)$);
+            \draw ($(\circuitwidth*0.5,\LCheight*0.5)$) to[C] ($(\circuitwidth*0.5,-\LCheight*0.5)$) to[short] ($(\circuitwidth*0.5,-\circuitheight*0.5)$) -- ($(-\circuitwidth*0.5,-\circuitheight*0.5)$);
+            \draw ($(\circuitwidth*0.5,0)$) node[below right, inner sep=6pt] {$C$};
+            \draw ($(\circuitwidth*0.5,\LCheight*0.5)$) --
+            ($(\circuitwidth*0.5-\LCwidth*0.5,\LCheight*0.5)$) to[R, l_=$R$]
+            ($(\circuitwidth*0.5-\LCwidth*0.5,-\LCheight*0.5)$) -- ($(\circuitwidth*0.5,-\LCheight*0.5)$) ;
+            \draw ($(\circuitwidth*0.5,\LCheight*0.5)$) --
+            ($(\circuitwidth*0.5+\LCwidth*0.5,\LCheight*0.5)$) to[L, l^=$L$]
+            ($(\circuitwidth*0.5+\LCwidth*0.5,-\LCheight*0.5)$) -- ($(\circuitwidth*0.5,-\LCheight*0.5)$)  ;
+            \draw ($(-\circuitwidth*0.5,-\circuitheight*0.5)$) to[battery2, invert, l^=$V$] ($(-\circuitwidth*0.5,\circuitheight*0.5)$);
+        \end{scope}
+
+        \begin{scope}[shift={($(\widthA+\widthB*0.75,-\heightB*0.5)$)}]
+            \draw[dashed] (-2.5, -1.5)  -- (3, -1.5) node[at start, inner sep=0pt] (a) {};
+            \draw[dashed] (-2.5, 1.5) -- (3, 1.5)  node[at start, inner sep=0pt] (b) {};
+            \draw[<->, thick, >=latex] (a)  -- (b) node[midway, left] {$eV$};
+
+            \node[right of=b, inner sep=0pt, node distance=1cm] (c1)
+            {\cooperpair{0.45}{0.25}}; 
+            
+            \node[right of=b,inner sep=0pt, node distance=2cm ] (c2) {\cooperpair{0.45}{0.25}}; 
+
+            \node[right of=a, inner sep=0pt, node distance=4cm] (c3)
+            {\cooperpair{0.45}{0.25}}; 
+            
+            \node[right of=a,inner sep=0pt, node distance=5cm ] (c4)
+            {\cooperpair{0.45}{0.25}}; 
+            
+            \node[fill=gray!30,minimum width=0.75cm, opacity=0.6,minimum height=3.5cm,
+            label=left:JJ] (jj) at (0.46,0)
+                {};
+
+            \draw[-latex, very thick, red, rounded corners] (c2.east) -|
+            (0.46,-1.5) -- (c3.west);
+            
+            % Photon
+            \draw[photon2] (jj.east) -- (30:2.5) node[midway, below right]
+            {$\omega_0 = 2\omega_J$};
+        \end{scope} 
+
+    \end{tikzpicture}
+\end{document}

@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {#ch:introduction}
 
 
 ## Coupling light and matter: Cavity quantum electrodynamics

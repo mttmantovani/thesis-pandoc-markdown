@@ -1,0 +1,133 @@
+\usetikzlibrary{shapes.arrows}
+\usetikzlibrary{decorations}
+\usetikzlibrary{arrows,decorations.pathmorphing}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+\tikzset{
+    letter/.style = {anchor=north west, inner sep=0 pt},
+    cavity/.style = {inner color=white, outer color=red!40},
+    mirror/.style = {gray}
+}
+
+\makeatletter
+% used to process styles for to-path
+\def\TikzBipolePath#1#2{\pgf@circ@bipole@path{#1}{#2}}
+% restore size value for bipole definitions
+%\pgf@circ@Rlen = \pgfkeysvalueof{/tikz/circuitikz/bipoles/length}
+\makeatother
+\newlength{\ResUp}
+\newlength{\ResDown}
+\newlength{\ResLeft}
+\newlength{\ResRight}
+
+%  Josephsonjunction
+\ctikzset{bipoles/josephsonjunction/height/.initial=.50}   % box height
+\ctikzset{bipoles/josephsonjunction/width/.initial=.50}    % box width
+\pgfcircdeclarebipole{}                                    % no extra anchors
+{\ctikzvalof{bipoles/josephsonjunction/height}}
+{josephsonjunction}                                        % component name
+{\ctikzvalof{bipoles/josephsonjunction/height}}
+{\ctikzvalof{bipoles/josephsonjunction/width}}
+{                                                          % component symbol drawing...
+  \pgfextracty{\ResUp}{\northeast}                         % coordinates
+  \pgfextracty{\ResDown}{\southwest}
+  \pgfextractx{\ResLeft}{\southwest}
+  \pgfextractx{\ResRight}{\northeast}
+  \pgfsetlinewidth{3\pgfstartlinewidth}
+  \pgfmoveto{\pgfpoint{\ResLeft}{\ResDown}}
+  \pgflineto{\pgfpoint{\ResRight}{\ResUp}}
+  \pgfmoveto{\pgfpoint{\ResRight}{\ResDown}}
+  \pgflineto{\pgfpoint{\ResLeft}{\ResUp}}
+  \pgfusepath{draw}
+  \pgfsetlinewidth{\pgfstartlinewidth}
+  \pgfmoveto{\pgfpoint{\ResLeft}{0}}
+  \pgflineto{\pgfpoint{\ResRight}{0}}
+  \pgfusepath{draw}
+}
+\def\circlepath#1{\TikzBipolePath{josephsonjunction}{#1}}
+\tikzset{josephsonjunction/.style = {\circuitikzbasekey, /tikz/to path=\circlepath, l=#1}}
+
+
+
+
+%  Cooper pair
+\newcommand{\cooperpair}[2]{%
+    \begin{tikzpicture}
+        \fill[yellow!40] (0,0) ellipse (#1 and #2);
+        \node[minimum size=10pt] (o) at (0,0) {};
+        \fill[red] (o.west) circle (0.15);
+        \fill[red] (o.east) circle (0.15);
+    \end{tikzpicture}
+}
+
+
+
+
+%%% Snake Decorations without straight segment
+\newif\ifstartcompletesineup
+\newif\ifendcompletesineup
+\pgfkeys{
+    /pgf/decoration/.cd,
+    start up/.is if=startcompletesineup,
+    start up=true,
+    start up/.default=true,
+    start down/.style={/pgf/decoration/start up=false},
+    end up/.is if=endcompletesineup,
+    end up=true,
+    end up/.default=true,
+    end down/.style={/pgf/decoration/end up=false}
+}
+\pgfdeclaredecoration{complete sines}{initial}
+{
+    \state{initial}[
+        width=+0pt,
+        next state=upsine,
+        persistent precomputation={
+            \ifstartcompletesineup
+                \pgfkeys{/pgf/decoration automaton/next state=upsine}
+                \ifendcompletesineup
+                    \pgfmathsetmacro\matchinglength{
+                        0.5*\pgfdecoratedinputsegmentlength / (ceil(0.5* \pgfdecoratedinputsegmentlength / \pgfdecorationsegmentlength) )
+                    }
+                \else
+                    \pgfmathsetmacro\matchinglength{
+                        0.5 * \pgfdecoratedinputsegmentlength / (ceil(0.5 * \pgfdecoratedinputsegmentlength / \pgfdecorationsegmentlength ) - 0.499)
+                    }
+                \fi
+            \else
+                \pgfkeys{/pgf/decoration automaton/next state=downsine}
+                \ifendcompletesineup
+                    \pgfmathsetmacro\matchinglength{
+                        0.5* \pgfdecoratedinputsegmentlength / (ceil(0.5 * \pgfdecoratedinputsegmentlength / \pgfdecorationsegmentlength ) - 0.4999)
+                    }
+                \else
+                    \pgfmathsetmacro\matchinglength{
+                        0.5 * \pgfdecoratedinputsegmentlength / (ceil(0.5 * \pgfdecoratedinputsegmentlength / \pgfdecorationsegmentlength ) )
+                    }
+                \fi
+            \fi
+            \setlength{\pgfdecorationsegmentlength}{\matchinglength pt}
+        }] {}
+    \state{downsine}[width=\pgfdecorationsegmentlength,next state=upsine]{
+        \pgfpathsine{\pgfpoint{0.5\pgfdecorationsegmentlength}{0.5\pgfdecorationsegmentamplitude}}
+        \pgfpathcosine{\pgfpoint{0.5\pgfdecorationsegmentlength}{-0.5\pgfdecorationsegmentamplitude}}
+    }
+    \state{upsine}[width=\pgfdecorationsegmentlength,next state=downsine]{
+        \pgfpathsine{\pgfpoint{0.5\pgfdecorationsegmentlength}{-0.5\pgfdecorationsegmentamplitude}}
+        \pgfpathcosine{\pgfpoint{0.5\pgfdecorationsegmentlength}{0.5\pgfdecorationsegmentamplitude}}
+}
+    \state{final}{}
+}
+
+\tikzset{photon1/.style={decoration={complete sines, segment length=0.5cm,
+                                    amplitude=0.5cm,
+                                    mirror,
+                                    start up,
+                                    end up},
+                        decorate, very thick, -latex}}
+
+\tikzset{photon2/.style={decoration={snake,
+                                     pre length=3pt,
+                                     post length=5pt},
+                        decorate, very thick, -latex}}

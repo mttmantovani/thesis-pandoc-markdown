@@ -2,7 +2,7 @@
 \changelocaltocdepth{0}
 
 This Section contains a short review of my main scientific 
-contributions during the time as a PhD Student in the Quantum Transport
+contributions during the time as a Ph.D. student in the Quantum Transport
 Group at the University of Konstanz.
 
 ## List of publications {.unnumbered}
@@ -12,15 +12,15 @@ Group at the University of Konstanz.
 3. \fullcite{Mantovani2019}.
 
 ## Talk contributions {.unnumbered}
-1. APS March Meeting 2020, Denver, CO (USA), 2-6 March 2020.  
+1. APS March Meeting 2020 -- Denver, CO (USA), 2-6 March 2020 [virtual].  
   Title: *Dynamical multistability in a quantum-dot laser*.
-2. FisMat2019, Catania (Italy), 30 September - 4 October 2019.  
+2. FisMat2019 -- Catania (Italy), 30 September - 4 October 2019.  
   Title: *Single-atom lasing and single-photon pump in quantum-dot-based hybrid
   devices*.
-3. DPG-Frühjahrstagung 2019, Spring Meeting of the Condensed Matter Section,
+3. DPG-Frühjahrstagung 2019, Spring Meeting of the Condensed Matter Section --
   Regensburg (Germany), 1-5 April 2019.  
   Title: *Nonlocal heat transfer in mesoscopic QED architectures*.
-4. DPG-Frühjahrstagung 2018, Spring Meeting of the Condensed Matter Section,
+4. DPG-Frühjahrstagung 2018, Spring Meeting of the Condensed Matter Section --
   Berlin (Germany), 11-16 March 2018.  
   Title: *Multistability in nanoelectromechanical single-atom laser: beyond the rotating-wave approximation*.
 
@@ -34,7 +34,7 @@ Group at the University of Konstanz.
 4. Advanced School on Foundations and Applications of Nanomechanics -- Trieste
    (Italy), 18-22 September 2017.
 5. Trends in Nanoscience 2017 -- Irsee (Germany), 27-30 March 2017.
-6. DPG-Frühjahrstagung 2017, Spring Meeting of the Condensed Matter Section,
+6. DPG-Frühjahrstagung 2017, Spring Meeting of the Condensed Matter Section --
   Dresden (Germany), 19-24 March 2017.
 
 ## Visiting periods {.unnumbered}

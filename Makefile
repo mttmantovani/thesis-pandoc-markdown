@@ -16,30 +16,31 @@ CSL       := $(DATADIR)/aps.csl
 MDS       := $(wildcard $(SOURCE)/*.md)
 MDS2      := $(patsubst $(SOURCE)/%,$(PARTS)/%,$(MDS))
 
+FIGSRC      := $(SOURCE)/figures
+FIGS 		:= $(shell find $(FIGSRC) -mindepth 1 -maxdepth 1 -type d)
+FIGURES		:= $(addsuffix .pdf, $(notdir $(FIGS)))
+EXTS		:= py tex tikz tikzstyle pgf key
+
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex
+$(MAIN).pdf: $(MAIN).tex $(BIB) $(FIGURES)
 	@$(LATEX) $< 
 	@cp $(BUILD)/$@ $@
 
 $(MAIN).tex: $(MDS2) config.yaml $(TEMPLATES)/$(MAIN).latex $(DEFAULTS)/$(MAIN).yaml
-	@$(PANDOC) \
-			   --defaults $(MAIN) \
-			   --output=$@ \
-			   --bibliography=$(BIB)
+	@$(PANDOC) --defaults $(MAIN) --output=$@ --bibliography=$(BIB) \
+	-M autoSectionLabels
 			   
-
 $(PARTS)/%.md: $(SOURCE)/%.md $(TEMPLATES)/%.markdown config.yaml | $(PARTS)
-	@$(PANDOC) --from=markdown --to=gfm \
-			   --template=$*.markdown \
-			   --output=$@ \
-			   --metadata-file=config.yaml \
-			   --defaults empty-input \
-			   --include-after $<
+	@$(PANDOC) --defaults $(PARTS) --template=$*.markdown --output=$@ --include-after $<
 
 $(PARTS):
 	@mkdir -p $@
+
+.SECONDEXPANSION:
+$(FIGURES): %.pdf: $$(foreach ext,$$(EXTS),$$(wildcard $(FIGSRC)/%/*.$$(ext)))
+	@cd $(FIGSRC)/$* && make && make clean
 
 exportbib: $(BUILD)/$(MAIN).bcf
 	@biber --output-format=bibtex --output-resolve --output-fieldcase=lower \
@@ -51,6 +52,6 @@ clean:
 
 cleanall:
 	latexmk -C $(MAIN)
-	rm -f *.pdf
+	rm -f *.pdf 
 	rm -rf $(PARTS) $(BUILD)
 
