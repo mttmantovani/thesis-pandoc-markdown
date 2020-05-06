@@ -40,7 +40,7 @@ $(PARTS):
 
 .SECONDEXPANSION:
 $(FIGURES): %.pdf: $$(foreach ext,$$(EXTS),$$(wildcard $(FIGSRC)/%/*.$$(ext)))
-	@cd $(FIGSRC)/$* && make && make cleanall
+	@cd $(FIGSRC)/$* && make && make clean
 
 exportbib: $(BUILD)/$(MAIN).bcf
 	@biber --output-format=bibtex --output-resolve --output-fieldcase=lower \
