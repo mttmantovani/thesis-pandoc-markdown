@@ -19,7 +19,7 @@ MDS2      := $(patsubst $(SOURCE)/%,$(PARTS)/%,$(MDS))
 FIGSRC      := $(SOURCE)/figures
 FIGS 		:= $(shell find $(FIGSRC) -mindepth 1 -maxdepth 1 -type d)
 FIGURES		:= $(addsuffix .pdf, $(notdir $(FIGS)))
-EXTS		:= py tex tikz tikzstyle pgf key
+EXTS		:= py tex tikz tikzstyle key
 
 
 all: $(MAIN).pdf
@@ -40,7 +40,7 @@ $(PARTS):
 
 .SECONDEXPANSION:
 $(FIGURES): %.pdf: $$(foreach ext,$$(EXTS),$$(wildcard $(FIGSRC)/%/*.$$(ext)))
-	@cd $(FIGSRC)/$* && make && make clean
+	@cd $(FIGSRC)/$* && make && make cleanall
 
 exportbib: $(BUILD)/$(MAIN).bcf
 	@biber --output-format=bibtex --output-resolve --output-fieldcase=lower \
