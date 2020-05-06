@@ -18,8 +18,8 @@ $(FIGNAME).pgf: $(FIGNAME).py $(DATA)
 $(FIGNAME).pdf: $(FIGNAME).tex $(FIGNAME).py $(DATA)
 
 clean:
-	@latexmk -c $(FIGNAME)
+	@latexmk -c -xelatex -quiet $(FIGNAME)
 
 cleanall:
-	@latexmk -C $(FIGNAME)
+	@latexmk -C -xelatex -quiet $(FIGNAME)
 	@rm -f $(FIGNAME).pgf

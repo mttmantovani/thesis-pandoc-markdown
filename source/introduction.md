@@ -1,4 +1,4 @@
-# Introduction {#ch:introduction}
+# Introduction {#sec:introduction}
 
 
 ## Coupling light and matter: Cavity quantum electrodynamics
@@ -16,11 +16,11 @@ $$
 hello
 $$ {#eq:one}
 
-hello. Reference to Eq. @eq:one. This is reference to this chapter: @ch:introduction.
+hello. Reference to Eq. @eq:one. This is reference to this chapter: @sec:introduction.
 
 This is a Figure:
 
 ![Caption](./figures/cqed.pdf){#fig:one}
 
 This is the reference to the Fig. @fig:one.
-Figure @fig:one is.... Chapter @ch:introduction is... Equation @eq:one is....
+Figure @fig:one is.... Chapter @sec:introduction is... Equation @eq:one is....

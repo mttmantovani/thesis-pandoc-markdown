@@ -19,8 +19,8 @@ $(FIGNAME)-plot.pgf: $(FIGNAME)-plot.py $(DATA)
 	@$(PYTHON) $^
 
 clean:
-	@latexmk -c 
+	@latexmk -c -pdf -quiet $(FIGNAME)
 
 cleanall:
-	@latexmk -C $(FIGNAME)
+	@latexmk -C -pdf -quiet $(FIGNAME)
 	@rm -f $(FIGNAME).pgf

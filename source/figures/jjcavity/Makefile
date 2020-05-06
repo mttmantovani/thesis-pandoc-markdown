@@ -11,7 +11,7 @@ $(FIGNAME).pdf: $(FIGNAME).tex $(FIGNAME).tikz
 	@$(LATEX) $<
 
 clean:
-	@latexmk -c $(FIGNAME)
+	@latexmk -c -pdf -quiet $(FIGNAME)
 
 cleanall:
-	@latexmk -C $(FIGNAME)
+	@latexmk -C -pdf -quiet $(FIGNAME)

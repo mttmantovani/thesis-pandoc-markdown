@@ -4,7 +4,7 @@
 
 We describe here the nonlinear operators $\mathcal{G}(\Delta_0, n)$ and
 $\mathcal{F}(\Delta_0, n)$ appearing in the effective Hamiltonian (@eq:jjcavity:heff) of the
-JJ-resonator system described in Chapter {@jjcavity}. They are defined by
+JJ-resonator system described in Ch. @sec:jjcavity. They are defined by
 the relations:
 \begin{align}
 \mathcal{G}(\Delta_0, n) n &= \sum_{p=1}^{\infty} \frac{4p}{p^2 - 1} [A_p,

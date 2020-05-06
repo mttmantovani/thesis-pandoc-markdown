@@ -47,11 +47,11 @@ exportbib: $(BUILD)/$(MAIN).bcf
 		   --output-directory=$(DATADIR) --output-file=references.bib -w -q \
 		   $< 
 clean:
-	latexmk -c $(MAIN)
+	latexmk -c -pdf -quiet $(MAIN)
 	rm -f $(PARTS)/*
 
 cleanall:
-	latexmk -C $(MAIN)
+	latexmk -C -pdf -quiet $(MAIN)
 	rm -f *.pdf 
 	rm -rf $(PARTS) $(BUILD)
 
