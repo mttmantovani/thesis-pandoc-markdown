@@ -1,6 +1,6 @@
 FIGPATH := ../../../figures
 FIGNAME := $(notdir $(shell pwd))
-LATEX   := latexmk -pdf  
+LATEX   := latexmk -pdf -silent 
 
 .PHONY: clean cleanall
 

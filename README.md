@@ -8,7 +8,7 @@
 	- scipy>=1.3.1;
 	- matplotlib>=3.1.1;
 * Pandoc filters:
-	- pandoc-xnos;
+	- pandoc-crossref;
 	- pandoc-citeproc.
 
 

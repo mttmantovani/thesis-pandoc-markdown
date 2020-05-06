@@ -16,11 +16,11 @@ $$
 hello
 $$ {#eq:one}
 
-hello. Reference to Eq. @eq:one. This is reference to this chapter: {@introduction}.
+hello. Reference to Eq. @eq:one. This is reference to this chapter: @ch:introduction.
 
 This is a Figure:
 
 ![Caption](./figures/cqed.pdf){#fig:one}
 
 This is the reference to the Fig. @fig:one.
-Figure @fig:one is.... Chapter @introdution is... Equation @eq:one is....
+Figure @fig:one is.... Chapter @ch:introduction is... Equation @eq:one is....

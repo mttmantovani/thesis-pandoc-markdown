@@ -3,5 +3,9 @@ to: gfm
 
 metadata-file: config.yaml
 
+wrap: auto
+
+columns: 79
+
 input-files: []
 

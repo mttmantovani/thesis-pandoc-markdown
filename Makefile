@@ -8,7 +8,7 @@ BUILD     := build
 
 
 PANDOC    := pandoc --data-dir $(DATADIR)
-LATEX     := latexmk --outdir=$(BUILD) -pdf -use-make
+LATEX     := latexmk --outdir=$(BUILD) -pdf -use-make -silent
 
 BIB		  := $(HOME)/library.bib
 CSL       := $(DATADIR)/aps.csl
@@ -30,7 +30,7 @@ $(MAIN).pdf: $(MAIN).tex $(BIB) $(FIGURES)
 
 $(MAIN).tex: $(MDS2) config.yaml $(TEMPLATES)/$(MAIN).latex $(DEFAULTS)/$(MAIN).yaml
 	@$(PANDOC) --defaults $(MAIN) --output=$@ --bibliography=$(BIB) \
-	-M autoSectionLabels
+	-M autoEqnLabels
 			   
 $(PARTS)/%.md: $(SOURCE)/%.md $(TEMPLATES)/%.markdown config.yaml | $(PARTS)
 	@$(PANDOC) --defaults $(PARTS) --template=$*.markdown --output=$@ --include-after $<

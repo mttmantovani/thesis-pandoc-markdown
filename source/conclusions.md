@@ -1,8 +1,9 @@
+
 # Conclusions and outlook {#ch:conclusions}
 
 In this work, I have presented different hybrid quantum circuits composed of quantum dots
-or Josephson junctions coupled to electromagnetic or mechanical cavities. 
-These ensembles offer an extremely rich and diverse physics, which goes 
+or Josephson junctions coupled to electromagnetic or mechanical cavities.
+These ensembles offer an extremely rich and diverse physics, which goes
 beyond the standard light-matter interaction originally studied in cavity QED,
 using real atoms and optical or microwave cavities. Indeed, quantum dots and
 superconducting qubits are exceptionally versatile and tunable, allowing to
@@ -88,7 +89,7 @@ represents a mesoscopic single-emitter quantum heat engine, which can attract
 the interest of the
 quantum thermodynamics community. From a theoretical point of
 view, an accurate description of the phase diffusion dynamics for this type of
-single-atom laser can be significant. 
+single-atom laser can be significant.
 The CPS device presented in Ref. \onlinecite{Mantovani2019a} might be further
 investigated including time-dependent protocols controlling the gate voltages
 applied to the dots, which can in turn fine-tune the coherent photon transfer between the

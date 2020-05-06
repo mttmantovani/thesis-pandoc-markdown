@@ -1,7 +1,6 @@
 \appendix
 
-# Operators $\mathcal{G}(\Delta_0, n)$, $\mathcal{F}(\Delta_0, n)$ and matrix element $\langle 1 | H_\text{eff} | 2 \rangle$
-\label{app:jjcavity:matrix-elements}
+# Operators $\mathcal{G}(\Delta_0, n)$, $\mathcal{F}(\Delta_0, n)$ and matrix element $\langle 1 | H_\text{eff} | 2 \rangle$ {#sec:jjcavity:matrix-elements}
 
 We describe here the nonlinear operators $\mathcal{G}(\Delta_0, n)$ and
 $\mathcal{F}(\Delta_0, n)$ appearing in the effective Hamiltonian (@eq:jjcavity:heff) of the
