@@ -379,6 +379,8 @@ is the central object that contains the resonant processes I will discuss below 
 
 ## Simultaneous ground-state cooling of nanoresonators 
 
+![Local cooling.](figures/cps-local-cooling.pdf){#fig:cps:local-cooling}
+
 The first main feature offered by our system is the possibility to obtain *simultaneous* ground-state cooling of the resonators, as well as simultaneous heating. To achieve this, we tune the dots' energy levels to the same value $\epsilon_L = \epsilon_R = \epsilon$ and assume two identical resonators, with the same frequency $\omega_L = \omega_R = \omega$ and $g_L = g_R = g$. Furthermore, we move close to the resonance condition $\bar{\delta} = \omega$. Notice that this is fulfilled by two values of $\epsilon$ of opposite sign, namely $\epsilon = \pm \sqrt{\omega^2 - 2 \Gamma_S^2}$. Close to the resonance, we can perform a rotating-wave approximation in Eq. (-@eq:cps:polaron-transformed-interaction-second-order), obtaining to first order in $g/\omega$ the simple, time-independent interaction
 
 $$
