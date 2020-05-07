@@ -109,3 +109,4 @@ intermediate/*-converted-to.*
 .nfs*
 __latexindent_*
 references.bib
+.vscode/*

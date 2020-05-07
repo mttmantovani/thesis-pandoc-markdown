@@ -313,6 +313,8 @@ of the average dot level $\bar{\epsilon} = (\epsilon_L + \epsilon_R)/2$ for two
 values of $\Gamma_S$.](./figures/cps-andreev-current.pdf){#fig:cps:andreev-current}
 
 
+![Andreev cycle.](figures/cps-andreev-cycle.pdf){#fig:cps:andreev-cycle}
+
 ## Polaron transformation and effective Hamiltonian
 
 Before showing the main features of the system through numerical calculations, I
@@ -333,7 +335,7 @@ transformation [@Lang1962], widely used also in the context of quantum transport
 the polaron-transformed Hamiltonian
 
 $$
-\overline{H}=\sum_{\alpha \sigma} \bar{\epsilon}_{\alpha} N_{\alpha \sigma}-\frac{\Gamma_{S}}{\sqrt{2}}\left(|S\rangle\langle 0|X+| 0\rangle\langle S| X^{\dagger}\right)+\sum_{\alpha} \omega_{\alpha} b_{\alpha}^{\dagger} b_{\alpha},
+\overline{H}=\sum_{\alpha \sigma} \bar{\epsilon}_{\alpha}\left( N_{\alpha \sigma} + \frac{|S\rangle \langle S|}{2}\right) -\frac{\Gamma_{S}}{\sqrt{2}}\left(|S\rangle\langle 0|X+| 0\rangle\langle S| X^{\dagger}\right)+\sum_{\alpha} \omega_{\alpha} b_{\alpha}^{\dagger} b_{\alpha},
 $$ {#eq:cps:polaron-transformed-hamiltonian}
 
 with $\bar{\epsilon}_\alpha = \epsilon_\alpha -
@@ -344,7 +346,49 @@ $|S\rangle$ and $|0\rangle$ states and the resonators, to _all_ orders in
 $g_\alpha$, through the operator $X$. More intriguingly, this interaction is
 purely nonlocal since it vanishes for $\Gamma_S = 0$.
 
+At this point, we make the assumption of small coupling, $g_\alpha \ll \omega_\alpha$. The operators $X$ and $X^\dagger$ can be expanded up to second order in $g_\alpha$, such that the interaction term in Eq. (-@eq:cps:polaron-transformed-hamiltonian) becomes:
+
+$$
+\overline{H}_{\mathrm{int}}=-\frac{\Gamma_{S}}{\sqrt{2}}\left[i \sigma_{y} \Pi+\sigma_{x}\left(1+\frac{\Pi^{2}}{2}\right)\right]+\mathcal{O}\left(\Pi^{3}\right),
+$$ {#eq:cps:polaron-transformed-interaction}
+
+with the definitions: $i\Pi = \sum_\alpha i \Pi_\alpha$ (generalized total momentum), $\sigma_x = |0\rangle \langle S | + \text{H.c.}$, and $\sigma_y = -i |0\rangle \langle S | + \text{H.c.}$ By diagonalizing the interaction in the electronic subspace, we obtain the renormalized hybridized states 
+
+\begin{align}
+    \overline{|+\rangle} &=\cos \left(\frac{\bar{\theta}}{2}\right)|0\rangle+\sin \left(\frac{\bar{\theta}}{2}\right)|S\rangle, \\ 
+    \overline{|-\rangle}&=-\sin \left(\frac{\bar{\theta}}{2}\right)|0\rangle+\cos \left(\frac{\bar{\theta}}{2}\right)|S\rangle,
+\end{align}
+
+with $\bar{\theta}=\arctan \left(\frac{\sqrt{2} \Gamma_{S}}{\bar{\epsilon}_{L}+\bar{\epsilon}_{R}}\right)$. The renormalized energy splitting then reads
+$\bar{\delta} = \sqrt{(\bar{\epsilon}_L + \bar{\epsilon}_R)^2 + 2 \Gamma_S^2}$. Using this new basis, we define the Pauli algebra with matrices $\tau_+ = \overline{|+\rangle}\overline{\langle - |}$, $\tau_- = (\tau_+)^\dagger$, $\tau_x = \tau_+ + \tau_-$, $\tau_y =  -i(\tau_+ - \tau_-)$, $\tau_z = [\tau_+, \tau_-]$, through which Eq. (-@eq:cps:polaron-transformed-hamiltonian) up to second order becomes
+
+$$
+\overline{H} = \sum_{\alpha \sigma} \bar{\epsilon}_{\alpha} N_{\alpha \sigma}+\frac{\bar{\delta}}{2} \tau_{z}+\sum_{\alpha} \omega_{\alpha} b_{\alpha}^{\dagger} b_{\alpha} -\frac{\Gamma_{S}}{2 \sqrt{2}}\left[2 i \tau_{y} \Pi+\left(\sin \bar{\theta} \tau_{z}+\cos \bar{\theta} \tau_{x}\right) \Pi^{2}\right]+\mathcal{O}\left(\Pi^{3}\right).
+$$
+
+We now move to the interaction picture with respect to the free Hamiltonian $H_{0}=\sum_{\alpha \sigma} \bar{\epsilon}_{\alpha} N_{\alpha \sigma}+\frac{\delta}{2} \tau_{z}+ \sum_{\alpha} \omega_{\alpha} b_{\alpha}^{\dagger} b_{\alpha}.$  We obtain the time-dependent interaction Hamiltonian
+
+$$
+\begin{aligned} 
+    \overline{H}_{\mathrm{int}}(t) =&-\sum_{\alpha} \frac{g_{\alpha} \Gamma_{S}}{\omega_{\alpha} \sqrt{2}}\left(e^{i \omega_{\alpha} t} b_{\alpha}^{\dagger}-e^{-i \omega_{\alpha} t} b_{\alpha}\right)\left(e^{i \bar{\delta} t} \tau_{+}-e^{-i \bar{\delta} t} \tau_{-}\right) \\ &-\frac{\Gamma_{S} g_{L} g_{R}}{\sqrt{2} \omega_{L} \omega_{R}}\left[e^{i \Omega t} b_{L}^{\dagger} b_{R}^{\dagger}+e^{-i \Omega t} b_{L} b_{R}-e^{i(\Delta \omega) t} b_{L}^{\dagger} b_{R}-e^{-i(\Delta \omega) t} b_{L} b_{R}^{\dagger}\right] \\ &\times \left[\sin (\bar{\theta}) \tau_{z}+\cos (\bar{\theta})\left(e^{i \bar{\delta} t} \tau_{+}+e^{-i \bar{\delta} t} \tau_{-}\right)\right] \\ &-\sum_{\alpha} \frac{\Gamma_{S} g_{\alpha}^{2}}{2 \sqrt{2} \omega_{\alpha}^{2}}\left[e^{2 i \omega_{\alpha} t}\left(b_{\alpha}^{\dagger}\right)^{2}+e^{-2 i \omega_{\alpha} t} b_{\alpha}^{2}-2 b_{\alpha}^{\dagger} b_{\alpha}-1\right] \\ & \times\left[\sin (\bar{\theta}) \tau_{z}+\cos (\bar{\theta})\left(e^{i \bar{\delta} t} \tau_{+}+e^{-i \bar{\delta} t} \tau_{-}\right)\right]+\mathcal{O}\left(g_{\alpha}^{3} / \omega_{\alpha}^{3}\right). 
+\end{aligned}
+$$ {#eq:cps:polaron-transformed-interaction-second-order}
+
+I have introduced the sum, $\Omega = \omega_L + \omega_R$, and the difference, $\Delta\omega = \omega_L - \omega_R$, of the resonator frequencies. Equation (-@eq:cps:polaron-transformed-interaction-second-order)
+is the central object that contains the resonant processes I will discuss below using a suitable rotating-wave approximation.
+
 ## Simultaneous ground-state cooling of nanoresonators 
+
+The first main feature offered by our system is the possibility to obtain *simultaneous* ground-state cooling of the resonators, as well as simultaneous heating. To achieve this, we tune the dots' energy levels to the same value $\epsilon_L = \epsilon_R = \epsilon$ and assume two identical resonators, with the same frequency $\omega_L = \omega_R = \omega$ and $g_L = g_R = g$. Furthermore, we move close to the resonance condition $\bar{\delta} = \omega$. Notice that this is fulfilled by two values of $\epsilon$ of opposite sign, namely $\epsilon = \pm \sqrt{\omega^2 - 2 \Gamma_S^2}$. Close to the resonance, we can perform a rotating-wave approximation in Eq. (-@eq:cps:polaron-transformed-interaction-second-order), obtaining to first order in $g/\omega$ the simple, time-independent interaction
+
+$$
+\overline{H}_\text{loc} = \sum_\alpha \frac{g}{2} \sin \bar{\theta} (b_\alpha \tau_+ + b^\dagger_\alpha \tau_-).
+$$ {#eq:cps:local-effective-hamiltonian}
+
+Equation (-@eq:cps:local-effective-hamiltonian) describes hopping between the Andreev state $\overline{|+\rangle}$ and $\overline{|-\rangle}$ associated with one-photon loss and absorption in the cavities, through a Jaynes-Cummings interaction. Notice that the effective coupling is proportional to $\sin \bar{\theta} = \sqrt{2}\Gamma_S / \bar{\delta}$, and is therefore a direct consequence nonlocal Andreev reflection. 
+
+We can illustrate how this effective interaction leads to ground-state cooling of both cavities with the help of @fig:cps:local-cooling(a). The interaction (-@eq:cps:local-effective-hamiltonian) coherently mixes the states $|+, n_{L}, n_{R}\rangle,\ |-, n_{L}+1, n_{R}\rangle,$ and $|-, n_{L}, n_{R}+1\rangle$, which are degenerate for $\overline{H}_\text{loc} = 0$.
+
 
 - Cooling mechanism;
 - Effective Hamiltonian;
@@ -401,7 +445,7 @@ $\Gamma_S$ is increased, and are a byproduct of the finite hybridization between
 and the singlet state. However, we remark that the hybridization is necessary to
 achieve a nonzero efficiency.
 
-![Efficiency.](./figures/cps-efficiency.pdf){#fig:cps:efficiency}
+![EFISIENCY](figures/cps-efficiency.pdf){#fig:cps:efficiency}
 
 
 ## Conclusions

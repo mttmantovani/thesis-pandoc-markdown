@@ -16,9 +16,10 @@ CSL       := $(DATADIR)/aps.csl
 MDS       := $(wildcard $(SOURCE)/*.md)
 MDS2      := $(patsubst $(SOURCE)/%,$(PARTS)/%,$(MDS))
 
+FIGPATH     := figures
 FIGSRC      := $(SOURCE)/figures
 FIGS 		:= $(shell find $(FIGSRC) -mindepth 1 -maxdepth 1 -type d)
-FIGURES		:= $(addsuffix .pdf, $(notdir $(FIGS)))
+FIGURES		:= $(addprefix $(FIGPATH)/,$(addsuffix .pdf, $(notdir $(FIGS))))
 EXTS		:= py tex tikz tikzstyle key
 
 
@@ -39,7 +40,7 @@ $(PARTS):
 	@mkdir -p $@
 
 .SECONDEXPANSION:
-$(FIGURES): %.pdf: $$(foreach ext,$$(EXTS),$$(wildcard $(FIGSRC)/%/*.$$(ext)))
+$(FIGPATH)/%.pdf: $$(foreach ext,$$(EXTS),$$(wildcard $(FIGSRC)/%/*.$$(ext)))
 	@cd $(FIGSRC)/$* && make && make clean
 
 exportbib: $(BUILD)/$(MAIN).bcf

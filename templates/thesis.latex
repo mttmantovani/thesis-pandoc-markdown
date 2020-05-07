@@ -47,7 +47,7 @@ $endif$
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
-\usepackage[labelfont=bf]{caption}
+\usepackage[font=small,labelfont=bf]{caption}
 
 \usepackage[unicode=true,
             bookmarksopen,
@@ -63,7 +63,7 @@ $endif$
             colorlinks=true,
             citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
             urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$red$endif$,
             $endif$
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls

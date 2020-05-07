@@ -38,7 +38,7 @@ is in series to a Josephson junction with
 applied bias voltage $V$. Low-frequency voltage fluctuations in the circuit
 may be modeled by an impedance $Z(\omega)$ in series with the junction.
 (b) When the bias voltage is such that $\omega_J = \omega_0/2$, photon emission
-in the cavity is mediated by tunneling of two Cooper pairs.](./figures/jjcavity.pdf){#fig:jjcavity:system}
+in the cavity is mediated by tunneling of two Cooper pairs.](./figures/jjcavity-system.pdf){#fig:jjcavity:system}
 
 The system considered in Ref. \onlinecite{Morley2019} consists of a LC-resonator
 of frequency $\omega_0 = 1/\sqrt{LC}$ (realized with a superconducting microwave

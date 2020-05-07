@@ -1,0 +1,140 @@
+\documentclass[tikz,11pt]{standalone}
+\usepackage{newtxtext,newtxmath}
+
+% Define sizes in cm
+\def\totalwidth{15.92}
+\def\totalheight{4.5}
+
+\def\widthA{7.96}
+\def\heightA{4.5}
+\def\widthB{7.96}
+\def\heightB{4.5}
+
+\tikzstyle{dot} = [fill=black,anchor=center,minimum width=1.5cm]
+\tikzstyle{electron} = [shape=circle,minimum size=0.5cm,fill=orange,draw=orange,thick]
+\tikzstyle{noelectron} = [draw=orange,very thick,dash pattern=on 2 off 1,
+                          fill=white,minimum size=0.5cm,shape=circle]
+\tikzstyle{incoherent tunneling} = [->,>=latex,ultra thick,blue!80,
+                                    shorten <=3pt, shorten >=3pt]
+\tikzstyle{coherent tunneling} = [<->,>=latex,ultra thick,orange,
+                                  densely dotted, shorten <=3pt, 
+                                  shorten >=3pt]
+\tikzstyle{ket} = [left,inner sep=3pt]
+
+\tikzset{declare function={rho(\a,\c,\t)=sqrt(\a^2*cos(2*\t)+sqrt(-\a^4 + \c^4+\a^4*cos(2*\t)*cos(2*\t)));},
+	 	 singlet/.style args={with centers #1 and #2 and constant #3}{%
+			insert path={
+			    let \p1=($(#2)-(#1)$),\n1={veclen(\x1,\y1)/1cm},\n2={atan2(\x1,\y1)}
+			    in %\pgfextra{\typeout{#1,#2,#3,\n1,\n2}}
+			    [shift={($(#2)!0.5!(#1)$)}]
+			    plot[variable=\t,domain=0:360,smooth,samples=101] 
+			    (\t-\n2+90:{rho(\n1/2,#3,\t)})
+			},
+            draw=none,fill opacity=1,fill=yellow
+        }
+}
+
+\begin{document}
+    \usetikzlibrary{shapes.geometric,calc}
+    \usetikzlibrary{arrows.meta}
+    \usetikzlibrary{shapes,snakes}
+    \usetikzlibrary{decorations.markings}
+    \usetikzlibrary{backgrounds}
+    \usetikzlibrary{intersections}
+    \usetikzlibrary{positioning}
+
+    \begin{tikzpicture}[inner sep=0pt]
+        \useasboundingbox[] (0,0) grid (\totalwidth,-\totalheight);
+        
+        % Part (a)
+        \begin{scope}[local bounding box=A]
+            \useasboundingbox[] (0,0) grid (\widthA, -\heightA);
+
+	        % Letter
+            \node[anchor=north west, inner sep=3pt] at (A.north west) {(a)} ;
+
+            \begin{scope}[shift={(A.center)}]
+                \node (c) at (0,0) [minimum height=2.5cm, minimum width=3cm] {};
+
+                \draw[singlet=with centers c.north west and c.north east and constant 1.54];
+
+                \node[dot] (1) at (c.north west) {};
+                \node[dot] (2) at (c.west) {};
+                \node[dot] (3) at (c.south west) {};
+                \node[dot] (4) at (c.north east) {};
+                \node[dot] (5) at (c.east) {};
+                \node[dot] (6) at (c.south east) {};
+
+                
+                \node[ket] at (1.west) {$|S\rangle$};
+                \node[ket] at (2.west) {$|\alpha\sigma\rangle$};
+                \node[ket] at (3.west) {$|0\rangle$};
+
+                \node[electron] at (1.center) {};
+                \node[electron] at (2.center) {};
+                \node[electron] at (4.center) {};
+                \node[noelectron] at (3.center) {};
+                \node[noelectron] at (5.center) {};
+                \node[noelectron] at (6.center) {};
+
+
+                \draw[incoherent tunneling] (c.north) -- (c.center) node[midway,right,black,inner sep=5pt] {$\Gamma$};
+                \draw[incoherent tunneling] (c.center) -- (c.south) node[midway,right,black,inner sep=5pt] {$\Gamma$};
+
+                \draw[coherent tunneling] (6.east) to[bend right=30] node[midway,right,black,inner sep=5pt] {$\Gamma_S$} (4.east);
+
+  
+            \end{scope}
+        \end{scope}
+
+        % Part (b)
+        \begin{scope}[shift={(current bounding box.north)}, local bounding box=B, inner sep=0pt]
+            \useasboundingbox[] (0,0) grid (\widthB, -\heightB);
+
+            % Letter
+            \node[anchor=north west, inner sep=3pt] at (B.north west) {(b)} ;
+
+            \begin{scope}[shift={(B.center)}]
+                \node (c) at (0,0) [minimum height=2.5cm, minimum width=3cm] {};
+
+                \draw[singlet=with centers c.north west and c.north east and constant 1.54,fill opacity=0.7];
+                \draw[singlet=with centers c.south west and c.south east and constant 1.54,fill opacity=0.3];
+
+                \node[dot] (1) at (c.north west) {};
+                \node[dot] (2) at ($(c.west)+(1,0)$) {};
+                \node[dot] (3) at (c.south west) {};
+                \node[dot] (4) at (c.north east) {};
+                \node[dot] (5) at ($(c.east)+(1,0)$) {};
+                \node[dot] (6) at (c.south east) {};
+
+                \node[ket] at (1.west) {$|+\rangle\approx|S\rangle$};
+                \node[ket] at (3.west) {$|-\rangle\approx|0\rangle$};  
+
+                \node[electron] at (1.center) {};
+                \node[electron] at (2.center) {};
+                \node[electron] at (4.center) {};
+                \node[noelectron] at (3.center) {};
+                \node[noelectron] at (5.center) {};
+                \node[noelectron] at (6.center) {};
+
+                \node[inner sep=3pt] at (c.north) (CN) {};
+                \node[inner sep=3pt] at ($(2.west)!0.5!(5.east)$) (CC) {};
+                \node[inner sep=3pt] at (c.south) (CS) {};
+                
+
+                \draw[incoherent tunneling] (CN.west) -- (CC.west) node[midway,left,black,inner sep=5pt] {fast};
+                \draw[incoherent tunneling,
+                      thick,densely dashed,
+                      blue!60!black!30] (CC.east) -- (CN.east) node[midway,right,black,inner sep=5pt] {slow};
+
+                \draw[incoherent tunneling] (CC.west) -- (CS.west) node[midway,left,black,inner sep=5pt] {fast};
+                \draw[incoherent tunneling,
+                      densely dashed,thick,
+                      blue!60!black!40] (CS.east) -- (CC.east) node[midway,right,black,inner sep=5pt] {slow};
+
+                \draw[<->, >=latex,thick,densely dotted,gray] (1.west) -- (3.west) node[midway,left,xshift=-0.5ex] {$\delta$};
+            \end{scope}
+        \end{scope}
+    \end{tikzpicture}
+\end{document}
+
