@@ -403,7 +403,7 @@ In the inset of @fig:cps:local-cooling(c) I further demonstrate how the cooling 
 The local cooling mechanism presented in @sec:cps:local-cooling is due to one-photon resonances, and can be simply explained by analyzing the first-order term of Eq. (-@eq:cps:polaron-transformed-interaction-second-order). By keeping the second-order term, it is possible to describe the resonances $\bar{\delta} = \omega_L - \omega_R$ and $\bar{\delta} = \omega_L + \omega_R$. Let us assume, without loss of generality, $\omega_L > \omega_R$. For $\bar{\delta} = \omega_L - \omega_R$, the rotating-wave approximation yields the effective coupling Hamiltonian
 
 $$
-H_{\mathrm{RWA}}^{\bar{\delta}=\Delta \omega}= \sum_{\alpha} \frac{\Gamma_{S} g_{\alpha}^{2}}{2 \sqrt{2} \omega_{\alpha}^{2}}\left(2 n_{\alpha}+1\right) \sin \bar{\theta} \tau_{z} +g_{\mathrm{NL}}\left(b_{L}^{\dagger} b_{R} \tau_{-}+\mathrm{H.c.}\right),
+H_{\mathrm{RWA}}^{(-)}= \sum_{\alpha} \frac{\Gamma_{S} g_{\alpha}^{2}}{2 \sqrt{2} \omega_{\alpha}^{2}}\left(2 n_{\alpha}+1\right) \sin \bar{\theta} \tau_{z} +g_{\mathrm{NL}}\left(b_{L}^{\dagger} b_{R} \tau_{-}+\mathrm{H.c.}\right),
 $$ {#eq:cps:nonlocal-effective-hamiltonian-difference}
 
 with the effective nonlocal coupling
