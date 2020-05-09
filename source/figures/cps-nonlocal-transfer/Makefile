@@ -1,7 +1,7 @@
 FIGPATH := ../../../figures
 FIGNAME := $(notdir $(shell pwd))
 LATEX   := latexmk -pdf -silent
-DATA    := $(wildcard data/*)
+DATA    := $(wildcard *.txt)
 PYTHON  := python3
 
 .PHONY: clean cleanall

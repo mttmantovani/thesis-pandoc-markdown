@@ -402,7 +402,7 @@ We can illustrate how this effective interaction leads to ground-state cooling o
 - Effective Hamiltonian;
 - Results for the current.
 
-![Nonlocal cooling.](figures/cps-nonlocal-cooling.pdf){#fig:cps:nonlocal-cooling}
+![Nonlocal photon transfer.](figures/cps-nonlocal-transfer.pdf){#fig:cps:nonlocal-transfer}
 
 ## Efficiency
 
@@ -444,7 +444,7 @@ The efficiency is essentially limited by two factors: (i) an elastic
 contribution to the current (exemplified by the results of @sec:cps:absence-resonators) where electrons flow into the leads without
 exchanging energy with the cavities; (ii) a finite fraction of the injected
 electrons acting against the dominant process (cooling or photon transfer), as
-illustrated by the dashed arrows in **FIG**. Both processes become relevant when
+illustrated by the dashed arrows in [@fig:cps:local-cooling(a);@fig:cps:nonlocal-transfer(a)]. Both processes become relevant when
 $\Gamma_S$ is increased, and are a byproduct of the finite hybridization between the empty
 and the singlet state. However, we remark that the hybridization is necessary to
 achieve a nonzero efficiency.

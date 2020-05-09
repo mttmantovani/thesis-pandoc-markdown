@@ -6,7 +6,7 @@
 \def\totalwidth{15.92}
 \def\totalheight{6.5}
 \def\widthA{5.92}
-\def\widthB{9}
+\def\widthB{10}
 
 \tikzstyle{dot}                  = [fill=black,anchor=center,minimum width=1.5cm]
 \tikzstyle{incoherent tunneling} = [->,>=latex,ultra thick,blue!80,shorten <=1pt,shorten >=1pt]
@@ -24,7 +24,7 @@
             \useasboundingbox (0,0) rectangle (\widthA, -\totalheight);
 
 	      % Letter
-            \node[anchor=north west, inner sep=3pt] at (current bounding box.north west) {\small (a)} ;
+            \node[anchor=north west, inner sep=3pt] at (current bounding box.north west) {(a)} ;
 
             \begin{scope}[shift={(A.center)}, inner sep=0pt]
                 \node (c) at (-0.1,0) [minimum width=3.cm,minimum height=4.5cm] {};
@@ -32,8 +32,8 @@
                 \node[dot]  (1) at (c.north west) {};
                 \node[dot]  (2) at (c.north east) {};
                 \node[dot]  (3) at ($(c.north)!0.5!(c.center)$) {};
-                \node[dot]  (4) at (c.west) {};
-                \node[dot]  (5) at (c.east) {};
+                \node[dot]  (5) at (c.west) {};
+                \node[dot]  (4) at (c.east) {};
                 \node[dot]  (6) at ($(c.center)!0.5!(c.south)$) {};
                 \node[dot]  (7) at (c.south west) {};
                 \node[dot]  (8) at (c.south east) {};
@@ -41,22 +41,18 @@
                 \node[above=1em] at (c.north) {$\textcolor{green!40!black!60}{g_\mathrm{NL}}$};
 
                 {\scriptsize
-                \node[ket,anchor=east]            at  ([yshift=2ex]1.center)  {$\left|+,\!n_{L}\!\!-\!\!1,\!n_{R}\!\!+\!\!1\right\rangle$};
-                \node[ket,anchor=west,above=2ex]            at  (2.center) {$\left|-, n_{L}, n_{R}\right\rangle$};
+                \node[ket,anchor=south,above=1ex]            at  (1.center)  {$\left|+,\!n_{L}\!\!-\!\!1,\!n_{R}\!\!+\!\!1\right\rangle$};
+                \node[ket,anchor=south,above=1ex]            at  (2.center) {$\left|-, n_{L}, n_{R}\right\rangle$};
                 \node[ket,anchor=east]            at  (3.west)  {$\left|\alpha \sigma,\!n_{L}\!\!-\!\!1,\!n_{R}\!\!+\!\!1\right\rangle$};
-                % \node[ket,anchor=east]            at  (4.west)  {$\left|\alpha \sigma,\!n_{L},\!n_{R}\right\rangle$};
-                % \node[ket,anchor=west]            at  (5.east)  {$\left|\alpha \sigma,\!n_{L}\!\!+\!\!1,\!n_{R}\!\!-\!\!1\right\rangle$};
-                % \node[ket,anchor=east]            at  (6.west)  {$\left|-,\!n_{L},\!n_{R}\right\rangle$};
-                % \node[ket,anchor=south,above=1ex] at  (7.north) {$\left|+,\!n_{L},\!n_{R}\!\!-\!\!1\right\rangle$};
-                % \node[ket,anchor=west]            at  (8.east)  {$\left|-,\!n_{L}\!\!+\!\!1,\!n_{R}\!\!-\!\!1\right\rangle$};
-                % \node[ket,anchor=west]            at  (9.east)  {$\left|\alpha \sigma,\!n_{L},\!n_{R}\!\!-\!\!1\right\rangle$};
-                % \node[ket,anchor=east]            at (10.west)  {$\left|+,\!\textcolor{blue}{n_{L}\!\!-\!\!1,\!n_{R}\!\!-\!\!1}\right\rangle$};
-                % \node[ket,anchor=north,below=1ex] at (11.south) {$\left|-,\!\textcolor{blue}{n_{L},\!n_{R}\!\!-\!\!1}\right\rangle$};
-                % \node[ket,anchor=west]            at (12.east)  {$\left|+,\!\textcolor{blue}{n_{L},\!n_{R}\!\!-\!\!2}\right\rangle$};
+                \node[ket,anchor=south,above=1ex]            at  (4.center)  {$\left|+,\!n_{L}\!\!-\!\!2,\!n_{R}\!\!+\!\!2\right\rangle$};
+                \node[ket,anchor=north,below=1ex]            at  (5.center)  {$\left|-,\!n_{L}\!\!-\!\!1,\!n_{R}\!\!+\!\!1\right\rangle$};
+                \node[ket,anchor=west]            at  (6.east)  {$\left|\alpha \sigma,\!n_{L}\!\!-\!\!2,\!n_{R}\!\!+\!\!2\right\rangle$};
+                \node[ket,anchor=north,below=1ex] at  (7.center) {$\left|+,\!\textcolor{blue}{n_{L}\!\!-\!\!3},\! \textcolor{red}{n_{R}\!\!+\!\!3}\right\rangle$};
+                \node[ket,anchor=north,below=1ex] at  (8.center)  {$\left|-, \!\textcolor{blue}{n_{L}\!\!-\!\!2},\!\textcolor{red}{n_{R}\!\!+\!\!2}\right\rangle$};
                 }
                 
                 \draw[coherent tunneling]  (1.east) to[bend left=40]  (2.west) edge[bend left=40] (1.east);
-                \draw[coherent tunneling]  (4.east) to[bend left=40]  (5.west) edge[bend left=40] (4.east);
+                \draw[coherent tunneling]  (5.east) to[bend left=40]  (4.west) edge[bend left=40] (5.east);
                 \draw[coherent tunneling]  (7.east) to[bend left=40]  (8.west) edge[bend left=40] (7.east);
 
                 \draw[incoherent tunneling] 
@@ -79,7 +75,10 @@
                 \draw[incoherent tunneling,thick,densely dashed,blue!60!black!30]
                     ([xshift=3pt]8.center) -- ([xshift=3pt]6.center);
 
-                % \draw[<->, >=latex,thick,densely dotted,gray] (6) -- (10) node[midway,left=0.5ex] {\small $\bar{\delta}\approx \omega$};
+                \draw[<->, >=latex,thick,densely dotted,gray] 
+                      ([xshift=-2ex]5.west) -- ([xshift=-2ex]7.west) node[fill=white,midway,right=-0.5em] {\small $\bar{\delta}\approx \omega_L\!\!-\!\!\omega_R$};
+                \draw[thin,densely dotted,gray] (5.west) -- ++(-1.2em,0);
+                \draw[thin,densely dotted,gray] (7.west) -- ++(-1.2em,0);
             \end{scope}
         \end{scope}
 

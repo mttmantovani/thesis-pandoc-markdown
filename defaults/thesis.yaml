@@ -6,22 +6,22 @@ template: thesis.latex
 resource-path: [".", "parts", "source", "figures"]
 
 input-files: 
-    - parts/titlepage.md
-    - parts/preface.md
-    - parts/abstract.md
-    - parts/zusammenfassung.md
-    - parts/toc.md
-    - parts/introduction.md
-    - parts/theory.md
-    - parts/qdlaser.md
-    - parts/cps.md
-    - parts/jjcavity.md
-    - parts/spinboson.md
-    - parts/conclusions.md
-    - parts/appendix.md
-    - parts/contrib.md
-    - parts/cv.md
-    - parts/acknowledgments.md
+   - parts/titlepage.md
+   - parts/preface.md
+   - parts/abstract.md
+   - parts/zusammenfassung.md
+   - parts/toc.md
+   - parts/introduction.md
+   - parts/theory.md
+   - parts/qdlaser.md
+   - parts/cps.md
+   - parts/jjcavity.md
+   - parts/spinboson.md
+   - parts/conclusions.md
+   - parts/appendix.md
+   - parts/contrib.md
+   - parts/cv.md
+   - parts/acknowledgments.md
 
 abbreviations: abbreviations
 
