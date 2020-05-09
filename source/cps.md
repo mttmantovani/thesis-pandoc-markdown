@@ -312,8 +312,11 @@ transport window broadens with increasing $\Gamma_S$ as it leads to a stronger h
 of the average dot level $\bar{\epsilon} = (\epsilon_L + \epsilon_R)/2$ for two
 values of $\Gamma_S$.](./figures/cps-andreev-current.pdf){#fig:cps:andreev-current}
 
+The transport mechanism can be better understood with the help of @fig:cps:andreev-cycle. When the leads are negatively biased, the double dot in the singlet state $|S\rangle$ decays into a singly-occupied state ($|\alpha\sigma\rangle$) through a single-electron tunneling event, giving up an electron to one of the leads, at the incoherent rate $\Gamma$. Similarly, the remaining electron will tunnel out, leaving the double dot in the empty state $|0\rangle$, see @fig:cps:andreev-cycle(a). However, the empty and the singlet state are coherently coupled with amplitude $\Gamma_S$, allowing the cycle to restart and giving rise to the steady current pictured in @fig:cps:andreev-current.
 
-![Andreev cycle.](figures/cps-andreev-cycle.pdf){#fig:cps:andreev-cycle}
+An interesting situation appears when the charge states are only *weakly* hybridized, i.e., whenever $|\epsilon| \gtrsim \Gamma_S$. In this case, for positive $\epsilon$, the Andreev bound state $|+\rangle$ is "mostly" the singlet state, while the state $|-\rangle$ is "mostly" empty, see @fig:cps:andreev-cycle(b). This leads to a strong asymmetry of the transition rates $|+\rangle \leftrightarrow |\alpha\sigma\rangle$ and $|-\rangle \leftrightarrow |\alpha\sigma\rangle$. The situation is reversed when $\epsilon <0$, as weak hybridization implies $|+\rangle \approx |0\rangle$ and $|-\rangle \approx |S\rangle$. This strong asymmetry lies at the heart of the photon transfer mechanism that I will describe below.
+
+![(a) For negatively biased leads, subsequent incoherent tunneling events bring the singlet state into the empty state. The two states are coherently coupled due to the superconductors, leading to a stationary current. (b) The coherent coupling leads to the formation of the Andreev bound states $|\pm\rangle$, with energy separation $\delta$. For weak hybridization ($|\epsilon| \gtrsim \Gamma_S$) the transition rates $|+\rangle \leftrightarrow |\alpha\sigma\rangle$ and $|-\rangle \leftrightarrow |\alpha\sigma\rangle$ are strongly asymmetric. Here, the situation for $\epsilon > 0$ is pictured.](figures/cps-andreev-cycle.pdf){#fig:cps:andreev-cycle}
 
 ## Polaron transformation and effective Hamiltonian
 
@@ -377,9 +380,9 @@ $$ {#eq:cps:polaron-transformed-interaction-second-order}
 I have introduced the sum, $\Omega = \omega_L + \omega_R$, and the difference, $\Delta\omega = \omega_L - \omega_R$, of the resonator frequencies. Equation (-@eq:cps:polaron-transformed-interaction-second-order)
 is the central object that contains the resonant processes I will discuss below using a suitable rotating-wave approximation.
 
-## Simultaneous ground-state cooling of nanoresonators 
+## Simultaneous ground-state cooling of nanoresonators {#sec:cps:local-cooling}
 
-![Simultaneous cooling of resonators due to cross-Andreev reflection. (a) For two identical resonators, when $|\epsilon| \gtrsim \Gamma_S$ and $\epsilon > 0$, the weak charge hybdirization leads to an asymmetry in the transition rates $|+\rangle \leftrightarrow |\alpha\sigma \rangle$ and $|-\rangle \leftrightarrow |\alpha\sigma \rangle$. Fast rates are depicted by blue solid arrows, slow transition with dashed light blue arrows. The coherent effective coupling \[Eq. (-@eq:cps:local-effective-hamiltonian), curved dashed arrows\] mixes states with different photon numbers close to the resonance $\bar{\delta} = \omega$. In the steady nonequilibrium state of the system, the cavities are effectively cooled down. (b) Current $I_\alpha$ as a function of the on-site dot energy $\epsilon$ at zero (red dashed line) and finite temperature (solid black line). (c) Average cavity occupation in one of the cavities, for $k_B T = 5\omega$. The horizontal dotted line corresponds to the thermal occupation. Inset: Photon occupation at the cooling resonance, $\epsilon = \epsilon_c$, as a function of $\Gamma_S$, for two different values of the electron tunneling rate $\Gamma$. The curves are rescaled to the thermal occupation. Parameters: $\Gamma  = 2 \times 10^{-4} \omega,\ \lambda = 0.02\omega,\ Q = 10^5,\ \Gamma_S=0.2\omega$. ](figures/cps-local-cooling.pdf){#fig:cps:local-cooling}
+![Simultaneous cooling of resonators due to cross-Andreev reflection. (a) For two identical resonators, when $|\epsilon| \gtrsim \Gamma_S$ and $\epsilon > 0$, the weak charge hybridization leads to an asymmetry in the transition rates $|+\rangle \leftrightarrow |\alpha\sigma \rangle$ and $|-\rangle \leftrightarrow |\alpha\sigma \rangle$. Fast rates are depicted by blue solid arrows, slow transition with dashed light blue arrows. The coherent effective coupling \[Eq. (-@eq:cps:local-effective-hamiltonian), curved dashed arrows\] mixes states with different photon numbers close to the resonance $\bar{\delta} = \omega$. In the steady nonequilibrium state of the system, the cavities are effectively cooled down. (b) Current $I_\alpha$ as a function of the on-site dot energy $\epsilon$ at zero (red dashed line) and finite temperature (solid black line). (c) Average cavity occupation in one of the cavities, for $k_B T = 5\omega$. The horizontal dotted line corresponds to the thermal occupation. Inset: Photon occupation at the cooling resonance, $\epsilon = \epsilon_c$, as a function of $\Gamma_S$, for two different values of the electron tunneling rate $\Gamma$. The curves are rescaled to the thermal occupation. Parameters: $\Gamma  = 2 \times 10^{-4} \omega,\ \lambda = 0.02\omega,\ Q = 10^5,\ \Gamma_S=0.2\omega$. ](figures/cps-local-cooling.pdf){#fig:cps:local-cooling}
 
 The first main feature offered by our system is the possibility to obtain *simultaneous* ground-state cooling of the resonators, as well as simultaneous heating. To achieve this, we tune the dots' energy levels to the same value $\epsilon_L = \epsilon_R = \epsilon$ and assume two identical resonators, with the same frequency $\omega_L = \omega_R = \omega$ and $g_L = g_R = g$. Furthermore, we move close to the resonance condition $\bar{\delta} = \omega$. Notice that this is fulfilled by two values of $\epsilon$ of opposite sign, namely $\epsilon = \pm \sqrt{\omega^2 - 2 \Gamma_S^2}$. Close to the resonance, we can perform a rotating-wave approximation in Eq. (-@eq:cps:polaron-transformed-interaction-second-order), obtaining to first order in $g/\omega$ the simple, time-independent interaction
 
@@ -389,20 +392,27 @@ $$ {#eq:cps:local-effective-hamiltonian}
 
 Equation (-@eq:cps:local-effective-hamiltonian) describes hopping between the Andreev states $\overline{|+\rangle}$ and $\overline{|-\rangle}$ associated with one-photon loss and absorption in the cavities, through a Jaynes-Cummings interaction. Notice that the effective coupling is proportional to $\sin \bar{\theta} = \sqrt{2}\Gamma_S / \bar{\delta}$, and is therefore a direct consequence of nonlocal Andreev reflection. 
 
-We can illustrate how this effective interaction leads to ground-state cooling of both cavities with the help of @fig:cps:local-cooling(a). The interaction (-@eq:cps:local-effective-hamiltonian) coherently mixes the states $|+, n_{L}, n_{R}\rangle,\ |-, n_{L}+1, n_{R}\rangle,$ and $|-, n_{L}, n_{R}+1\rangle$, which are degenerate for $\overline{H}_\text{loc} = 0$. When $|\epsilon| \gtrsim \Gamma_S$, the hybridization of the states $|0\rangle$ and $|S\rangle$ is weak. What happens now depends on the sign of $\epsilon$: If $\epsilon < 0$, 
+We can illustrate how this effective interaction leads to ground-state cooling of both cavities with the help of @fig:cps:local-cooling(a). The interaction (-@eq:cps:local-effective-hamiltonian) coherently mixes the states $|+, n_{L}, n_{R}\rangle,\ |-, n_{L}+1, n_{R}\rangle,$ and $|-, n_{L}, n_{R}+1\rangle$, which are degenerate for $\overline{H}_\text{loc} = 0$. When $|\epsilon| \gtrsim \Gamma_S$, the hybridization of the states $|0\rangle$ and $|S\rangle$ is weak. What happens now depends on the sign of $\epsilon$: If $\epsilon < 0$, then $|+\rangle \approx |0\rangle$ and $|-\rangle \approx |S\rangle$. Conversely, for $\epsilon > 0$, $|+\rangle \approx |S\rangle$ and $|-\rangle \approx |0\rangle$. Let us consider the latter case. As discussed in @sec:cps:absence-resonators, the weak hybridization leads to the *fast* transitions $|\pm\rangle \rightarrow |\alpha\sigma\rangle$ and the *slow* transitions $|\pm\rangle \leftarrow |\alpha\sigma\rangle$, which conserve the photon number. When an electron reaches the state $|-\rangle \approx |0\rangle$, the coherent cycle restarts due to the effective coupling, leading to further $|+\rangle \rightarrow |\alpha\sigma \rangle \rightarrow |0\rangle$ transitions. During each cycle, however, a boson is subtracted from both cavities, see @fig:cps:local-cooling(a). The process continues until the loss mechanisms in the resonators lead to a steady nonequilibrium state, which leaves the cavities cooled down. The opposite effect occurs for $\epsilon <0$: In this case, the cavities are heated as in each coherent cycle a photon is pumped into them.
 
+To prove the qualitative description I have just presented, I show in @fig:cps:local-cooling(b)-(c) the electric current through one lead and the average photon occupation for one cavity as a function of $\epsilon$, finding the numerical steady solution of Eq. (-@eq:cps:master-equation) with the full Hamiltonian (-@eq:cps:system-hamiltonian). The current presents the characteristic broad resonance described in @sec:cps:absence-resonators. However, at zero temperature, the inelastic peak appears at $\epsilon = -\sqrt{\omega^2 - 2 \Gamma_S^2}$, which is associated to heating. At finite temperature, the second sideband peak emerges at positive $\epsilon$, associated with cavity cooling.
 
-- Cooling mechanism;
-- Effective Hamiltonian;
-- Results for the current.
+In the inset of @fig:cps:local-cooling(c) I further demonstrate how the cooling can be very effective, robustly bringing the resonators into their ground state, as witnessed by the value of $\bar{n}_\alpha \ll 1$. The inset shows an optimal cooling region over a wide range of values of $\Gamma_S$, which is the result of the interplay between the effective coupling $g/2\sin\bar{\theta}$, vanishing for $\Gamma_S \rightarrow 0$, and the hybridization between $|0\rangle$ and $|S\rangle$: A strong hybridization (achieved with large $\Gamma_S$) reduces the asymmetry between the transition rates $|\pm\rangle \leftrightarrow |\alpha\sigma\rangle$, deteriorating the cooling effect.
 
 ## Photon transfer between resonators
 
-- Photon transfer mechanism;
-- Effective Hamiltonian;
-- Results for the current.
+The local cooling mechanism presented in @sec:cps:local-cooling is due to one-photon resonances, and can be simply explained by analyzing the first-order term of Eq. (-@eq:cps:polaron-transformed-interaction-second-order). By keeping the second-order term, it is possible to describe the resonances $\bar{\delta} = \omega_L - \omega_R$ and $\bar{\delta} = \omega_L + \omega_R$. Let us assume, without loss of generality, $\omega_L > \omega_R$. For $\bar{\delta} = \omega_L - \omega_R$, the rotating-wave approximation yields the effective coupling Hamiltonian
 
-![Nonlocal photon transfer.](figures/cps-nonlocal-transfer.pdf){#fig:cps:nonlocal-transfer}
+$$
+H_{\mathrm{RWA}}^{\bar{\delta}=\Delta \omega}= \sum_{\alpha} \frac{\Gamma_{S} g_{\alpha}^{2}}{2 \sqrt{2} \omega_{\alpha}^{2}}\left(2 n_{\alpha}+1\right) \sin \bar{\theta} \tau_{z} +g_{\mathrm{NL}}\left(b_{L}^{\dagger} b_{R} \tau_{-}+\mathrm{H.c.}\right),
+$$ {#eq:cps:nonlocal-effective-hamiltonian-difference}
+
+with the effective nonlocal coupling
+
+$$
+g_{\mathrm{NL}}=\frac{\Gamma_{S} g_{L} g_{R}}{\sqrt{2} \omega_{L} \omega_{R}} \cos \bar{\theta}.
+$$ {#eq:cps:nonlocal-effective-coupling}
+
+![(a) Sketch of the nonlocal photon transfer mechanism, occurring when $\bar{\delta} \approx \omega_L - \omega_R$. (b) Electronic current through one lead, as a function of the dots' level $\epsilon$, for two different values of $\lambda = \lambda_L = \lambda_R$. A few resonances described by **EQ** are indicated by arrows. Parameters: $\Gamma=10^{-4}\Gamma_S,\ \omega_L=5\Gamma_S,\ \omega_R=3\Gamma_S,\ Q_L=Q_R=10^5,\ k_B T = 5 \Gamma_S$.](figures/cps-nonlocal-transfer.pdf){#fig:cps:nonlocal-transfer}
 
 ## Efficiency
 
@@ -416,7 +426,7 @@ equilibrium.
 For the case of local cooling, dividing this quantity by the resonator frequency $\omega_\alpha$
 gives us an estimate of the energy quanta lost by the resonator on average per
 unit time. We can then compare this number to the rate at which Cooper pairs are
-injected into the syste, which is given by $\frac{|I_S|}{2e}$. The Andreev
+injected into the system, which is given by $\frac{|I_S|}{2e}$. The Andreev
 current through the superconductor $I_S = -I_L - I_R$ follows from current
 conservation. The natural definition of the local cooling efficiency for the
 $\alpha$-resonator is then
@@ -449,7 +459,10 @@ $\Gamma_S$ is increased, and are a byproduct of the finite hybridization between
 and the singlet state. However, we remark that the hybridization is necessary to
 achieve a nonzero efficiency.
 
-![EFISIENCY](figures/cps-efficiency.pdf){#fig:cps:efficiency}
+![(a) Local cooling efficiency for the left cavity in the vicinity of the resonance $\bar{\delta} \approx \omega_L$. (b) Photon transfer efficiency, around $\bar{\delta} \approx \omega_L - \omega_R$. The inset shows the average cavity occupations, normalized to the thermal occupancy. The parameters are the same as in @fig:cps:nonlocal-transfer.](figures/cps-efficiency.pdf){#fig:cps:efficiency}
+
+## Higher-order transitions
+
 
 
 ## Conclusions

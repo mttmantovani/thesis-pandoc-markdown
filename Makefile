@@ -32,6 +32,11 @@ $(MAIN).pdf: $(MAIN).tex $(BIB) $(FIGURES)
 $(MAIN).tex: $(MDS2) config.yaml $(TEMPLATES)/$(MAIN).latex $(DEFAULTS)/$(MAIN).yaml
 	@$(PANDOC) --defaults $(MAIN) --output=$@ --bibliography=$(BIB) \
 	-M autoEqnLabels
+
+%.html: $(PARTS)/%.md config.yaml $(TEMPLATES)/%.markdown
+	@$(PANDOC) --from markdown --to html --output=$@ --filter pandoc-crossref \
+			   --filter pandoc-citeproc --bibliography=$(BIB) --abbreviations abbreviations \
+			   --top-level-division=chapter --number-sections $<
 			   
 $(PARTS)/%.md: $(SOURCE)/%.md $(TEMPLATES)/%.markdown config.yaml | $(PARTS)
 	@$(PANDOC) --defaults $(PARTS) --template=$*.markdown --output=$@ --include-after $<
