@@ -1,0 +1,67 @@
+\documentclass[tikz,11pt]{standalone}
+\usepackage{newtxtext,newtxmath}
+
+% Define sizes in cm
+\def\totalwidth{15.92}
+\def\totalheight{4}
+
+\def\widthA{5.31}
+\def\widthB{5.30}
+\def\widthC{5.31}
+
+\tikzstyle{dot}                  = [fill=black,anchor=center,minimum width=1.5cm]
+\tikzstyle{electron}             = [shape=circle,minimum size=0.5cm,fill=orange,draw=orange,thick]
+\tikzstyle{noelectron}           = [draw=orange,very thick,dash pattern=on 2 off 1,
+                                    fill=white,minimum size=0.5cm,shape=circle]
+\tikzstyle{incoherent tunneling} = [->,>=latex,ultra thick,blue!80,
+                                    shorten <=3pt, shorten >=3pt]
+\tikzstyle{coherent tunneling}   = [<->,>=latex,ultra thick,orange,
+                                    densely dotted, shorten <=3pt, 
+                                    shorten >=3pt]
+\tikzstyle{ket}                  = [left,inner sep=3pt]
+\tikzstyle{letter}               = [anchor=north west,inner sep=0pt]
+
+\begin{document}
+    \usetikzlibrary{calc,positioning}
+
+    \begin{tikzpicture}[]
+        \useasboundingbox[draw,blue] (0,0) rectangle (\totalwidth,-\totalheight);
+        
+        % Part (a)
+        \begin{scope}[local bounding box=A]
+            \useasboundingbox[draw,green] (0,0) rectangle (\widthA, -\totalheight);
+
+	        % Letter
+            \node[letter] at (current bounding box.north west) {(a)} ;
+
+            \begin{scope}[shift={(A.center)}]
+                
+            \end{scope}
+        \end{scope}
+
+        % Part (b)
+        \begin{scope}[shift={($(current bounding box.north west)!\widthA/\totalwidth!(current bounding box.north east)$)}, local bounding box=B]
+            
+            \useasboundingbox[draw,red] (0,0) rectangle (\widthB, -\totalheight);
+
+            % Letter
+            \node[letter] at (0,0) {(b)} ;
+
+            \begin{scope}[shift={(B.center)}]
+            \end{scope}
+        \end{scope}
+
+        % Part (c)
+        \begin{scope}[shift={($(current bounding box.north east)!\widthC/\totalwidth!(current bounding box.north west)$)}, local bounding box=C]
+            \useasboundingbox[draw,magenta] (0,0) rectangle (\widthC, -\totalheight);
+
+            % Letter
+            \node[letter] at (0,0) {(c)} ;
+
+            \begin{scope}[shift={(C.center)}]
+            
+            \end{scope}
+        \end{scope}
+    \end{tikzpicture}
+\end{document}
+

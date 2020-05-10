@@ -20,7 +20,7 @@ hello. Reference to Eq. @eq:one. This is reference to this chapter: @sec:introdu
 
 This is a Figure:
 
-![Caption](./figures/cqed.pdf){#fig:one}
+![Caption](figures/intro-cqed.pdf){#fig:one}
 
 This is the reference to the Fig. @fig:one.
 Figure @fig:one is.... Chapter @sec:introduction is... Equation @eq:one is....
