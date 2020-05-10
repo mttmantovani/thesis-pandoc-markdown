@@ -68,8 +68,8 @@ def plot_data(**kwargs):
     ax1 = fig.add_subplot()  # Current
 
     # Plot curves
-    ax1.plot(dataDict[0]['x'], dataDict[0]['IL']/1e-4, lw=1., c='k', label=r'$\lambda=0.05\Gamma_S$')
-    ax1.plot(dataDict[1]['x'], dataDict[1]['IL']/1e-4, lw=1., c='magenta', ls='--', label=r'$\lambda = 0.2\Gamma_S$')
+    ax1.plot(dataDict[0]['x'], dataDict[0]['IL']/1e-4, lw=1., c='k', label=r'$g=0.05\Gamma_S$')
+    ax1.plot(dataDict[1]['x'], dataDict[1]['IL']/1e-4, lw=1., c='magenta', ls='--', label=r'$g = 0.2\Gamma_S$')
 
     # Adjustments
     ax1.set_xlim(-4, 4)
