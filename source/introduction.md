@@ -24,3 +24,7 @@ This is a Figure:
 
 This is the reference to the Fig. @fig:one.
 Figure @fig:one is.... Chapter @sec:introduction is... Equation @eq:one is....
+
+Hybrid systems:
+
+* Topology [@Kim2020];

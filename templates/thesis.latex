@@ -190,6 +190,9 @@ $endif$
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}}
 
+% Small font for bibliography
+\renewcommand*{\bibfont}{\small}
+
 %=============================================================================%
 
 
@@ -214,6 +217,10 @@ $body$
 
 $if(biblatex)$
 \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{References}
+\begingroup
+\setstretch{1}
+\setlength\bibitemsep{0pt}
 \printbibliography[$if(biblio-title)$title=$biblio-title$$endif$]
+\endgroup
 $endif$
 \end{document}
