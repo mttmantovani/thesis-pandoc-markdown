@@ -35,7 +35,7 @@ The current displays a telegraph-like noise, associated with current jumps betwe
 ## Quantum-dot laser in the spin-valve setup
 
 
-![Spin-valve-based quantum dot laser. (a) A microwave photon cavity or (b) a nanomehcanical resonator mode are coupled to the spin of an electron in a quantum dot, in contact with ferromagnetic leads carrying spin-polarized current. (c) The system can be mapped onto a three-level single-atom laser, where electrons are pumped into the up-spin level, interact coherently emitting photons into the cavity, and decay into the empty-dot state by tunneling into the right lead.](figures/qdlaser-system.pdf){#fig:qdlaser:system}
+![Spin-valve-based quantum dot laser. (a) A microwave photon cavity or (b) a nanomechanical resonator mode are coupled to the spin of an electron in a quantum dot, in contact with ferromagnetic leads carrying spin-polarized current. (c) The system can be mapped onto a three-level single-atom laser, where electrons are pumped into the up-spin level, interact coherently emitting photons into the cavity, and decay into the empty-dot state by tunneling into the right lead.](figures/qdlaser-system.pdf){#fig:qdlaser:system}
 
 The system I am considering is depicted in @fig:qdlaser:system. It consists of a quantum dot in the single-electron regime, with two nondegenerate spin levels ($|\uparrow\rangle$, $|\downarrow \rangle$), of energy difference $\Delta\epsilon$. 
 The dot is embedded between two ferromagnetic contacts, which carry a spin-polarized current of opposite polarization.
