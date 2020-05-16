@@ -135,10 +135,6 @@ def plot_data(**kwargs):
                  columnspacing=0.7,
                  handlelength=1.38)
 
-    # for ax in (ax1, ax2, ax3, axins):
-    #     ax.tick_params(labelsize=plt_args['fontsize'],
-    #                    pad=plt_args['labelpad'])
-
     # Lettering
     a_lett = ax1.annotate('(a)',
                           xy=(0., 1.),
@@ -157,21 +153,6 @@ def plot_data(**kwargs):
                           ha='center',
                           va='center')
 
-    # axins.annotate('nav/nB',
-    #                xy=(0.706, 1.16),
-    #                xycoords='data',
-    #                fontsize=plt_args['fontsize'])
-
-    #ticklab = ax2.xaxis.get_ticklabels()[0]
-    #trans=ticklab.get_transform()
-    #ax2.xaxis.set_label_coords(0.0, 0.24, transform=trans)
-
-    # plt.subplots_adjust(left=0.09,
-    #                     right=0.99,
-    #                     top=0.989,
-    #                     bottom=0.1,
-    #                     wspace=0.2,
-    #                     hspace=0.35)
     plt.tight_layout()
     plt.savefig(f'{filename}.pdf', facecolor='none', edgecolor='none', dpi=400)
 

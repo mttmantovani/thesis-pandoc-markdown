@@ -172,7 +172,7 @@ $$
 $$
 {#eq:qdlaser:rwa-doublet}
 
-with eigenenergies $E_{n\pm} = \omega_0 \left(n + \frac{1}{2} \right) \pm \frac{1}{2}\sqrt{4g^2(n+1) + \delta^2}$ and mixing angle $\theta = \arctan \left( \frac{2 g \sqrt{n+1}}{\delta}\right)$. Notice that the doublet splitting is proportional to $g\sqrt{n+1}$, i.e., the eigenvalue ladder of the JC Hamiltonian is anharmonic. If $g\sqrt{n+1}$ becomes comparable with the bare level separation of the uncoupled system, Eq. (-@eq:qdlaser:rwa-hamiltonian) is no longer valid, as doublets with different quantum number $n$ become closer in energy, and their interaction is not captured by the RWA Hamiltonian. For atom-field cavity systems, $g/\omega_0 \sim 10^{-7}-10^{-6}$ [@Raimond2001], hence Eq. (-@eq:qdlaser:rwa-hamiltonian) remains valid also for photon numbers $n \gg 1$ characteristic of laser emission. However, as the technological development in solid-state devices pushes the ratio $g/\omega_0$ order of magnitudes higher, a more careful consideration on the validity of the RWA is necessary when designing systems with large photon number.
+with eigenenergies $E_{n\pm} = \omega_0 \left(n + \frac{1}{2} \right) \pm \frac{1}{2}\sqrt{4g^2(n+1) + \delta^2}$ and mixing angle $\theta = \arctan \left( \frac{2 g \sqrt{n+1}}{\delta}\right)$. Notice that the doublet splitting is proportional to $g\sqrt{n+1}$, i.e., the eigenvalue ladder of the JC Hamiltonian is anharmonic. If $g\sqrt{n+1}$ becomes comparable with the bare level separation of the uncoupled system, Eq. (-@eq:qdlaser:rwa-hamiltonian) is no longer valid, as doublets with different quantum number $n$ become closer in energy, and their interaction (which is not captured by the RWA Hamiltonian) cannot be neglected anymore. For atom-field cavity systems, $g/\omega_0 \sim 10^{-7}-10^{-6}$ [@Raimond2001], hence Eq. (-@eq:qdlaser:rwa-hamiltonian) remains valid also for photon numbers $n \gg 1$ characteristic of laser emission. However, as the technological development in solid-state devices pushes the ratio $g/\omega_0$ order of magnitudes higher, a more careful consideration on the validity of the RWA is necessary when designing systems with large photon number.
 
 
 ### Density matrix theory
@@ -191,3 +191,68 @@ $$
 A_s^2 = \frac{\Gamma_L \Gamma_R P}{(2\Gamma_L + \Gamma_R)\kappa}, \qquad g_\text{thr} = \sqrt{\frac{\Gamma_R \kappa}{4} \left[ \frac{2 \Gamma_L (1 + P^2)+ \Gamma_R(1 - P^2)}{4 \Gamma_L P}\right]}.
 $$
 {#eq:qdlaser:rwa-pn-saturation-thr}
+
+I will refer to $A_s^2$ as the *saturation number* and to $g_\text{thr}$ as the *lasing threshold* coupling. 
+The solution of Eq. (-@eq:qdlaser:rwa-pn) reads
+
+$$
+	p_n = p_0 \frac{\mathcal{N}_n}{\mathcal{D}_n} \left ( \frac{n_B}{n_B+1}\right)^n.
+$$
+{#eq:qdlaser:rwa-pn-solution}
+
+Here, I have introduced the Pochhammer symbol (or rising factorial) $a_n = a (a+1) (a+2)\cdots (a + n - 1)$ and defined the quantities
+
+$$
+	\mathcal{N} = 1 + \frac{A_s^2}{n_B} + A_s^2 \frac{g_\text{thr}}{g}, \qquad \mathcal{D} = 1 + A_s^2 \frac{g_\text{thr}}{g}.
+$$
+
+The prefactor $p_0$ is the zero-Fock occupation number and is determined from the normalization condition $\sum_{n=0}^\infty p_n = 1$, leaving us with
+
+$$
+	p_0 = \frac{1}{_2 F_1 \left(1, \mathcal{N}; \mathcal{D}; \frac{n_B}{n_B+1}\right)},
+$$
+
+with the hypergeometric function $_2 F_1 (a, b; c; z)$. At zero temperature, one finds instead $p_0 = \left[_1 F_1 (1; A_s^2 g_\text{thr}^2 / g^2; n_B/(n_B+1)\right]^{-1}$, with the confluent hypergeometric function $_1 F_1(a; b; z)$. 
+A more interesting quantity is represented by the average photon number, $\bar{n} = \sum_{n=0}^\infty n p_n$, which is found to be
+
+$$
+	\bar{n} = A_s^2 \left[1 -  \left(\frac{g_\text{thr}}{g} \right)^2\right] + n_B + n_B(n_B + 1) \left(\frac{g_\text{thr}}{g} \right)^2 p_0.
+$$
+{#eq:qdlaser:rwa-pn-nav}
+
+- Summarizing figure: *single-atom laser in the rotating-wave approximation*, see report. @fig:qdlaser:rwa-laser; including the semiclassical result.
+- Mu & Savage [@Mu1992];
+- Rice & Carmichael [@Rice1994];
+- Scully's book [@Scully1997].
+
+### Semiclassical theory
+
+Equation (-@eq:qdlaser:lindblad-equation) allows us to derive the equation of motion for the expectation value of a system operator $O$, defined as $\langle O \rangle = \text{Tr} (O \rho)$:
+
+$$
+\begin{aligned}
+        \langle \dot{O} \rangle = &-i \langle [O, H] \rangle + \sum_\sigma \left[
+         \Gamma_L^\sigma \left(\langle F_\sigma O F^\dagger_\sigma \rangle - \frac{1}{2}
+        \langle \{ O, F_\sigma F_\sigma^\dagger \} \rangle \right) + \Gamma_R^\sigma \left( \langle F^\dagger_\sigma O F_\sigma \rangle - \frac{1}{2}
+        \langle \{ O, F^\dagger_\sigma F_\sigma \} \rangle\right) \right] + \\
+        &+ \kappa (1 + n_B) \left(\langle b^\dagger O b \rangle - \frac{1}{2}
+        \langle \{ O, b^\dagger b \} \rangle \right) + \kappa n_B \left( \langle
+        b O b^\dagger \rangle - \frac{1}{2}
+        \langle \{ O, b b^\dagger \} \rangle\right). 
+\end{aligned}
+$$
+{#eq:qdlaser:eq-motion}
+
+
+Using the RWA Hamiltonian in Eq. (-@eq:qdlaser:eq-motion), one is able to derive a nonlinear set of dynamical equations which govern the system. 
+For simplicity, let us set $P=1$ and $n_B = 0$. The equations read:
+
+\begin{align}
+	\langle \dot{n}_\uparrow \rangle &= - \Gamma_L \langle n_\uparrow - n_\downarrow \rangle - i\lambda \langle b \sigma_+ - b^\dagger \sigma_- \rangle + \Gamma_L, \\
+	\langle \dot{n}_\downarrow \rangle &= \Gamma_R \langle n_\downarrow \rangle + i\lambda \langle b \sigma_+ - b^\dagger \sigma_-\rangle, \\
+	\langle \dot{\sigma}_- \rangle &= \left(- i \Delta \epsilon - \frac{\Gamma_R}{2} \right) \langle \sigma_- \rangle + i\lambda \langle (b + b^\dagger) (n_\uparrow - n_\downarrow) \rangle, \quad \text{and c.c.}, \\
+	\langle \dot{b} \rangle &= \left( -i \omega_0 - \frac{\kappa}{2}\right) \langle b \rangle - i\lambda \langle \sigma_- \rangle, \quad \text{and c.c.}
+\end{align}
+
+Equations ... ... contain expectation values involving both spin and cavity operators: Writing equations of motions for these terms will involve higher order operators and lead to an infinite hierarchy of equations, which cannot be solved. 
+To close the set of equations, the semiclassical approximation is needed. It consists in replacing the bosonic operator $b$ by the complex number $\alpha = Ae^{i\phi}$. $A$ and $\phi$ correspond to the semiclassical amplitude and phase of the resonator, respectively. 
