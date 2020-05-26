@@ -183,7 +183,7 @@ $$
 with eigenenergies $E_{n\pm} = \omega_0 \left(n + \frac{1}{2} \right) \pm \frac{1}{2}\sqrt{4g^2(n+1) + \delta^2}$ and mixing angle $\theta = \arctan \left( \frac{2 g \sqrt{n+1}}{\delta}\right)$. Notice that the doublet splitting is proportional to $g\sqrt{n+1}$, i.e., the eigenvalue ladder of the JC Hamiltonian is anharmonic. If $g\sqrt{n+1}$ becomes comparable with the bare level separation of the uncoupled system, Eq. (-@eq:qdlaser:rwa-hamiltonian) is no longer valid, as doublets with different quantum number $n$ become closer in energy, and their interaction (which is not captured by the RWA Hamiltonian) cannot be neglected anymore. For atom-field cavity systems, $g/\omega_0 \sim 10^{-7}-10^{-6}$ [@Raimond2001], hence Eq. (-@eq:qdlaser:rwa-hamiltonian) remains valid also for photon numbers $n \gg 1$ characteristic of laser emission. However, as the technological development in solid-state devices pushes the ratio $g/\omega_0$ order of magnitudes higher, a more careful consideration on the validity of the RWA is necessary when designing systems with large photon number.
 
 
-### Density matrix theory
+### Density matrix theory {#sec:qdlaser:rwa-density-matrix}
 
 Using Eq. (-@eq:qdlaser:rwa-hamiltonian) in Eq. (-@eq:qdlaser:lindblad-equation), it is possible to obtain the approximate analytical expression for the steady-state Fock distribution of the cavity, $p_n$ (details of the calculations are provided in Appendix ...). 
 In particular, when close to the resonant condition $\Delta\epsilon = \omega_0$, the $p_n$ is obtained through the following recursive equation:
@@ -233,7 +233,7 @@ $$
 - Rice & Carmichael [@Rice1994];
 - Scully's book [@Scully1997].
 
-### Semiclassical theory
+### Semiclassical theory {#sec:qdlaser:rwa-semiclassical}
 
 Equation (-@eq:qdlaser:lindblad-equation) allows us to derive the equation of motion for the expectation value of a system operator $O$, defined as $\langle O \rangle = \text{Tr} (O \rho)$:
 
@@ -294,15 +294,43 @@ $$
 A_s^2 = \frac{\Gamma P}{2 \kappa}, \quad g_\text{thr} = \sqrt{\frac{\Gamma \kappa}{2 P}},
 $$
 
-respectively. Notice that they are in full agreement with Eq. (-@eq:qdlaser:rwa-pn-saturation-thr), obtained with the full quantum approach. The stability analysis of Eq. (-@eq:qdlaser:rwa-resonator-amplitude) reveals a bifurcation point at $g= g_\mathrm{thr}$: for $g \leq g_\mathrm{thr}$, the only (stable) solution is $\bar{n} = 0$, corresponding to absence of lasing. For $g > g_\mathrm{thr}$, $\bar{n} = 0$ is an unstable solution, while the other solution with large $\bar{n}$ is the stable one. For a large coupling, $g \gg g_\mathrm{thr}$, the nonlinear damping $\gamma_\mathrm{RWA}$ essentially loses its dependence on $g$. This causes the average occupation number to saturate to the value $A_s^2$. Notice that the $A$-dependence of $\gamma_\mathrm{RWA}$ is crucial to obtain a finite steady value for $\bar{n}$. For completeness, I report here the more general expression of $\gamma_\mathrm{RWA}$ for arbitrary tunneling rates (obtained by including the equation for $p_1$ in the stationary solution of the system), which is given by
+respectively. Notice that they are in full agreement with Eq. (-@eq:qdlaser:rwa-pn-saturation-thr), obtained with the full quantum approach. The stability analysis of Eq. (-@eq:qdlaser:rwa-resonator-amplitude) reveals a bifurcation point at $g= g_\mathrm{thr}$: for $g \leq g_\mathrm{thr}$, the only (stable) solution is $\bar{n} = 0$, corresponding to absence of lasing. For $g > g_\mathrm{thr}$, $\bar{n} = 0$ is an unstable solution, while the other solution with large $\bar{n}$ is the stable one. For a large coupling, $g \gg g_\mathrm{thr}$, the nonlinear damping $\gamma_\mathrm{RWA}$ essentially loses its dependence on $g$. This causes the average occupation number to saturate to the value $A_s^2$. Notice that the $A$-dependence of $\gamma_\mathrm{RWA}$ is crucial to obtain a finite steady value for $\bar{n}$. For completeness, I report here the more general expression of $\gamma_\mathrm{RWA}$ for arbitrary tunneling rates and $P=1$ (obtained by including the equation for $p_1$ in the stationary solution of the system), which is given by
 
 $$
 \gamma_{\mathrm{RWA}}(A)=-\frac{g^{2} \Gamma_{\mathrm{eff}}}{g^{2} A^{2}+\Gamma_{\mathrm{eff}} \Gamma_{\mathrm{R}}^{\downarrow} / 4},
 $$
 
-where $\Gamma_{\mathrm{eff}}=\Gamma_{\mathrm{L}}^{\uparrow} \Gamma_{\mathrm{R}}^{\downarrow} /\left(2 \Gamma_{\mathrm{L}}^{\uparrow}+\Gamma_{\mathrm{R}}^{\downarrow}\right)$. Accordingly, the expressions for saturation number and threshold coupling become
+where $\Gamma_{\mathrm{eff}}=\Gamma_{\mathrm{L}}^{\uparrow} \Gamma_{\mathrm{R}}^{\downarrow} /(2 \Gamma_{\mathrm{L}}^{\uparrow}+\Gamma_{\mathrm{R}}^{\downarrow})$. Accordingly, the expressions for saturation number and threshold coupling become
 
 $$
-g_{\mathrm{thr}}^{2}=\Gamma_{\mathrm{R}}^{\downarrow} \omega_{0} /(4 Q), \quad A_{s}=\sqrt{\Gamma_{\mathrm{eff}} Q / \omega_{0}}.
+g_{\mathrm{thr}}^{2}=\frac{\Gamma_{\mathrm{R}}^{\downarrow}\kappa}{4}, \quad A_{s}=\sqrt{\frac{\Gamma_{\mathrm{eff}}}{\kappa} }
 $$
+
+The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R^\downarrow$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R^\downarrow$ pushes the threshold for lasing to appear to higher values of $g$ [**explain better**].
+
+In @fig:qdlaser:rwa-laser I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix. **Discussion on results**; **High efficiency of pumping**; **Necessity to release RWA**.
+
+## Beyond the rotating-wave approximation: Multistability
+
+In the previous Section, I have analyzed the lasing behavior of the quantum-dot laser assuming the validity of the RWA Hamiltonian (-@eq:qdlaser:rwa-hamiltonian). However, the _a posteriori_ analysis of the results reveals a peculiarity of our system with respect to similar (atomic and solid-state) implementations of the single-atom laser: The spin-dependent transport yields a very large photon emission efficiency (for the case of full polarization and negligible spin relaxation processes, each electron passing through the dot emits one photon), such that the quantity $g\sqrt{\bar{n}}$ becomes comparable to the bare resonator frequency $\omega_0$, even for relatively low values of the ratio $g/\omega_0$. Consequently, without the technologically challenging need to enter the *ultrastrong-coupling* regime (characterized by $g/\omega_0 \sim 1$, see Ch. -@sec:introduction), the system is expected to show a clear and unique deviation from the RWA physics. 
+
+### Semiclassical equations beyond RWA
+
+The semiclassical approach utilized in @sec:qdlaser:rwa-semiclassical can be extended beyond the RWA by using the full Rabi Hamiltonian (-@eq:qdlaser:rabi-hamiltonian). Accordingly, Eqs. (-@eq:qdlaser:rwa-semiclassical-system-1)-(-@eq:qdlaser:rwa-semiclassical-system-4) are replaced by
+
+\begin{align}
+\left\langle\dot{ n}_{\uparrow}\right\rangle=-\Gamma_{\mathrm{L}}^{\uparrow}\left\langle n_{\uparrow}\right\rangle-\Gamma_{\mathrm{L}}^{\uparrow}\left\langle n_{\downarrow}\right\rangle-i \lambda\left\langle\left( b+ b^{\dagger}\right)\left(\sigma_{+}-\sigma_{-}\right)\right\rangle+\Gamma_{\mathrm{L}}^{\uparrow} \\ \left\langle\dot{ n}_{\downarrow}\right\rangle=-\Gamma_{\mathrm{R}}^{\downarrow}\left\langle n_{\downarrow}\right\rangle+i \lambda\left\langle\left( b+ b^{\dagger}\right)\left(\sigma_{+}-\sigma_{-}\right)\right\rangle, \\ \left\langle\dot{\sigma}_{-}\right\rangle=\left(-i \Delta \varepsilon-\frac{\Gamma_{\mathrm{R}}^{\downarrow}}{2}\right)\left\langle\sigma_{-}\right\rangle+i \lambda\left\langle\left( b+ b^{\dagger}\right) \sigma_{z}\right\rangle \text { and c.c. } \\ \langle\dot{ b}\rangle=\left(-i \omega_{0}-\frac{\kappa}{2}\right)\langle b\rangle-i \lambda\left\langle\left(\sigma_{+}+\sigma_{-}\right\rangle\text {and c.c. } \right.
+\end{align}
+
+### Multistability analysis of the resonator
+
+## Detecting lasing and multistability with transport measurements
+
+### Full-counting statistics
+
+### Current jumps and two-state model
+
+
+
+
 
