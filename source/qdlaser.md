@@ -140,7 +140,15 @@ Since the leads are ferromagnetic, the spin dependence of the
 tunneling rates can be written in terms of the polarizations $P_\nu$ of the
 leads as $\Gamma_\nu^\sigma = \Gamma_\nu ( 1 + \sigma P_\nu)/2$, 
 with $0 \leq P_\nu\leq 1$. 
-Although for standard ferromagnetic contacts (Co and PdNi alloys) $P_\nu$ does not exceed 0.5 [@Sahoo2005;@Viennot2015;@Cubaynes2019], it can be equal to unity for half-metallic leads [@Ziese2002]. 
+Although for standard ferromagnetic contacts (Co and PdNi alloys) $P_\nu$ does not exceed 0.5 [@Sahoo2005;@Viennot2015;@Cubaynes2019], it can be equal to unity for half-metallic leads [@Ziese2002]. In the following, without losing generality in the results, I will assume a symmetric and opposite polarization of the leads, i.e., $P_L = -P_R = P$, allowing us to write the tunneling rates as
+
+$$
+\begin{aligned}
+\Gamma_{\mathrm{L}}^{\uparrow}&=\Gamma_{\mathrm{L}}\left(\frac{1+P}{2}\right), \quad \Gamma_{\mathrm{L}}^{\downarrow}=\Gamma_{\mathrm{L}}\left(\frac{1-P}{2}\right), \\ \Gamma_{\mathrm{R}}^{\uparrow}&=\Gamma_{\mathrm{R}}\left(\frac{1-P}{2}\right), \quad \Gamma_{\mathrm{R}}^{\downarrow}=\Gamma_{\mathrm{R}}\left(\frac{1+P}{2}\right).
+\end{aligned}
+$$
+{#eq:qdlaser:tunneling-rates}
+
 In the electronic dissipators, we have replaced the fermionic operator $d_\sigma$ with $F_\sigma = (1 - n_{-\sigma})d_\sigma$, such that the population and the coherences involving the doubly-occupied state are forced to vanish, as required by the large Coulomb repulsion limit.
 
 For the cavity, $\kappa = \omega_0 / Q$ is the decay rate ($Q$ is
@@ -248,11 +256,53 @@ Using the RWA Hamiltonian in Eq. (-@eq:qdlaser:eq-motion), one is able to derive
 For simplicity, let us set $P=1$ and $n_B = 0$. The equations read:
 
 \begin{align}
-	\langle \dot{n}_\uparrow \rangle &= - \Gamma_L \langle n_\uparrow - n_\downarrow \rangle - i\lambda \langle b \sigma_+ - b^\dagger \sigma_- \rangle + \Gamma_L, \\
-	\langle \dot{n}_\downarrow \rangle &= \Gamma_R \langle n_\downarrow \rangle + i\lambda \langle b \sigma_+ - b^\dagger \sigma_-\rangle, \\
-	\langle \dot{\sigma}_- \rangle &= \left(- i \Delta \epsilon - \frac{\Gamma_R}{2} \right) \langle \sigma_- \rangle + i\lambda \langle (b + b^\dagger) (n_\uparrow - n_\downarrow) \rangle, \quad \text{and c.c.}, \\
-	\langle \dot{b} \rangle &= \left( -i \omega_0 - \frac{\kappa}{2}\right) \langle b \rangle - i\lambda \langle \sigma_- \rangle, \quad \text{and c.c.}
+	\langle \dot{n}_\uparrow \rangle &= - \Gamma_L \langle n_\uparrow - n_\downarrow \rangle - ig\langle b \sigma_+ - b^\dagger \sigma_- \rangle + \Gamma_L, \label{eq:qdlaser:rwa-semiclassical-system-1} \\
+	\langle \dot{n}_\downarrow \rangle &= \Gamma_R \langle n_\downarrow \rangle + ig \langle b \sigma_+ - b^\dagger \sigma_-\rangle, \\
+	\langle \dot{\sigma}_- \rangle &= \left(- i \Delta \epsilon - \frac{\Gamma_R}{2} \right) \langle \sigma_- \rangle + ig \langle (b + b^\dagger) (n_\uparrow - n_\downarrow) \rangle, \quad \text{and c.c.}, \\
+	\langle \dot{b} \rangle &= \left( -i \omega_0 - \frac{\kappa}{2}\right) \langle b \rangle - ig\langle \sigma_- \rangle, \quad \text{and c.c.} \label{eq:qdlaser:rwa-semiclassical-system-4}
 \end{align}
 
-Equations ... ... contain expectation values involving both spin and cavity operators: Writing equations of motions for these terms will involve higher order operators and lead to an infinite hierarchy of equations, which cannot be solved. 
+Equations (-@eq:qdlaser:rwa-semiclassical-system-1)-(-@eq:qdlaser:rwa-semiclassical-system-4) contain expectation values involving both spin and cavity operators: Writing equations of motions for these terms will involve higher order operators and lead to an infinite hierarchy of equations, which cannot be solved. 
 To close the set of equations, the semiclassical approximation is needed. It consists in replacing the bosonic operator $b$ by the complex number $\alpha = Ae^{i\phi}$. $A$ and $\phi$ correspond to the semiclassical amplitude and phase of the resonator, respectively. 
+The semiclassical approximation basically amounts to neglecting the quantum fluctuations in the resonator. 
+Let us now switch to a rotating frame with the replacements $\langle \sigma_- \rangle \rightarrow \langle \sigma_- \rangle e^{-i \Delta\epsilon t}$ and $\alpha \rightarrow \alpha e^{-i\omega_0 t}$. Further, I set the spin quantities $S_x = \langle \sigma_+ + \sigma_-\rangle$, $S_y = -i\langle \sigma_+ - \sigma_- \rangle$, $S_z = \langle n_\uparrow - n_\downarrow \rangle$, and the total dot occupation $p_1 = \langle n_\uparrow + n_\downarrow \rangle$. Finally, we consider the special case where $\Gamma_L = \Gamma_R/2 = \Gamma$ in Eq. (-@eq:qdlaser:tunneling-rates): With this condition, the equation for $p_1$ decouples from the rest of the system and can thus be disregarded. However, it is worth remarking that this condition does not alter the physical results, but merely yields a simplification in the analytical calculations. At resonance $(\Delta \epsilon = \omega_0$) one obtains the set of equations
+
+\begin{align}
+\dot{S}_{x} &=-\Gamma S_{x}-2 g A \sin \phi S_{z}, \label{eq:qdlaser:rwa-semiclassical-system-alt-1} \\
+\dot{S}_{y} &=-\Gamma S_{y}-2 g A \cos \phi S_{z}, \\ 
+\dot{S}_{z} &= \Gamma-\Gamma S_{z}+2 g A\left(\sin \phi S_{x}+\cos \phi S_{y}\right), \\ 
+\dot{A} &=-\frac{\kappa}{2} A+\frac{g}{2}\left(-\sin \phi S_{x}+\cos \phi S_{y}\right), \\ 
+\dot{\phi}&=-\frac{g}{2 A}\left(\cos \phi S_{x}-\sin \phi S_{y}\right). \label{eq:qdlaser:rwa-semiclassical-system-alt-5}
+\end{align}
+
+The equations for $A$ and $\phi$ have been obtained by transforming the corresponding equations for $\alpha$ and $\alpha^*$, using $\alpha = A e^{i\phi}$. The system (-@eq:qdlaser:rwa-semiclassical-system-alt-1)-(-@eq:qdlaser:rwa-semiclassical-system-alt-1) is a nonlinear system describing lasing oscillations in the resonator, under the influence of the spin dynamics  (driven by the single-electron tunneling at rate $\Gamma$). It easy to study the stability of the resonator by setting the time derivatives to zero and looking for the stationary solution. The solution is independent on $\phi$, which can be set to zero. For finite polarization $P<1$, the dynamical equation for the resonator amplitude is
+
+$$
+\dot{A}=-\frac{A}{2}\left[\kappa-\frac{\frac{2 g^{2} P}{\Gamma}}{1+\left(\frac{2 g A}{\Gamma}\right)^{2}}\right]=-\frac{A}{2}\left[\kappa+\gamma_{\mathrm{RWA}}(A)\right].
+$$
+{#eq:qdlaser:rwa-resonator-amplitude}
+In the latter equality, we have defined an effective, negative nonlinear damping $\gamma_\mathrm{RWA}(A)$: It encompasses the driving effect of the electron dynamics, opposing the natural damping of the resonator at decay rate $\kappa$. By setting $\dot{A} = 0$, we obtain a nonlinear algebraic equations with two steady solutions for the occupation number $\bar{n} = A^2$, i.e.:
+
+$$
+\bar{n} = 0 \quad \text{and} \quad
+\bar{n}=A_{s}^{2}\left[1-\left(\frac{g_{\mathrm{thr}}}{g}\right)^{2}\right].
+$$
+
+The saturation number and threshold coupling read
+
+$$
+A_s^2 = \frac{\Gamma P}{2 \kappa}, \quad g_\text{thr} = \sqrt{\frac{\Gamma \kappa}{2 P}},
+$$
+
+respectively. Notice that they are in full agreement with Eq. (-@eq:qdlaser:rwa-pn-saturation-thr), obtained with the full quantum approach. The stability analysis of Eq. (-@eq:qdlaser:rwa-resonator-amplitude) reveals a bifurcation point at $g= g_\mathrm{thr}$: for $g \leq g_\mathrm{thr}$, the only (stable) solution is $\bar{n} = 0$, corresponding to absence of lasing. For $g > g_\mathrm{thr}$, $\bar{n} = 0$ is an unstable solution, while the other solution with large $\bar{n}$ is the stable one. For a large coupling, $g \gg g_\mathrm{thr}$, the nonlinear damping $\gamma_\mathrm{RWA}$ essentially loses its dependence on $g$. This causes the average occupation number to saturate to the value $A_s^2$. Notice that the $A$-dependence of $\gamma_\mathrm{RWA}$ is crucial to obtain a finite steady value for $\bar{n}$. For completeness, I report here the more general expression of $\gamma_\mathrm{RWA}$ for arbitrary tunneling rates (obtained by including the equation for $p_1$ in the stationary solution of the system), which is given by
+
+$$
+\gamma_{\mathrm{RWA}}(A)=-\frac{g^{2} \Gamma_{\mathrm{eff}}}{g^{2} A^{2}+\Gamma_{\mathrm{eff}} \Gamma_{\mathrm{R}}^{\downarrow} / 4},
+$$
+
+where $\Gamma_{\mathrm{eff}}=\Gamma_{\mathrm{L}}^{\uparrow} \Gamma_{\mathrm{R}}^{\downarrow} /\left(2 \Gamma_{\mathrm{L}}^{\uparrow}+\Gamma_{\mathrm{R}}^{\downarrow}\right)$. Accordingly, the expressions for saturation number and threshold coupling become
+
+$$
+g_{\mathrm{thr}}^{2}=\Gamma_{\mathrm{R}}^{\downarrow} \omega_{0} /(4 Q), \quad A_{s}=\sqrt{\Gamma_{\mathrm{eff}} Q / \omega_{0}}.
+$$
+
