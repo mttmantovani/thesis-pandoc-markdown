@@ -144,7 +144,7 @@ Although for standard ferromagnetic contacts (Co and PdNi alloys) $P_\nu$ does n
 
 $$
 \begin{aligned}
-\Gamma_{\mathrm{L}}^{\uparrow}&=\Gamma_{\mathrm{L}}\left(\frac{1+P}{2}\right), \quad \Gamma_{\mathrm{L}}^{\downarrow}=\Gamma_{\mathrm{L}}\left(\frac{1-P}{2}\right), \\ \Gamma_{\mathrm{R}}^{\uparrow}&=\Gamma_{\mathrm{R}}\left(\frac{1-P}{2}\right), \quad \Gamma_{\mathrm{R}}^{\downarrow}=\Gamma_{\mathrm{R}}\left(\frac{1+P}{2}\right).
+\Gamma_{L}^{\uparrow}&=\Gamma_{L}\left(\frac{1+P}{2}\right), \quad \Gamma_{L}^{\downarrow}=\Gamma_{L}\left(\frac{1-P}{2}\right), \\ \Gamma_{R}^{\uparrow}&=\Gamma_{R}\left(\frac{1-P}{2}\right), \quad \Gamma_{R}^{\downarrow}=\Gamma_{R}\left(\frac{1+P}{2}\right).
 \end{aligned}
 $$
 {#eq:qdlaser:tunneling-rates}
@@ -297,16 +297,16 @@ $$
 respectively. Notice that they are in full agreement with Eq. (-@eq:qdlaser:rwa-pn-saturation-thr), obtained with the full quantum approach. The stability analysis of Eq. (-@eq:qdlaser:rwa-resonator-amplitude) reveals a bifurcation point at $g= g_\mathrm{thr}$: for $g \leq g_\mathrm{thr}$, the only (stable) solution is $\bar{n} = 0$, corresponding to absence of lasing. For $g > g_\mathrm{thr}$, $\bar{n} = 0$ is an unstable solution, while the other solution with large $\bar{n}$ is the stable one. For a large coupling, $g \gg g_\mathrm{thr}$, the nonlinear damping $\gamma_\mathrm{RWA}$ essentially loses its dependence on $g$. This causes the average occupation number to saturate to the value $A_s^2$. Notice that the $A$-dependence of $\gamma_\mathrm{RWA}$ is crucial to obtain a finite steady value for $\bar{n}$. For completeness, I report here the more general expression of $\gamma_\mathrm{RWA}$ for arbitrary tunneling rates and $P=1$ (obtained by including the equation for $p_1$ in the stationary solution of the system), which is given by
 
 $$
-\gamma_{\mathrm{RWA}}(A)=-\frac{g^{2} \Gamma_{\mathrm{eff}}}{g^{2} A^{2}+\Gamma_{\mathrm{eff}} \Gamma_{\mathrm{R}}^{\downarrow} / 4},
+\gamma_{\mathrm{RWA}}(A)=-\frac{g^{2} \Gamma_{\mathrm{eff}}}{g^{2} A^{2}+\Gamma_{\mathrm{eff}} \Gamma_{R} / 4},
 $$
 
-where $\Gamma_{\mathrm{eff}}=\Gamma_{\mathrm{L}}^{\uparrow} \Gamma_{\mathrm{R}}^{\downarrow} /(2 \Gamma_{\mathrm{L}}^{\uparrow}+\Gamma_{\mathrm{R}}^{\downarrow})$. Accordingly, the expressions for saturation number and threshold coupling become
+where $\Gamma_{\mathrm{eff}}=\Gamma_{L} \Gamma_{R}/(2 \Gamma_{L}+\Gamma_{R})$. Accordingly, the expressions for saturation number and threshold coupling become
 
 $$
-g_{\mathrm{thr}}^{2}=\frac{\Gamma_{\mathrm{R}}^{\downarrow}\kappa}{4}, \quad A_{s}=\sqrt{\frac{\Gamma_{\mathrm{eff}}}{\kappa} }
+g_{\mathrm{thr}}^{2}=\frac{\Gamma_{R}\kappa}{4}, \quad A_{s}=\sqrt{\frac{\Gamma_{\mathrm{eff}}}{\kappa} }
 $$
 
-The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R^\downarrow$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R^\downarrow$ pushes the threshold for lasing to appear to higher values of $g$ [**explain better**].
+The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R$ pushes the threshold for lasing to appear to higher values of $g$ [**explain better**].
 
 In @fig:qdlaser:rwa-laser I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix. **Discussion on results**; **High efficiency of pumping**; **Necessity to release RWA**.
 
@@ -314,15 +314,34 @@ In @fig:qdlaser:rwa-laser I summarize the analytical results obtained with the s
 
 In the previous Section, I have analyzed the lasing behavior of the quantum-dot laser assuming the validity of the RWA Hamiltonian (-@eq:qdlaser:rwa-hamiltonian). However, the _a posteriori_ analysis of the results reveals a peculiarity of our system with respect to similar (atomic and solid-state) implementations of the single-atom laser: The spin-dependent transport yields a very large photon emission efficiency (for the case of full polarization and negligible spin relaxation processes, each electron passing through the dot emits one photon), such that the quantity $g\sqrt{\bar{n}}$ becomes comparable to the bare resonator frequency $\omega_0$, even for relatively low values of the ratio $g/\omega_0$. Consequently, without the technologically challenging need to enter the *ultrastrong-coupling* regime (characterized by $g/\omega_0 \sim 1$, see Ch. -@sec:introduction), the system is expected to show a clear and unique deviation from the RWA physics. 
 
+**Write here a sentence to explain what we are going to do.**
+
 ### Semiclassical equations beyond RWA
 
-The semiclassical approach utilized in @sec:qdlaser:rwa-semiclassical can be extended beyond the RWA by using the full Rabi Hamiltonian (-@eq:qdlaser:rabi-hamiltonian). Accordingly, Eqs. (-@eq:qdlaser:rwa-semiclassical-system-1)-(-@eq:qdlaser:rwa-semiclassical-system-4) are replaced by
+The semiclassical approach utilized in @sec:qdlaser:rwa-semiclassical can be extended beyond the RWA by using the full Rabi Hamiltonian (-@eq:qdlaser:rabi-hamiltonian). First, Eqs. (-@eq:qdlaser:rwa-semiclassical-system-1)-(-@eq:qdlaser:rwa-semiclassical-system-4) are replaced by
 
 \begin{align}
-\left\langle\dot{ n}_{\uparrow}\right\rangle=-\Gamma_{\mathrm{L}}^{\uparrow}\left\langle n_{\uparrow}\right\rangle-\Gamma_{\mathrm{L}}^{\uparrow}\left\langle n_{\downarrow}\right\rangle-i \lambda\left\langle\left( b+ b^{\dagger}\right)\left(\sigma_{+}-\sigma_{-}\right)\right\rangle+\Gamma_{\mathrm{L}}^{\uparrow} \\ \left\langle\dot{ n}_{\downarrow}\right\rangle=-\Gamma_{\mathrm{R}}^{\downarrow}\left\langle n_{\downarrow}\right\rangle+i \lambda\left\langle\left( b+ b^{\dagger}\right)\left(\sigma_{+}-\sigma_{-}\right)\right\rangle, \\ \left\langle\dot{\sigma}_{-}\right\rangle=\left(-i \Delta \varepsilon-\frac{\Gamma_{\mathrm{R}}^{\downarrow}}{2}\right)\left\langle\sigma_{-}\right\rangle+i \lambda\left\langle\left( b+ b^{\dagger}\right) \sigma_{z}\right\rangle \text { and c.c. } \\ \langle\dot{ b}\rangle=\left(-i \omega_{0}-\frac{\kappa}{2}\right)\langle b\rangle-i \lambda\left\langle\left(\sigma_{+}+\sigma_{-}\right\rangle\text {and c.c. } \right.
+\left\langle\dot{ n}_{\uparrow}\right\rangle &=-\Gamma_{L}
+\langle n_{\uparrow}\rangle-\Gamma_{L}\langle n_{\downarrow}\rangle-i g\langle( b+ b^{\dagger})(\sigma_{+}-\sigma_{-})\rangle+\Gamma_{L}, \\ \langle\dot{ n}_{\downarrow}\rangle &=-\Gamma_{R}\langle n_{\downarrow}\rangle+i g\langle( b+ b^{\dagger})(\sigma_{+}-\sigma_{-})\rangle, \\ \langle\dot{\sigma}_{-}\rangle &=\left(-i \Delta \epsilon-\frac{\Gamma_{R}}{2}\right)\langle\sigma_{-}\rangle+i g\langle( b+ b^{\dagger}) \sigma_{z}\rangle, \quad \text{and c.c.}, \\ \langle\dot{ b}\rangle &= \left(-i \omega_{0}-\frac{\kappa}{2}\right)\langle b\rangle-i g\langle \sigma_{+}+\sigma_{-}\rangle, \quad \text{and c.c.}
 \end{align}
 
+After the semiclassical approximation, setting again $\Gamma_L = \Gamma_R/2  = \Gamma$, $P=1$ and $\Delta\epsilon = \omega_0$, and moving to the rotating frame as above, the system can be written as
+
+\begin{align} 
+\dot{S}_{x} &=- \Gamma S_{x}-2 g A[\sin (2 \omega_{0} t-\phi)+\sin \phi] S_{z}, \label{eq:qdlaser:no-rwa-semiclassical-system-1} \\ 
+\dot{S}_{y} &=-\Gamma S_{y}-2 g A[\cos (2 \omega_{0} t-\phi)+\cos \phi] S_{z},\label{eq:qdlaser:no-rwa-semiclassical-system-2} \\ 
+\dot{S}_{z} &=-\Gamma S_{z}+2 g A \{[\sin (2 \omega_{0} t-\phi)+\sin \phi] S_{x} +[\cos (2 \omega_{0} t-\phi)+\cos \phi] S_{y}\}+\Gamma, \label{eq:qdlaser:no-rwa-semiclassical-system-3} \\ 
+\dot{A} &= -\frac{\kappa}{2} A+\frac{g}{2}\left\{\left[\sin \left(2 \omega_{0} t-\phi\right)-\sin \phi\right] S_{x} + \left[\cos \left(2 \omega_{0} t-\phi\right)+\cos \phi\right] S_{y}\right\}, \label{eq:qdlaser:no-rwa-semiclassical-system-4} \\ 
+\dot{\phi} &= -\frac{g}{2 A}\left\{\left[\cos \left(2 \omega_{0} t-\phi\right)+\cos \phi\right] S_{x} -\left[\sin \left(2 \omega_{0} t-\phi\right)+\sin \phi\right] S_{y}\right\}. \label{eq:qdlaser:no-rwa-semiclassical-system-5}
+\end{align}
+
+Contrary to the RWA case, this nonlinear set of equations does not have a stationary solution in the rotating frame: The resonator will approach a limit-cycle oscillating solution. A more thorough analysis is then necessary to gain further quantitative information on the long-time limit behavior of the resonator dynamics.
+The basic idea consists in studying Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) in Fourier space, deriving an effective expression for the nonlinear damping of the resonator, $\gamma_\mathrm{eff}$. To achieve this, it is crucial to exploit the fact that the dynamics of the resonator amplitude $A$ is *slow* compared to the electronic driving and to the oscillations themselves, a condition satisfied when $\kappa \ll \{\Gamma; g; \omega_0\}$. I also assume that, eventually, the phase of the oscillator evolves harmonically as $\phi = \omega_0 t$. This can be checked empirically by solving numerically the time-dependent equations (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) and looking at the long-time behavior of $A(t)$. It is then possible to average the charge dynamics \[determined by Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-3)\] over a resonator period $\mathcal{T} = 2\pi/\omega_0$, during which $A$ can be considered constant.
+
+
 ### Multistability analysis of the resonator
+
+From the equation of the nonlinear damping to the multistability; plot of nonlinear damping and stability diagram, comparison with numerical results.
 
 ## Detecting lasing and multistability with transport measurements
 

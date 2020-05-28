@@ -16,7 +16,7 @@ input-files:
    - parts/qdlaser.md
    - parts/cps.md
    - parts/jjcavity.md
-   - parts/spinboson.md
+ #  - parts/spinboson.md
    - parts/conclusions.md
    - parts/appendix.md
    - parts/contrib.md

@@ -25,6 +25,19 @@ This is a Figure:
 This is the reference to the Fig. @fig:one.
 Figure @fig:one is.... Chapter @sec:introduction is... Equation @eq:one is....
 
+Superconducting qubits:
+
+* Review [@Kjaergaard2020]
+  
+Quantum dots and semiconducting qubits:
+
+* New review [@Chatterjee2020]
+
+Circuit QED:
+
+* New review [@Blais2020]
+
 Hybrid systems:
 
 * Topology [@Kim2020];
+
