@@ -339,10 +339,29 @@ Contrary to the RWA case, this nonlinear set of equations does not have a statio
 The basic idea consists in studying Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) in Fourier space, deriving an effective expression for the nonlinear damping of the resonator, $\gamma_\mathrm{eff}$. To achieve this, it is crucial to exploit the fact that the dynamics of the resonator amplitude $A$ is *slow* compared to the electronic driving and to the oscillations themselves, a condition satisfied when $\kappa \ll \{\Gamma; g; \omega_0\}$. I also assume that, eventually, the phase of the oscillator evolves harmonically as $\phi = \omega_0 t$. This can be checked empirically by solving numerically the time-dependent equations (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) and looking at the long-time behavior of $A(t)$. It is then possible to average the charge dynamics \[determined by Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-3)\] over a resonator period $\mathcal{T} = 2\pi/\omega_0$, during which $A$ can be considered constant. In this way, one can calculate the coarse-grained effect of the charge dynamics on the resonator amplitude. Averaging Eq. (-@eq:qdlaser:no-rwa-semiclassical-system-4) over $\mathcal{T}$, we obtain
 
 $$
-\dot{\overline{A}} = -\frac{\kappa}{2}\overline{A} + \frac{g}{\mathcal{T}} \int_0^\mathcal{T} dt\prime \cos (\omega_0 t') S_y(t'),
+\dot{\bar{A}} = -\frac{\kappa}{2}\bar{A} + \frac{g}{\mathcal{T}} \int_0^\mathcal{T} dt' \cos (\omega_0 t') S_y(t', \bar{A}),
+$$
+{#eq:qdlaser:average-A-equation-1}
+
+where $\bar{A} = 1/\mathcal{T}\int_0^\mathcal{T} dt' A(t')$. The cosine term in the integration acts as a Fourier filter, eliminating all Fourier components of $S_y$ except for the ones oscillating at $\pm\omega_0 t$. The Fourier transforms of the spin quantities are defined as
+
+$$
+\begin{aligned}
+  S_k (t) &= \sum_{n=-\infty}^{+\infty} e^{-i\omega_0 n t}S_k^{(n)}, \\
+  S_k^{(n)}&= \frac{1}{\mathcal{T}}\int_0^\mathcal{T} dt S_k(t) e^{i\omega_0 n t},
+\end{aligned}
 $$
 
+with $k = x,y,z$. Because $S_k (t)$ is real, then $S_k^{(-n)} = S_k^{(n)*}$, and Eq. (-@eq:qdlaser:average-A-equation-1) becomes
 
+$$
+\dot{\bar{A}} = -\frac{\kappa}{2}\bar{A} + g\ \mathrm{Re} [S_y^{(1)}(\bar{A})] = -\frac{\bar{A}}{2} [ \kappa + \gamma_\mathrm{eff}(\bar{A})].
+$$
+The nonlinear damping is given by 
+
+$$
+\gamma_\mathrm{eff}(\bar{A}) = - \frac{2 g}{\bar{A}}\ \mathrm{Re} [S_y^{(1)}(\bar{A})].
+$$
 
 ### Multistability analysis of the resonator
 
