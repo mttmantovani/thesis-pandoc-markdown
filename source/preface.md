@@ -20,11 +20,11 @@ I would like to appreciate here the hospitality received from
 Prof. Dr. Andrew Armour at the University of Nottingham, during my visits in
 February 2017 and February 2019, that led to the development of the results
 presented in Chs. @sec:qdlaser and @sec:jjcavity.
-Furthermore, I acknowledge the hospitality received in the Équipe Cohérence
+<!-- Furthermore, I acknowledge the hospitality received in the Équipe Cohérence
 Quantique at Institut Néel in Grenoble during my
 visit in September 2017 within a collaboration with the experimental group of
 Prof. Dr. Wiebke Hasch-Guichard. The results of this collaboration are presented
-in Ch. -@sec:spinboson.
+in Ch. -@sec:spinboson. -->
 
 [^1]: \fullcite{Mantovani2019}.
 [^2]: \fullcite{Mantovani2019a}.
