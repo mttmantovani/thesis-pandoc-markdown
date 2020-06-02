@@ -369,10 +369,38 @@ From the equation of the nonlinear damping to the multistability; plot of nonlin
 
 ## Detecting lasing and multistability with transport measurements
 
+In this Section, I describe a method to efficiently detect the lasing state in the resonator as well as the multistability.
+
 ### Full-counting statistics
 
 ### Current jumps and two-state model
 
+## Experimental feasibility: Multistability in nonideal cases
+
+The scope of this Section is to provide a realizability study for the system, by considering a number of processes which can hinder the onset of lasing and multistability in the cavity. Specifically, I will consider: (a) The effect of finite polarization ($P<1$) in the leads; (c) the effect of spin relaxation in the quantum dot; (b) for low-frequency mechanical oscillators, the effect of finite temperature and Duffing nonlinearity.
+
+### Effect of finite temperature and finite polarization
+
+### Effect of spin relaxation
+
+### Effect of Duffing nonlinearity
+
+### Implementations
+
+The spin-resonator interaction lies at the heart of the physics described in this Chapter, and is the main ingredient to be sought after experimentally. Spin-valve-based carbon nanotube quantum dots (CNTQDs) constitute a promising route to implement the model. Indeed, spin-valve effect in CNTs has been demostrated with substantial spin polarization [@Sahoo2005;@Viennot2015], and CNTQDs have inherently small spin relaxation rate [@Rice2013;@Churchill2009] as well as huge quality factors [@Moser2014]. The spin-resonator interaction in suspended CNTQDs has been the object of theoretical investigations [@Palyi2012;@Stadler2014;@Stadler2015], where an interaction strength $g_\mathrm{exp} \approx \SI{1}{MHz}$ is predicted for a typical resonance frequency $\omega_0/2\pi = \SI{100}{MHz}$. For $Q=\num{e6}$, $P=0.5$, $\Gamma = 0.05\omega_0$, the threshold coupling can be as low as $g_\mathrm{thr} \approx \num{1.6e-4}\omega_0$, well below $g_\mathrm{exp}$. 
+
+
+
+## Conclusions
+
+To conclude, I have analyzed here a model for a single-atom laser using a quantum-dot spin valve. This single-atom laser relies on a spin-polarized current pump from ferromagnetic leads into a quantum dot, where the spin is coupled to the motion of a resonator. 
+I have shown how the spin-resonator coupling yields a very efficient photon emission in the resonator, such that the conventional rotating-wave approximation (RWA) breaks down, despite the relative weak bare coupling achievable between spin and cavity. 
+As a consequence of RWA-breakdown, the resonator can develop a multistable behavior, which is characterized by the presence of multiple peaks in its Fock distribution, and can be detected through simple current measurements: 
+As each stable amplitude carries a definite current value, time-monitoring of the current shows telegraph switching between different current plateaus, as long as each stable state is sufficiently long-lived. 
+I have analyzed the stability of the system using numerical simulations, supporting the results with a semiclassical explanation;
+similarly, the numerical experiments showing telegraph dynamics in the current have been confirmed by a simple two-state classical model, which assumes that the resonator state can be approximated by two well-distinct states with similar occupation probabilities. 
+In view of an experimental realization, I have shown how the lasing and the multistability still survive when nonideal scenarios are considered, such as high environmental temperature, finite polarization of the leads, Duffing nonlinearities for the case of a mechanical resonators, and spin-relaxation processes in the quantum dots.
+From the above analysis, it is arguable that this system represents a unique platform for investigating the coherent dynamics of a spin coupled to a resonator *beyond* the RWA, but without the need to access ultrastrong couplings. Further, our work raises a range of interesting theoretical and experimental questions about the extent to which multistable lasing can be controlled and exploited, e.g., in nonlinear amplifiers or force sensing devices.
 
 
 
