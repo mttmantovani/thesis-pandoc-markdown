@@ -35,7 +35,7 @@ The current displays a telegraph-like noise, associated with current jumps betwe
 ## Quantum-dot laser in the spin-valve setup
 
 
-![Spin-valve-based quantum dot laser. (a) A microwave photon cavity or (b) a nanomechanical resonator mode are coupled to the spin of an electron in a quantum dot, in contact with ferromagnetic leads carrying spin-polarized current. (c) The system can be mapped onto a three-level single-atom laser, where electrons are pumped into the up-spin level, interact coherently emitting photons into the cavity, and decay into the empty-dot state by tunneling into the right lead.](figures/qdlaser-system.pdf){#fig:qdlaser:system}
+![Spin-valve-based quantum dot laser. (a) A microwave photon cavity or (b) a nanomechanical resonator mode are coupled to the spin of an electron in a quantum dot, in contact with ferromagnetic leads carrying spin-polarized current. (c) The system can be mapped onto a three-level single-atom laser, where electrons are pumped into the up-spin level, interact coherently emitting photons into the cavity, and decay into the empty-dot state by tunneling into the right lead.](figures/qdlaser-system-2.pdf){#fig:qdlaser:system}
 
 The system I am considering is depicted in @fig:qdlaser:system. It consists of a quantum dot in the single-electron regime, with two nondegenerate spin levels ($|\uparrow\rangle$, $|\downarrow \rangle$), of energy difference $\Delta\epsilon$. 
 The dot is embedded between two ferromagnetic contacts, which carry a spin-polarized current of opposite polarization.
@@ -381,13 +381,30 @@ The scope of this Section is to provide a realizability study for the system, by
 
 ### Effect of finite temperature and finite polarization
 
+
 ### Effect of spin relaxation
+
 
 ### Effect of Duffing nonlinearity
 
+Nanomechanical resonators such as suspendend carbon nanotubes can be intrinsically weakly nonlinear, a property which is expected to play an important role when the amplitude of oscillations is amplified as described by our results. I include a  nonlinear term of Duffing type into Hamiltonian (-@eq:qdlaser:system-hamiltonian), which is modified into
+
+$$
+H = \frac{\Delta\epsilon}{2}\sigma_z + \omega_0 b^\dagger b + \frac{\tilde{\beta}}{4} (b+b^\dagger)^4 + g (\sigma_+ + \sigma_-) (b+b^\dagger).
+$$
+{#eq:qdlaser:duffing-hamiltonian}
+
+I have introduced $\tilde{\beta} = \beta x_\mathrm{ZPM}^4$, where $\beta$ is the Duffing nonlinearity parameter and $x_\mathrm{ZPM} = \sqrt{\hbar/2m\omega_0}$ is the zero-point amplitude of the oscillator ($\hbar$ has been temporarily restored for clarity).
+ To realistically estimate $\tilde{\beta}$, let us consider a carbon nanotube with mass approximately  given by $m = \pi L d/ 1315$, where $L$ and $d$ are length and diameter in meters, respectively [@Laurent2010;@Liu2008]. A typical mass of $m \approx \SI{e-21}{kg}$ gives zero-point fluctuations of order $x_\mathrm{ZPM} \approx \SI{10}{\pico\meter}$ for a frequency $\omega_0/2\pi = \SI{100}{MHz}$. Experimentally, the geometrical nonlinearity parameter for a nanotube is positive ($\beta>0$) and of order $\beta/m = \SI{e35}{\newton\per\kilogram\per\cubic\meter}$ [@Steele2009;@Meerwaldt2012]. It follows that $\tilde{\beta}/2\pi \approx \SI{1}{\kilo\hertz}$, i.e., $\tilde{\beta}/\omega_0 \approx \num{e-5}$.  We neglect the electrostatic nonlinearity arising from strong coupling effects between the leads and the nanotube and from single-electron tunneling, which is in general orders of magnitude smaller and is proportional to $\Gamma \ll \omega_0$. By solving the master equation with Hamiltonian (-@eq:qdlaser:duffing-hamiltonian) for the steady state, I report the average cavity occupation as a function of $g$ in **FIG.**. Finally, **FIGS.** show that the combined presence of finite temperature, finite polarization, spin relaxation and Duffing nonlinearity can still preserve the main features of the system (lasing and bistability), despite the largely nonideal case.
+
+
 ### Implementations
 
-The spin-resonator interaction lies at the heart of the physics described in this Chapter, and is the main ingredient to be sought after experimentally. Spin-valve-based carbon nanotube quantum dots (CNTQDs) constitute a promising route to implement the model. Indeed, spin-valve effect in CNTs has been demostrated with substantial spin polarization [@Sahoo2005;@Viennot2015], and CNTQDs have inherently small spin relaxation rate [@Rice2013;@Churchill2009] as well as huge quality factors [@Moser2014]. The spin-resonator interaction in suspended CNTQDs has been the object of theoretical investigations [@Palyi2012;@Stadler2014;@Stadler2015], where an interaction strength $g_\mathrm{exp} \approx \SI{1}{MHz}$ is predicted for a typical resonance frequency $\omega_0/2\pi = \SI{100}{MHz}$. For $Q=\num{e6}$, $P=0.5$, $\Gamma = 0.05\omega_0$, the threshold coupling can be as low as $g_\mathrm{thr} \approx \num{1.6e-4}\omega_0$, well below $g_\mathrm{exp}$. 
+The spin-resonator interaction lies at the heart of the physics described in this Chapter, and is the main ingredient to be sought after experimentally. Spin-valve-based carbon nanotube quantum dots (CNTQDs) constitute a promising route to implement the model. Indeed, spin-valve effect in CNTs has been demostrated with substantial spin polarization [@Sahoo2005;@Viennot2015], and CNTQDs have inherently small spin relaxation rate [@Rice2013;@Churchill2009] as well as huge quality factors [@Moser2014]. Very recently, suspended CNTs have witnessed a revival interest because of their ability to support self-sustained oscillations with large amplitudes and even bistability, when driven by electron tunneling [@Urgell2019;@Wen2019;@Willick2020;@Yang2020]. 
+The spin-resonator interaction in suspended CNTQDs has been the object of theoretical investigations [@Palyi2012;@Stadler2014;@Stadler2015], where an interaction strength $g_\mathrm{exp} \approx \SI{1}{MHz}$ is predicted for a typical resonance frequency $\omega_0/2\pi = \SI{100}{MHz}$. For $Q=\num{e6}$, $P=0.5$, $\Gamma = 0.05\omega_0$, the threshold coupling can be as low as $g_\mathrm{thr} \approx \num{1.6e-4}\omega_0$, well below $g_\mathrm{exp}$.  
+
+
+Another relevant platform that can be used to realize this single-atom laser is based on spin valves coupled to microwave cavity photons. In the past few years, a great technological effort has been put into reaching an effective strong coupling between spin and photons, using, e.g., CNTQDs and superconducting microwave cavities [@Viennot2015;@Cubaynes2019], silicon-based devices [@Mi2018;@Samkharadze2018;@Borjans2020], and quantum dots in GaAs/AlGaAs heterostructures [@Landig2018;@Landig2019;@Pan2020]. Hence, it is arguable that our device can stimulate further works in this direction.
 
 
 
