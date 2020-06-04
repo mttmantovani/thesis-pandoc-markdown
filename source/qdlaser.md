@@ -377,17 +377,24 @@ In this Section, I describe a method to efficiently detect the lasing state in t
 
 ## Experimental feasibility: Multistability in nonideal cases
 
-The scope of this Section is to provide a realizability study for the system, by considering a number of processes which can hinder the onset of lasing and multistability in the cavity. Specifically, I will consider: (a) The effect of finite polarization ($P<1$) in the leads; (c) the effect of spin relaxation in the quantum dot; (b) for low-frequency mechanical oscillators, the effect of finite temperature and Duffing nonlinearity.
+The scope of this Section is to provide a realizability study for the system, by considering a number of processes which can hinder the onset of lasing and multistability in the cavity. Specifically, I will consider: (a) The effect of finite polarization ($P<1$) in the leads; (b) the effect of spin relaxation in the quantum dot; (c) for low-frequency mechanical oscillators, the effect of finite temperature and Duffing nonlinearity.
 
 ### Effect of finite temperature and finite polarization
 
+At finite polarization, a fraction of the total current passing through the quantum dot is elastic, i.e., no energy is exchanged with the resonator. This inevitably leads to a lower pumping efficiency, and it is natural to understand how sensitive lasing and multistability are to a decrease in ferromagnetic polarization. 
+As a further detrimental effect, I consider here an environmental temperature which is large when compared to the resonator frequency, i.e., $T \gg \omega_0$. This condition is usually fulfilled for mechanical resonators such as carbon nanotubes (CNTs), which are a good candidate for an experimental realization of our system, see below. Indeed, their low mechanical frequency ($\omega_0/2\pi \approx \SI{100}{MHz}$) requires taking into account thermal fluctuations. Conversely, for microwave cavities in the GHz regime, $n_B = 0$ is usually a good approximation at cryogenic temperatures. 
+In **FIG**, I report the numerical calculation of the average occupation of the oscillator in the steady state, together with the stability diagram for a nonideal case ($T = 10\omega_0$ and $P=0.5$):  The qualitative picture is not destroyed, as lasing and multistability are retained. More specifically, the lasing threshold is pushed to a larger coupling strength, according to Eq. (-@eq:qdlaser:rwa-pn-saturation-thr), as well as the onset of bi- and multistability. The thermal noise smears out the transitions to the lasing state. 
 
 ### Effect of spin relaxation
 
+The spin the quantum dot may be subject to spin relaxation processes due to interactions with bulk phonons in the substrate [@Khaetskii2000], or through spin-orbit coupling in CNTs [@Churchill2009;@Rice2013]. The overall effect of spin relaxation is to cause spin flip without photon emission into the cavity, as it does not come from coherent energy exchange. Its role is therefore similar to the effect of finite polarization. To model the spin relaxation, I assume a typical energy relaxation time $T_1$, but neglect a general inhomogeneous pure dephasing term of characteristic timescale $T_\phi$. This is justified as this term generally arises in CNTs from hyperfine coupling of the electronic spin to the nuclear spin of $^{13} C$ atoms, whose natural abundance in carbon is less than 1% [@Churchill2009]. Taking the spin relaxation rate to be $\gamma_\mathrm{sr} = T_1^{-1}$, I simply add a dissipator $\mathcal{L}_\mathrm{sr} \rho = \gamma_\mathrm{sr} \mathcal{D}(\sigma_-)[\rho]$ to the master equation (-@eq:qdlaser:lindblad-equation) and search for the stationary state.
+It is reasonable to assume that if $\gamma_\mathrm{sr}$ is much smaller than the generalized Rabi frequency $gA$ and of the
+tunneling rates $\Gamma$, the resonator dynamics is expected to be unperturbed.
+In **FIG.**, we observe how lasing mechanics is noticeably suppressed for $\gamma_\mathrm{sr}/\omega_0 = \num{e-2}$. For the case of a CNTQD setup, the relaxation time in single-walled CNTs was reported to be $T_1 \approx \SI{100}{\micro\second}$ at $T = \SI{4}{\kelvin}$ corresponding to a relaxation rate of $\SI{10}{\kilo\hertz}$. At low temperature ($T \approx \SI{20}{\milli\kelvin}$), one can expect a substantial decrease of this value. In **FIGS** I report the average cavity occupation and the stability diagram for $\gamma_\mathrm{sr} = \num{e-3}\omega_0$.
 
 ### Effect of Duffing nonlinearity
 
-Nanomechanical resonators such as suspendend carbon nanotubes can be intrinsically weakly nonlinear, a property which is expected to play an important role when the amplitude of oscillations is amplified as described by our results. I include a  nonlinear term of Duffing type into Hamiltonian (-@eq:qdlaser:system-hamiltonian), which is modified into
+Nanomechanical resonators such as suspendend carbon nanotubes can be intrinsically weakly nonlinear, a property which is expected to play an important role when the amplitude of oscillations is amplified as described by our results. I include a  nonlinear term of Duffing type [@Strogatz2015] into Hamiltonian (-@eq:qdlaser:system-hamiltonian), which is modified into
 
 $$
 H = \frac{\Delta\epsilon}{2}\sigma_z + \omega_0 b^\dagger b + \frac{\tilde{\beta}}{4} (b+b^\dagger)^4 + g (\sigma_+ + \sigma_-) (b+b^\dagger).
