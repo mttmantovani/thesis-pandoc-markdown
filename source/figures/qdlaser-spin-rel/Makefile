@@ -1,6 +1,7 @@
-FIGPATH  := ../../../figures
+FIGPATH := ../../../figures
 FIGNAME := $(notdir $(shell pwd))
-TEXRULE := latexmk -xelatex -silent
+LATEX   := latexmk -pdf -silent
+DATA    := $(wildcard data/*)
 PYTHON  := python3
 
 .PHONY: clean cleanall
@@ -8,8 +9,8 @@ PYTHON  := python3
 all: $(FIGNAME).pdf
 	@cp $^ $(FIGPATH)
 
-$(FIGNAME).pdf: $(FIGNAME).py
-	@$(PYTHON) $< && pdfcrop $@ $@
+$(FIGNAME).pdf: $(FIGNAME).py $(DATA)
+	@$(PYTHON) $^
 
 clean:
 
