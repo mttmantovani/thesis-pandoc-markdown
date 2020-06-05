@@ -62,9 +62,9 @@ def plot_data(**kwargs):
 
 
     # Ax1
-    ax1.plot(dataDict[0][:,0], dataDict[0][:,1], ls='-', label=r'$\tilde{\beta}/\omega_0 = 0$')
-    ax1.plot(dataDict[1][:,0], dataDict[1][:,1], ls='--', color='red', label=r'$\tilde{\beta}/\omega_0= 10^{-4}$')
-    ax1.plot(dataDict[2][:,0], dataDict[2][:,1], ls=':', color='green', label=r'$\tilde{\beta}/\omega_0 = 5\times 10^{-4}$')
+    ax1.plot(dataDict[0][:,0], dataDict[0][:,1], ls='-', label=r'$\gamma_\mathrm{sr}/\omega_0 = 0$')
+    ax1.plot(dataDict[2][:,0], dataDict[2][:,1], ls='--', color='red', label=r'$\gamma_\mathrm{sr}/\omega_0= 10^{-3}$')
+    ax1.plot(dataDict[1][:,0], dataDict[1][:,1], ls=':', color='green', label=r'$\gamma_\mathrm{sr}/\omega_0 = 10^{-2}$')
 
     #Ax 2 and 3
     des = np.unique(dataDict[3][:,0])
@@ -109,16 +109,21 @@ def plot_data(**kwargs):
     ax2.annotate(r'$\bar{n}$', xy=(1.24, 0.92), xycoords='axes fraction')
     ax3.annotate('(c)', xy=(0.02, 0.92), xycoords='axes fraction')
 
-    ax3.annotate('1', xy=(1,0.1), xycoords='data', va='center', ha='center', fontstyle='italic', color='white')
-    ax3.annotate('1', xy=(2.5,0.15), xycoords='data', va='center', ha='center', fontstyle='italic', color='white')
-    ax3.annotate('1', xy=(3.5,0.25), xycoords='data', va='center', ha='center', fontstyle='italic',color='white' )
-    ax3.annotate('1', xy=(1.9,0.25), xycoords='data', va='center', ha='center', fontstyle='italic', color='white')
-    ax3.annotate('2', xy=(1.9,0.19), xycoords='data', va='center', ha='center', fontstyle='italic', color='white')
-    ax3.annotate('2', xy=(2.6,0.28), xycoords='data', va='center', ha='center', fontstyle='italic', color='white')
+    ax3.annotate('1', xy=(1,0.1), xycoords='data', va='center', ha='center', fontstyle='italic', )
+    ax3.annotate('1', xy=(2.5,0.15), xycoords='data', va='center', ha='center', fontstyle='italic', )
+    ax3.annotate('1', xy=(3.5,0.25), xycoords='data', va='center', ha='center', fontstyle='italic', )
+    ax3.annotate('1', xy=(1.9,0.25), xycoords='data', va='center', ha='center', fontstyle='italic', )
+    ax3.annotate('2', xy=(1.9,0.19), xycoords='data', va='center', ha='center', fontstyle='italic', )
+    ax3.annotate('2', xy=(2.6,0.28), xycoords='data', va='center', ha='center', fontstyle='italic', )
+    ax3.annotate('3', xy=(2.5,0.23), xytext=(3.1,0.18), xycoords='data', va='center', ha='center', fontstyle='italic', arrowprops=dict(arrowstyle='->', lw=0.4),
+        bbox=dict(pad=-1, facecolor='none', edgecolor='none'))
 
 
     plt.subplots_adjust(left=0.07,bottom=0.23, right=0.99, top=0.97, wspace=0.4, hspace=0.10 )
     plt.savefig(f'{filename}.pdf', dpi=400)
+
+
+
 
 
 if __name__ == '__main__':
