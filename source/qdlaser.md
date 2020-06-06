@@ -228,7 +228,7 @@ $$
 $$
 {#eq:qdlaser:rwa-pn-nav}
 
-- Summarizing figure: *single-atom laser in the rotating-wave approximation*, see report. @fig:qdlaser:rwa-laser; including the semiclassical result.
+- Summarizing figure: *single-atom laser in the rotating-wave approximation*, see report. @fig:qdlaser:rwa, including the semiclassical result.
 - Mu & Savage [@Mu1992];
 - Rice & Carmichael [@Rice1994];
 - Scully's book [@Scully1997].
@@ -308,7 +308,9 @@ $$
 
 The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R$ pushes the threshold for lasing to appear to higher values of $g$ [**explain better**].
 
-In @fig:qdlaser:rwa-laser I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix. **Discussion on results**; **High efficiency of pumping**; **Necessity to release RWA**.
+In @fig:qdlaser:rwa I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix. **Discussion on results**; **High efficiency of pumping**; **Necessity to release RWA**.
+
+![Single-atom laser within the RWA](figures/qdlaser-rwa.pdf){#fig:qdlaser:rwa}
 
 ## Beyond the rotating-wave approximation: Multistability
 
