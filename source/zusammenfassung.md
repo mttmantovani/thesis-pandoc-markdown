@@ -13,13 +13,13 @@ Dieses System hat mögliche Applikationen in der kohärente Temperaturkontrolle,
 
 Das dritte System das ich untersucht habe besteht aus einem Josephson Kontakt in Reihe geschalten mit einem elektromagnetischen Resonator. Wenn eine Spannung an dem Josephson Kontakt angelegt wird, sodass jedes Cooper Paar die halbe Energie zum Erzeugen eines Photons in der Kavität beitragen kann, besteht die Möglichkeit, dass der Ladungstransport und die Photon Emission durch ein effektives Tunneln von zwei Cooper Paaren dominiert ist.  Das System zeigt einen Übergang von inkohärentem zu kohärentem Doppel-Cooper-Paar Tunneln und kann des Weiteren wegen eines Photon-Blockade Effekts als Einzel-Photon Quelle verwendet werden. 
 
-Schließlich habe ich, in einer Kollaboration mit Experimentalisten, einen
+<!-- Schließlich habe ich, in einer Kollaboration mit Experimentalisten, einen
 Schaltkreis, bestehend aus einem Fluxonium Qubit gekoppelt an eine Kette von
 LC-Resonatoren, welcher als Quantum Simulator für das generalisierte Spin Boson
 Modell dient, untersucht. Ich habe den effektiven Hamiltonoperator des Systems
 berechnet und, unter Verwendung realistischer experimenteller Parameter, dessen
 relaxations Dynamik simuliert. Diese ist charakterisiert durch ein Kollaps- und
 Revival-Verhalten der Qubit Oszillation, welche von der kohärenten Interaktion
-mit dem endlich großen Bad bestehend aus Oszillatoren stammen.
+mit dem endlich großen Bad bestehend aus Oszillatoren stammen. -->
 
 

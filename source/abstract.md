@@ -38,14 +38,14 @@ Cooper pairs. The system displays a crossover from incoherent to coherent
 double Cooper-pair tunneling and can be further used as a single-photon source due to
 a form of photon-blockade effect.
 
-Finally, within an experimental collaboration, I have investigated a circuit formed by a
+<!-- Finally, within an experimental collaboration, I have investigated a circuit formed by a
 fluxonium qubit coupled to a chain of LC-resonators, which serves as a
 quantum simulator for a generalized spin-boson model. I have derived the
 effective Hamiltonian for
 the system and, using realistic experimental parameters, I simulated numerically
 its relaxation dynamics,
 characterized by collapse and revival of qubit oscillation due to its coherent
-interaction with a finite-size bath of resonators.
+interaction with a finite-size bath of resonators. -->
 
 
 
