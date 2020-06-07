@@ -185,7 +185,7 @@ with eigenenergies $E_{n\pm} = \omega_0 \left(n + \frac{1}{2} \right) \pm \frac{
 
 ### Density matrix theory {#sec:qdlaser:rwa-density-matrix}
 
-Using Eq. (-@eq:qdlaser:rwa-hamiltonian) in Eq. (-@eq:qdlaser:lindblad-equation), it is possible to obtain the approximate analytical expression for the steady-state Fock distribution of the cavity, $p_n$ (details of the calculations are provided in Appendix ...). 
+Using Eq. (-@eq:qdlaser:rwa-hamiltonian) in Eq. (-@eq:qdlaser:lindblad-equation), it is possible to obtain the approximate analytical expression for the steady-state Fock distribution of the cavity, $p_n$ (details of the calculations are provided in Appendix -@sec:qdlaser:pn-analytical-derivation). 
 In particular, when close to the resonant condition $\Delta\epsilon = \omega_0$, the $p_n$ is obtained through the following recursive equation:
 
 $$
@@ -228,10 +228,28 @@ $$
 $$
 {#eq:qdlaser:rwa-pn-nav}
 
-- Summarizing figure: *single-atom laser in the rotating-wave approximation*, see report. @fig:qdlaser:rwa, including the semiclassical result.
-- Mu & Savage [@Mu1992];
-- Rice & Carmichael [@Rice1994];
-- Scully's book [@Scully1997].
+The analytical expression Eq. (-@eq:qdlaser:rwa-pn-solution) allows also to calculate also the second moment of the distribution, $\overline{n^2}$, and from it the Fano factor [@Fano1947;@Scully1997], defined as 
+
+$$
+\mathcal{F} = \frac{\overline{n^2} - \bar{n}^2}{\bar{n}}.
+$$
+
+The Fano factor yields a measure of the dispersion of a probability distribution, compared to the variance of a Poissonian distribution (where it is equal to the mean). The Poissonian distribution has a Fano factor equal to 1, and is characteristic of a classical laser. A sub-Poissonian distribution ($\mathcal{F}<1$) can be instead signature of quantum behavior in the resonator, as the distribution tends to be more narrow and different from a classical field. The resulting expression for the Fano factor is
+
+$$
+\mathcal{F} = 1 + n_B + \frac{1}{\left(\frac{g}{g_\mathrm{thr}}\right)^2 + \frac{n_B + A_s^2}{n_B +1}} - \alpha p_0,
+$$
+
+where I have gathered in $\alpha$ an unimportant factor multiplying $p_0$. At zero temperature and far above threshold ($g \gg g_\mathrm{thr}$), the above expression becomes
+
+$$
+\mathcal{F} = 1 + \frac{1}{\left(\frac{g}{g_\mathrm{thr}}\right)^2 + A_s^2 -1}.
+$$
+
+The Fano factor is peaked around the threshold coupling, where quantum fluctuations increase, witnessing a dramatic change in the Fock distribution, analogously to a phase transition. Above threshold, the analytical expression predicts that $\mathcal{F}$ tends to the Poissonian value, $\mathcal{F} = 1$.
+
+In @fig:qdlaser:rwa(a)-(b), I have collected the analytical results for both $\bar{n}$ and $\mathcal{F}$, together with their comparison to a numerical calculation using the full master equation and the RWA Hamiltonian and to the result from a semiclassical analysis (see below).
+
 
 ### Semiclassical theory {#sec:qdlaser:rwa-semiclassical}
 
@@ -287,6 +305,7 @@ $$
 \bar{n} = 0 \quad \text{and} \quad
 \bar{n}=A_{s}^{2}\left[1-\left(\frac{g_{\mathrm{thr}}}{g}\right)^{2}\right].
 $$
+{#eq:qdlaser:rwa-nav-semiclassical}
 
 The saturation number and threshold coupling read
 
@@ -306,11 +325,11 @@ $$
 g_{\mathrm{thr}}^{2}=\frac{\Gamma_{R}\kappa}{4}, \quad A_{s}=\sqrt{\frac{\Gamma_{\mathrm{eff}}}{\kappa} }
 $$
 
-The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R$ pushes the threshold for lasing to appear to higher values of $g$ [**explain better**].
+The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R$ pushes the threshold for lasing to appear to higher values of $g$.
 
-In @fig:qdlaser:rwa I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix. **Discussion on results**; **High efficiency of pumping**; **Necessity to release RWA**.
+In @fig:qdlaser:rwa I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix, together with the numerical results. The analytical expression for $\bar{n}$ agrees well with the numerics. However, the Fano factor is slightly overestimated by the density matrix approach. Indeed, the numerics predicts a sub-Poissonian Fock distribution for the resonator, with $\mathcal{F}$ well below one. This can be observed more closely by inspecting the $p_n$ distributions in @fig:qdlaser:rwa(c)-(e) for the below threshold, slightly above threshold, and far above threshold couplings $g$. The sub-Poissonian statistics is a typical signature of the single-atom laser [@Carmichael2003;@McKeever2003;@Astafiev2007].
 
-![Single-atom laser within the RWA](figures/qdlaser-rwa.pdf){#fig:qdlaser:rwa}
+![Single-atom laser within the RWA. (a) Average phonon occupation and (b) Fano factor for the Fock distribution, on resonance ($\Delta\epsilon = \omega_0$), as a function of the spin-resonator coupling $g$. The solid red line is computed from the analytical expression for $p_n$, Eq. (-@eq:qdlaser:rwa-pn-nav), the filled blue circles represent the numerical calculation, and the green dashed line is the semiclassical result [Eq. (-@eq:qdlaser:rwa-nav-semiclassical)]. The vertical dotted grey lines correspond to the threshold coupling, $g_\mathrm{thr} = 0.005\omega_0$. (c)-(e) Probability distributions for the oscillator Fock number at three different values of $g$, calculated numerically (bars) and analytically (solid red curves). Parameters: $\Gamma = 0.1\omega_0,\ Q = \num{e3},\ T = 0,\ P = 1$.](figures/qdlaser-rwa.pdf){#fig:qdlaser:rwa}
 
 ## Beyond the rotating-wave approximation: Multistability
 
