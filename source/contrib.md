@@ -2,7 +2,7 @@
 \changelocaltocdepth{0}
 
 This Section contains a short review of my main scientific 
-contributions during the time as a Ph.D. student in the Quantum Transport
+contributions during my time as a PhD student in the Quantum Transport
 Group at the University of Konstanz.
 
 ## List of publications {.unnumbered}

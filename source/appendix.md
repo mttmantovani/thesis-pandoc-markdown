@@ -3,7 +3,7 @@
 # Steady-state Fock distribution for the resonator in RWA {#sec:qdlaser:pn-analytical-derivation}
 
 In this Appendix, I derive the analytical expression in RWA for the steady-state 
-Fock distribution $p_n$ of the harmonic oscillator in the single-atom laser setup, in the fully polarized case case ($P=1$), and at resonance ($\Delta\epsilon = \omega_0$). Starting from the master equation (-@eq:qdlaser:lindblad-equation}, I label the matrix elements of $\rho$ as  $\rho^{nn'}_{ss'}$, with the upper index referring to the oscillator states
+Fock distribution $p_n$ of the harmonic oscillator in the single-atom laser setup (see Ch. -@sec:qdlaser), in the fully polarized case case ($P=1$), and at resonance ($\Delta\epsilon = \omega_0$). I further assume $\Gamma_L = \Gamma_R = \Gamma$. The derivation follows the seminal works of Scully and Lamb [@Scully1967;@Scully1997]. Starting from the master equation (-@eq:qdlaser:lindblad-equation), I label the matrix elements of $\rho$ as  $\rho^{nn'}_{ss'}$, with the upper index referring to the oscillator states
 and the lower index referring to the quantum dot states
 ($s, s' \in \{0, \downarrow, \uparrow\}$).
 The three equations for the diagonal dot part of the density matrix read
@@ -113,24 +113,28 @@ We obtain the recursive equation:
 $$
 \left[ \frac{n \kappa\tilde{g}^2}{1 + n \frac{\tilde{g}^2}{A_s^2}} + \mathscr{C}_e n \right] p_{n-1} = \mathscr{C}_d p_n,
 $$
+{#eq:qdlaser:pn-solution-appendix}
 
-with the shorthand $\tilde{g} = g/g_\mathrm{thr}$. 
+with the shorthand $\tilde{g} = g/g_\mathrm{thr}$. Equation (-@eq:qdlaser:pn-solution-appendix) is equivalent to Eq. (-@eq:qdlaser:rwa-pn).
 
 The solution can be written in terms of a finite product series 
 or rising factorials:
 
 $$
 p_n = p_0 \prod_{k=1}^n \left[\frac{ \frac{\tilde{g}^2}{n_B+1}}{1 + k \frac{ \tilde{g}^2}{A_s^2}} + \frac{n_B}{n_B+1} \right] 
-= p_0 \frac{\left(\dfrac{A_s^2}{n_B} + \frac{A_s^2}{\tilde{g}^2}+1\right)_n}{\left( \dfrac{A_s^2}{\tilde{g}^2} + 1 \right)_n} \left(\frac{n_B}{n_B+1} \right)^n.
+= p_0 \frac{\left(\dfrac{A_s^2}{n_B} + \frac{A_s^2}{\tilde{g}^2}+1\right)_n}{\left( \dfrac{A_s^2}{\tilde{g}^2} + 1 \right)_n} \left(\frac{n_B}{n_B+1} \right)^n,
 $$
 {#eq:qdlaser:steadystate_distribution}
+
+equivalent to Eq. (-@eq:qdlaser:rwa-pn-solution).
+The derivation outlined here assumes $P=1$ and equal tunneling rates $\Gamma_L = \Gamma_R$, but the general case of finite polarization and arbitrary rates simply renormalizes the saturation number $A_s^2$ and the threshold coupling $g_\mathrm{thr}$, yielding the expressions in Eq. (-@eq:qdlaser:rwa-pn-saturation-thr). The form of the solution for $p_n$ remains as in Eq. (-@eq:qdlaser:steadystate_distribution). 
 
 
 # Operators $\mathcal{G}(\Delta_0, n)$, $\mathcal{F}(\Delta_0, n)$ and matrix element $\langle 1 | H_\text{eff} | 2 \rangle$ {#sec:jjcavity:matrix-elements}
 
 I describe here the nonlinear operators $\mathcal{G}(\Delta_0, n)$ and
 $\mathcal{F}(\Delta_0, n)$ appearing in the effective Hamiltonian (@eq:jjcavity:heff) of the
-JJ-resonator system described in Ch. @sec:jjcavity. They are defined by
+JJ-resonator system described in Ch. -@sec:jjcavity. They are defined by
 the relations:
 \begin{align}
 \mathcal{G}(\Delta_0, n) n &= \sum_{p=1}^{\infty} \frac{4p}{p^2 - 1} [A_p,

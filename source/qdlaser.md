@@ -6,9 +6,8 @@
 ## Introduction
 
 One of the most remarkable paradigms of light-matter interaction is the laser [@Haken1984;@Siegman1986;@Scully1997], or maser, when the emitted radiation wavelength falls in the microwave regime.
-The lasing mechanism is generally based on a population inversion established in a gaining medium, which interacts with the electromagnetic field inside a cavity.
+The lasing mechanism is generally based on a population inversion established in a gaining medium, which interacts with the electromagnetic field inside a cavity. The full quantum theory of the laser has been proposed in the pioneering works of Scully and Lamb [@Scully1966;@Scully1967;@Sargent1993].
 The gaining medium can be scaled down to a single emitter, realizing a single-atom laser [@Mu1992].
-Their full quantum theory has been proposed in the pioneering works of Scully and Lamb [@Scully1966;@Scully1967;@Sargent1993].
 Later on, single-atom lasing action has been first observed experimentally in the regime of strong atom-field coupling with a single caesium atom in a high-finesse optical cavity [@McKeever2003].
 Unlike conventional lasers, one-atom amplifiers exhibit unique features such as thresholdless behaviour (due to strong coupling), self-quenching, and a sub-Poissonian photon statistics reflecting the quantum nature of both field and atoms [@Carmichael2003].
 Within the contest of cavity QED, a related setup is the micromaser [@Meschede1985;@Filipowicz1986;@Lugiato1987;@Walther2006], where a stream of excited atoms is injected into a cavity at a low rate, such that at most one atom at a time resides in the cavity.
@@ -159,7 +158,7 @@ The numerical steady solution of Eq. (-@eq:qdlaser:lindblad-equation) has been f
 
 ## Single-atom laser within the rotating-wave approximation (RWA)
 
-### RWA Hamiltonian and Jaynes-Cummings model
+### RWA Hamiltonian and Jaynes-Cummings model {#sec:qdlaser:rwa-jaynes-cummings}
 
 ![Energy ladder of the uncoupled dot-resonator system (black lines). When $\Delta\epsilon \approx \omega_0$, the RWA Hamiltonian (-@eq:qdlaser:rwa-hamiltonian) describes the hybridization of the pairs $\{|\uparrow, n\rangle, |\downarrow,n+1\rangle\}$, giving rise to the Jaynes-Cummings doublet \[green lines, Eq. (-@eq:qdlaser:rwa-doublet)\]. The energy separation of each doublet grows proportionally to $g\sqrt{n+1}$. ](figures/qdlaser-rwa-diagram.pdf){#fig:qdlaser:rwa-diagram}
 
@@ -185,7 +184,7 @@ with eigenenergies $E_{n\pm} = \omega_0 \left(n + \frac{1}{2} \right) \pm \frac{
 
 ### Density matrix theory {#sec:qdlaser:rwa-density-matrix}
 
-Using Eq. (-@eq:qdlaser:rwa-hamiltonian) in Eq. (-@eq:qdlaser:lindblad-equation), it is possible to obtain the approximate analytical expression for the steady-state Fock distribution of the cavity, $p_n$ (details of the calculations are provided in Appendix -@sec:qdlaser:pn-analytical-derivation). 
+Using Eq. (-@eq:qdlaser:rwa-hamiltonian) in Eq. (-@eq:qdlaser:lindblad-equation), it is possible to obtain the approximate analytical expression for the steady-state Fock distribution of the cavity, $p_n$ (details of the calculations for a simplified case are provided in Appendix -@sec:qdlaser:pn-analytical-derivation, following the works of Scully and Lamb [@Scully1967;@Scully1997]). 
 In particular, when close to the resonant condition $\Delta\epsilon = \omega_0$, the $p_n$ is obtained through the following recursive equation:
 
 $$
@@ -318,6 +317,7 @@ respectively. Notice that they are in full agreement with Eq. (-@eq:qdlaser:rwa-
 $$
 \gamma_{\mathrm{RWA}}(A)=-\frac{g^{2} \Gamma_{\mathrm{eff}}}{g^{2} A^{2}+\Gamma_{\mathrm{eff}} \Gamma_{R} / 4},
 $$
+{#eq:qdlaser:rwa-nonlinear-damping}
 
 where $\Gamma_{\mathrm{eff}}=\Gamma_{L} \Gamma_{R}/(2 \Gamma_{L}+\Gamma_{R})$. Accordingly, the expressions for saturation number and threshold coupling become
 
@@ -327,15 +327,23 @@ $$
 
 The lasing threshold for fully polarized leads only depends on the right-tunneling rate $\Gamma_R$, as a consequence of the large Coulomb repulsion in the dot: Since only one electron can reside in the system at a given instant, a photon-emission event can only take place if the electron has tunneled out into the right contact. A large value of $\Gamma_R$ pushes the threshold for lasing to appear to higher values of $g$.
 
-In @fig:qdlaser:rwa I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix, together with the numerical results. The analytical expression for $\bar{n}$ agrees well with the numerics. However, the Fano factor is slightly overestimated by the density matrix approach. Indeed, the numerics predicts a sub-Poissonian Fock distribution for the resonator, with $\mathcal{F}$ well below one. This can be observed more closely by inspecting the $p_n$ distributions in @fig:qdlaser:rwa(c)-(e) for the below threshold, slightly above threshold, and far above threshold couplings $g$. The sub-Poissonian statistics is a typical signature of the single-atom laser [@Carmichael2003;@McKeever2003;@Astafiev2007].
+In @fig:qdlaser:rwa I summarize the analytical results obtained with the semiclassical approximation and with the density matrix approach of @sec:qdlaser:rwa-density-matrix, together with the numerical results. The analytical expression for $\bar{n}$ agrees well with the numerics. However, the Fano factor is slightly overestimated by the density matrix approach. Indeed, the numerics predicts a sub-Poissonian Fock distribution for the resonator, with $\mathcal{F}$ well below one. This can be observed more closely by inspecting the $p_n$ distributions in @fig:qdlaser:rwa(c)-(e) for below threshold, slightly above threshold, and far above threshold couplings $g$, respectively. The sub-Poissonian statistics is a typical signature of the single-atom laser [@Carmichael2003;@McKeever2003;@Astafiev2007]. In the Scully-Lamb approach, an ensemble average over many atoms is considered, which results in a decrease of total quantum fluctuations between atoms and resonator [@Scully1967]. By contrast, as the size of the gaining medium is shrunk down to the limit of one atom, quantum fluctuations become important and are reflected in the emitted radiation: The photon stream tend to be "anti-bunched", i.e., a delay exists between emission of two consecutive photons. The Fano factor below one also tells us that the number of photons emitted within a time is less random than the classical laser.
 
-![Single-atom laser within the RWA. (a) Average phonon occupation and (b) Fano factor for the Fock distribution, on resonance ($\Delta\epsilon = \omega_0$), as a function of the spin-resonator coupling $g$. The solid red line is computed from the analytical expression for $p_n$, Eq. (-@eq:qdlaser:rwa-pn-nav), the filled blue circles represent the numerical calculation, and the green dashed line is the semiclassical result [Eq. (-@eq:qdlaser:rwa-nav-semiclassical)]. The vertical dotted grey lines correspond to the threshold coupling, $g_\mathrm{thr} = 0.005\omega_0$. (c)-(e) Probability distributions for the oscillator Fock number at three different values of $g$, calculated numerically (bars) and analytically (solid red curves). Parameters: $\Gamma = 0.1\omega_0,\ Q = \num{e3},\ T = 0,\ P = 1$.](figures/qdlaser-rwa.pdf){#fig:qdlaser:rwa}
+By looking at the average number of photons in @fig:qdlaser:rwa(a), it is apparent that the value of $g\sqrt{\bar{n}}$ becomes of the same order of magnitude as $\omega_0$ when above threshold: Despite a relatively low bare coupling strength $g \approx 0.05\omega_0$, one has $g\sqrt{\bar{n}} \approx 0.3\omega_0$ at saturation, which calls into question the validity of the RWA approach (see @sec:qdlaser:rwa-jaynes-cummings). Notice also that this is obtained with a resonator of modest quality factor $Q = 10^3$, proving a remarkable efficiency of the pumping mechanism provided by the spin-valve setup.
+
+![Single-atom laser within the RWA. (a) Average phonon occupation and (b) Fano factor for the Fock distribution, on resonance ($\Delta\epsilon = \omega_0$), as a function of the spin-resonator coupling $g$. The solid red line is computed from the analytical expression for $p_n$, Eq. (-@eq:qdlaser:rwa-pn-nav), the filled blue circles represent the numerical calculation, and the green dashed line is the semiclassical result \[Eq. (-@eq:qdlaser:rwa-nav-semiclassical)\]. The vertical dotted grey lines correspond to the threshold coupling, $g_\mathrm{thr} = 0.005\omega_0$. (c)-(e) Probability distributions for the oscillator Fock number at three different values of $g$, calculated numerically (bars) and analytically (solid red curves). Parameters: $\Gamma = 0.1\omega_0,\ Q = \num{e3},\ T = 0,\ P = 1$.](figures/qdlaser-rwa.pdf){#fig:qdlaser:rwa}
 
 ## Beyond the rotating-wave approximation: Multistability
 
-In the previous Section, I have analyzed the lasing behavior of the quantum-dot laser assuming the validity of the RWA Hamiltonian (-@eq:qdlaser:rwa-hamiltonian). However, the _a posteriori_ analysis of the results reveals a peculiarity of our system with respect to similar (atomic and solid-state) implementations of the single-atom laser: The spin-dependent transport yields a very large photon emission efficiency (for the case of full polarization and negligible spin relaxation processes, each electron passing through the dot emits one photon), such that the quantity $g\sqrt{\bar{n}}$ becomes comparable to the bare resonator frequency $\omega_0$, even for relatively low values of the ratio $g/\omega_0$. Consequently, without the technologically challenging need to enter the *ultrastrong-coupling* regime (characterized by $g/\omega_0 \sim 1$, see Ch. -@sec:introduction), the system is expected to show a clear and unique deviation from the RWA physics. 
+In the previous Section, I have analyzed the lasing behavior of the quantum-dot laser assuming the validity of the RWA Hamiltonian (-@eq:qdlaser:rwa-hamiltonian). However, the _a posteriori_ analysis of the results reveals a peculiarity of our system with respect to similar (atomic and solid-state) implementations of the single-atom laser: The spin-dependent transport yields a very large photon emission efficiency (for the case of full polarization and negligible spin relaxation processes, each electron passing through the dot emits one photon), such that the quantity $g\sqrt{\bar{n}}$ becomes comparable to the bare resonator frequency $\omega_0$, even for relatively low values of the ratio $g/\omega_0$. Consequently, without the technologically challenging need to enter the *ultrastrong-coupling* regime (characterized by $g/\omega_0 \sim 1$, see Ch. -@sec:introduction), the system is expected to show a clear and unique deviation from the RWA physics.
 
-**Write here a sentence to explain what we are going to do.**
+A clear proof of this hypothesis is offered by simply comparing the computation of $\bar{n}$ and $\mathcal{F}$ obtained with the JC Hamiltonian and the full Hamiltonian, see **FIG** (on resonance). While the RWA predicts that the average number saturates to $A^2_s$ with increasing $g$, without any other changes developing, the full calculation shows a drop in $\bar{n}$ even before reaching saturation, followed by a series of jumps. These jumps are associated to subsequent peaks in the Fano factor. By inspecting the Fock distribution obtained numerically close to the first jump in $\bar{n}$, one can see that it shows two peaks, suggestings a bistable behavior of the resonator (see inset of **FIG**).
+
+To understand the origin of this behavior, we resort below to a semiclassical approach similar to the one developed in the previous Section, in order to obtain a more accurate expression for the effective nonlinear damping, $\gamma_\mathrm{eff}(A)$, to which the resonator is subject: The observation of an oscillatory behavior of $\bar{n}$ must be linked to a nonmonotonic dependence of $\gamma_\mathrm{eff}$ on the semiclassical amplitude $A$, which, however, has to agree with the RWA expression Eq. (-@eq:qdlaser:rwa-nonlinear-damping) in the appropriate limit.
+
+![Single-atom laser beyond RWA.](figures/qdlaser-beyond-rwa.pdf){#fig:qdlaser:beyond-rwa}
+
+
 
 ### Semiclassical equations beyond RWA
 
