@@ -372,6 +372,9 @@ $$
 $$
 {#eq:qdlaser:average-A-equation-1}
 
+
+![Multistability of the resonator. (a) Average photon occupation $\bar{n}$ in the resonator as a function of spin energy splitting $\Delta\epsilon$ and spin-resonator coupling strength $g$. (b)-(d) Steady-state Fock distributions $p_n$ at three different points (triangle, star, and circle). (e) Number of distinct peaks in the Fock distribution (indicated by italic numbers) obtained numerically. (f) Number of stable amplitudes of oscillations (italic numbers) obtained by semiclassical analysis. Parameters: $\Gamma_L = \Gamma_R = 0.1\omega_0,\ Q=10^3,\ T=0,\ P=1$.](figures/qdlaser-stability.pdf){#fig:qdlaser:stability}
+
 where $\bar{A} = 1/\mathcal{T}\int_0^\mathcal{T} dt' A(t')$. The cosine term in the integration acts as a Fourier filter, eliminating all Fourier components of $S_y$ except for the ones oscillating at $\pm\omega_0 t$. The Fourier transforms of the spin quantities are defined as
 
 $$
@@ -392,9 +395,10 @@ $$
 \gamma_\mathrm{eff}(\bar{A}) = - \frac{2 g}{\bar{A}}\ \mathrm{Re} [S_y^{(1)}(\bar{A})].
 $$
 
+
 ### Multistability analysis of the resonator
 
-From the equation of the nonlinear damping to the multistability; plot of nonlinear damping and stability diagram, comparison with numerical results.
+From the equation of the nonlinear damping to the multistability; plot of nonlinear damping and stability diagram, comparison with numerical results. @fig:qdlaser:stability.
 
 ## Detecting lasing and multistability with transport measurements
 
@@ -410,11 +414,12 @@ The scope of this Section is to provide a realizability study for the system, by
 
 ### Effect of finite temperature and finite polarization
 
-![Effect of finite temperature and finite polarization. (a) Average occupation number in the oscillator at resonance as a function of the dot’s energy splitting $\Delta\epsilon$ and of the spin-resonator coupling strength $g$. (b) Stability diagram of the resonator. Italic numbers indicate the number of distinct peaks in the Fock distribution. Parameters: $Q = \num{e3}$, $\Gamma = 0.1\omega_0$, $P = 0.5$, and $T=10\omega_0$.](figures/qdlaser-finite-t-p.pdf){#fig:qdlaser:finite-t-p}
 
 At finite polarization, a fraction of the total current passing through the quantum dot is elastic, i.e., no energy is exchanged with the resonator. This inevitably leads to a lower pumping efficiency, and it is natural to understand how sensitive lasing and multistability are to a decrease in ferromagnetic polarization. 
 As a further detrimental effect, I consider here an environmental temperature which is large when compared to the resonator frequency, i.e., $T \gg \omega_0$. This condition is usually fulfilled for mechanical resonators such as carbon nanotubes (CNTs), which are a good candidate for an experimental realization of our system, see below. Indeed, their low mechanical frequency ($\omega_0/2\pi \approx \SI{100}{MHz}$) requires taking into account thermal fluctuations. Conversely, for microwave cavities in the GHz regime, $n_B = 0$ is usually a good approximation at cryogenic temperatures. 
 In @fig:qdlaser:finite-t-p, I report the numerical calculation of the average occupation of the oscillator in the steady state, together with the stability diagram for a nonideal case ($T = 10\omega_0$ and $P=0.5$):  The qualitative picture is not destroyed, as lasing and multistability are retained. More specifically, the lasing threshold is pushed to a larger coupling strength, according to Eq. (-@eq:qdlaser:rwa-pn-saturation-thr), as well as the onset of bi- and multistability. The thermal noise smears out the transitions to the lasing state. 
+
+![Effect of finite temperature and finite polarization. (a) Average occupation number in the oscillator at resonance as a function of the dot’s energy splitting $\Delta\epsilon$ and of the spin-resonator coupling strength $g$. (b) Stability diagram of the resonator. Italic numbers indicate the number of distinct peaks in the Fock distribution. Parameters: $Q = \num{e3}$, $\Gamma = 0.1\omega_0$, $P = 0.5$, and $T=10\omega_0$.](figures/qdlaser-finite-t-p.pdf){#fig:qdlaser:finite-t-p}
 
 ### Effect of spin relaxation
 
