@@ -19,7 +19,7 @@ the path that led to the work presented in Ch. -@sec:cps.
 I would like to appreciate here the hospitality received from
 Prof. Dr. Andrew Armour at the University of Nottingham, during my visits in
 February 2017 and February 2019, that led to the development of the results
-presented in Chs. @sec:qdlaser and @sec:jjcavity.
+presented in Chs. -@sec:qdlaser and -@sec:jjcavity.
 <!-- Furthermore, I acknowledge the hospitality received in the Équipe Cohérence
 Quantique at Institut Néel in Grenoble during my
 visit in September 2017 within a collaboration with the experimental group of
