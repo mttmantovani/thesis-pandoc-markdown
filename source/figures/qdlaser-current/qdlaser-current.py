@@ -141,8 +141,8 @@ def plot_data(**kwargs):
     fig = plt.figure(figsize=(defaults['width'], defaults['height']), linewidth=1)
     gs = fig.add_gridspec(2,1, hspace=0.25, height_ratios=[1.7,1])
 
-    gs0 = gs[0].subgridspec(2,2, wspace=0.2, height_ratios=[0.35,1])
-    gs1 = gs[1].subgridspec(1,2)
+    gs0 = gs[1].subgridspec(2,2, wspace=0.2, height_ratios=[0.35,1])
+    gs1 = gs[0].subgridspec(1,2)
 
     ax1 = fig.add_subplot(gs0[0,0]) # p_i
     ax2 = fig.add_subplot(gs0[1,0]) # current
