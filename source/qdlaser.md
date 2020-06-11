@@ -408,7 +408,7 @@ In this Section, I describe a method to efficiently detect the lasing state in t
 
 ### Current jumps and two-state model
 
-![Current.](figures/qdlaser-current.pdf){#fig:qdlaser:current}
+![Detection of bistability through current measurements. (a) and (b): Sketch of the dc-current in real time for the case of single stable amplitude (a) and bistability (b). (c) Occupation probabilities $\mathcal{P}_\mathrm{I}$ and $\mathcal{P}_\mathrm{II}$ for the two states, computed numerically. (d) Average current computed numerically (solid blue line) and with the effective two-state model (orange dashed line). The upper (red) and lower (black) dotted lines show the two current states $I_\mathrm{I}$ and $I_\mathrm{II}$ along with their variance, represented by the shaded areas. (e) Comparison between the inverse smallest nonzero eigenvalue of the Liouvillian ($|\lambda_1|$, blue circles) and the inverse sum of the two rates, $(W_{\mathrm{I}\rightarrow\mathrm{II}} + W_{\mathrm{II}\rightarrow\mathrm{I}})^{-1}$, as obtained with the two-state model approximation (orange dashed line). The curves are rescaled to the typical relaxation time of the resonator, $\kappa^{-1}$. Parameters: $g = 0.13\omega_0,\ \Gamma_L = \Gamma_R = 0.1\omega_0,\ Q=10^3,\ T=0,\ P=1$. ](figures/qdlaser-current.pdf){#fig:qdlaser:current}
 
 ## Experimental feasibility: Multistability in nonideal cases
 

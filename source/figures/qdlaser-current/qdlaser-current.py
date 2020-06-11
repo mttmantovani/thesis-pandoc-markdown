@@ -139,7 +139,7 @@ def plot_data(**kwargs):
 
     # Define figure layout
     fig = plt.figure(figsize=(defaults['width'], defaults['height']), linewidth=1)
-    gs = fig.add_gridspec(2,1, hspace=0.25, height_ratios=[1.7,1])
+    gs = fig.add_gridspec(2,1, hspace=0.15, height_ratios=[1.,1.7])
 
     gs0 = gs[1].subgridspec(2,2, wspace=0.2, height_ratios=[0.35,1])
     gs1 = gs[0].subgridspec(1,2)
@@ -225,11 +225,11 @@ def plot_data(**kwargs):
     ax3.legend(loc='upper left', frameon=False)
 
     # Letters and annotations
-    ax1.annotate('(a)', xy=(0,1), xytext=(-20,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
-    ax2.annotate('(b)', xy=(0,1), xytext=(-20,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
-    ax3.annotate('(c)', xy=(0,1), xytext=(-10,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
-    ax4.annotate('(d)', xy=(0,1), xytext=(-20,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
-    ax5.annotate('(e)', xy=(0,1), xytext=(-10,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
+    ax1.annotate('(c)', xy=(0,1), xytext=(-20,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
+    ax2.annotate('(d)', xy=(0,1), xytext=(-20,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
+    ax3.annotate('(e)', xy=(0,1), xytext=(-10,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
+    ax4.annotate('(a)', xy=(0,1), xytext=(-20,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
+    ax5.annotate('(b)', xy=(0,1), xytext=(-10,0), xycoords='axes fraction', textcoords='offset points', ha='center', va='top')
 
 
 
@@ -248,7 +248,7 @@ def plot_data(**kwargs):
     ax5.arrow(0.85,0.475,0,0.475/2,color='red', head_width=0.02, zorder=5)
     ax5.annotate(r'$I_\mathrm{II} - I_\mathrm{I}$', xy=(0.85,0.475), xycoords='data', ha='center', va='center', color='red', backgroundcolor='w', zorder=6)
 
-    plt.subplots_adjust(left=0.06,bottom=0.02, right=0.98, top=0.99, wspace=0.4, hspace=0.08 )
+    plt.subplots_adjust(left=0.06,bottom=0.10, right=0.98, top=0.99, wspace=0.4, hspace=0.08 )
     plt.savefig(f'{filename}.pdf', dpi=400)
 
 
