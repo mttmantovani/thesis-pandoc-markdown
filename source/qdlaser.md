@@ -347,6 +347,8 @@ To understand the origin of this behavior, we resort below to a semiclassical ap
 
 ### Semiclassical equations beyond RWA
 
+![Effective negative nonlinear damping, $\gamma_\mathrm{eff}$, acting on the resonator as a function of the time-averaged amplitude $\bar{A}$, on resonance ($\Delta\epsilon = \omega_0$), $g = 0.056\omega_0$ and $P=1$, for two different values of $\Gamma_L = \Gamma_R/2 = \Gamma$ (solid lines). The dashed curves indicate the corresponding behavior of $\gamma_\mathrm{RWA}$. The intersections with the horizontal dotted line at $\kappa = 10^{-4}\omega_0$ indicate limit cycles, which can be stable (filled green circles) or unstable (red open circle).](figures/qdlaser-nldamping.pdf){#fig:qdlaser:nldamping}
+
 The semiclassical approach utilized in @sec:qdlaser:rwa-semiclassical can be extended beyond the RWA by using the full Rabi Hamiltonian (-@eq:qdlaser:rabi-hamiltonian). First, Eqs. (-@eq:qdlaser:rwa-semiclassical-system-1)-(-@eq:qdlaser:rwa-semiclassical-system-4) are replaced by
 
 \begin{align}
@@ -394,6 +396,7 @@ The nonlinear damping is given by
 $$
 \gamma_\mathrm{eff}(\bar{A}) = - \frac{2 g}{\bar{A}}\ \mathrm{Re} [S_y^{(1)}(\bar{A})].
 $$
+
 
 
 ### Multistability analysis of the resonator
