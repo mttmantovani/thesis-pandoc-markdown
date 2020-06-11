@@ -408,6 +408,8 @@ In this Section, I describe a method to efficiently detect the lasing state in t
 
 ### Current jumps and two-state model
 
+![Current.](figures/qdlaser-current.pdf){#fig:qdlaser:current}
+
 ## Experimental feasibility: Multistability in nonideal cases
 
 The scope of this Section is to provide a realizability study for the system, by considering a number of processes which can hinder the onset of lasing and multistability in the cavity. Specifically, I will consider: (a) The effect of finite polarization ($P<1$) in the leads; (b) the effect of spin relaxation in the quantum dot; (c) for low-frequency mechanical oscillators, the effect of finite temperature and Duffing nonlinearity.
