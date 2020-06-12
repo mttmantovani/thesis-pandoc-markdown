@@ -157,8 +157,8 @@ def plot_data(**kwargs):
 
 
     ax2.plot(dataDict[1][:,0], 10*dataDict[1][:,1], label=r'$I\ [e\Gamma_R]$')
-    ax2.plot(dataDict[2][:,0], 10*dataDict[2][:,1], c='k', ls='--', label=r'$I_\mathrm{I}$')
-    ax2.plot(dataDict[2][:,0], 10*dataDict[2][:,2], c='r', ls='--', label=r'$I_\mathrm{II}$')
+    ax2.plot(dataDict[2][:,0], 10*dataDict[2][:,1], c='k', ls=':', label=r'$I_\mathrm{I}$')
+    ax2.plot(dataDict[2][:,0], 10*dataDict[2][:,2], c='r', ls=':', label=r'$I_\mathrm{II}$')
     ax2.plot(dataDict[2][:,0], 10*dataDict[2][:,3], c='orange', ls='--', label=r'$I_\mathrm{tsm}$')
     ax2.fill_between(dataDict[2][:,0], 10.*dataDict[2][:,1] + 0.03,  10.*dataDict[2][:,1] - 0.03, alpha=0.5, facecolor='silver', edgecolor=None, zorder=0)
     ax2.fill_between(dataDict[2][:,0], 10.*dataDict[2][:,2] + 0.03,  10.*dataDict[2][:,2] - 0.03, alpha=0.3, facecolor='red', edgecolor=None, zorder=0)
@@ -172,7 +172,7 @@ def plot_data(**kwargs):
     de, sum_rates = tsm_rates(data_noise=dataDict[4], data_tsm=dataDict[2], data_prob=dataDict[0])
 
     
-    ax3.plot(dataDict[3][:,0], -1e-3*dataDict[3][:,1], marker='o', ls='None', markerfacecolor='None', label=r'$\frac{\kappa}{|\lambda_1|}$')
+    ax3.plot(dataDict[3][:,0], -1e-3*dataDict[3][:,1], marker='o', ls='None', markerfacecolor='None', label=r'$\frac{\kappa}{-\mathrm{Re}\ \lambda_1}$')
     ax3.plot(de, sum_rates, color='orange', ls='--', label=r'$\frac{\kappa}{W_{\mathrm{I}\rightarrow\mathrm{II}} + W_{\mathrm{II}\rightarrow\mathrm{I}}}$')
 
     t, c1, c2 = telegraph()

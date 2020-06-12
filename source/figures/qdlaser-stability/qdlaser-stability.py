@@ -55,16 +55,16 @@ def plot_data(**kwargs):
 
     # Define figure layout
     fig = plt.figure(figsize=(defaults['width'], defaults['height']), linewidth=1)
-    gs = fig.add_gridspec(2,1, hspace=0.3, height_ratios=[1.4,1])
-    gs0 = gs[0].subgridspec(3,2, wspace=0.3, hspace=0, width_ratios=[1.7,1])
-    gs1 = gs[1].subgridspec(1,2, wspace=0.3)
+    gs = fig.add_gridspec(2,1, hspace=0.3, height_ratios=[1,1.4])
+    gs0 = gs[1].subgridspec(3,2, wspace=0.3, hspace=0, width_ratios=[1.7,1])
+    gs1 = gs[0].subgridspec(1,2, wspace=0.3)
 
     ax1 = fig.add_subplot(gs0[:,0])  # nav
     ax2 = fig.add_subplot(gs0[0,1])  # pn1
     ax3 = fig.add_subplot(gs0[1,1])  # pn2
     ax4 = fig.add_subplot(gs0[2,1])  # pn3
-    ax5 = fig.add_subplot(gs1[0])  # stability semiclassical
-    ax6 = fig.add_subplot(gs1[1]) # stability numerical
+    ax5 = fig.add_subplot(gs1[1])  # stability semiclassical
+    ax6 = fig.add_subplot(gs1[0]) # stability numerical
 
 
     # Nav
@@ -148,14 +148,14 @@ def plot_data(**kwargs):
     ax4.xaxis.set_label_coords(50, 0, transform=ax4.xaxis.get_ticklabels()[0].get_transform())
 
     # Letters and annotations
-    ax1.annotate('(a)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
-    ax2.annotate('(b)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
-    ax3.annotate('(c)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
-    ax4.annotate('(d)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
-    ax5.annotate('(e)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
-    ax5.annotate('numerical', xy=(1,0), xytext=(-5,5), xycoords='axes fraction', textcoords='offset points', ha='right', va='bottom')
-    ax6.annotate('(f)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
-    ax6.annotate('semiclassical', xy=(1,0), xytext=(-5,5), xycoords='axes fraction', textcoords='offset points', ha='right', va='bottom')
+    ax1.annotate('(c)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
+    ax2.annotate('(d)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
+    ax3.annotate('(e)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
+    ax4.annotate('(f)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
+    # ax5.annotate('(e)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
+    ax5.annotate('(b) numerical', xy=(1,0), xytext=(-5,5), xycoords='axes fraction', textcoords='offset points', ha='right', va='bottom')
+    # ax6.annotate('(f)', xy=(0,1), xytext=(2,-2), xycoords='axes fraction', textcoords='offset points', ha='left', va='top')
+    ax6.annotate('(a) semiclassical', xy=(1,0), xytext=(-5,5), xycoords='axes fraction', textcoords='offset points', ha='right', va='bottom')
 
 
     # Numbers

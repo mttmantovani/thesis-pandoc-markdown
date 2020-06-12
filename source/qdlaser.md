@@ -347,8 +347,6 @@ To understand the origin of this behavior, we resort below to a semiclassical ap
 
 ### Semiclassical equations beyond RWA
 
-![Effective negative nonlinear damping, $\gamma_\mathrm{eff}$, acting on the resonator as a function of the time-averaged amplitude $\bar{A}$, on resonance ($\Delta\epsilon = \omega_0$), $g = 0.056\omega_0$ and $P=1$, for two different values of $\Gamma_L = \Gamma_R/2 = \Gamma$ (solid lines). The dashed curves indicate the corresponding behavior of $\gamma_\mathrm{RWA}$. The intersections with the horizontal dotted line at $\kappa = 10^{-4}\omega_0$ indicate limit cycles, which can be stable (filled green circles) or unstable (red open circle).](figures/qdlaser-nldamping.pdf){#fig:qdlaser:nldamping}
-
 The semiclassical approach utilized in @sec:qdlaser:rwa-semiclassical can be extended beyond the RWA by using the full Rabi Hamiltonian (-@eq:qdlaser:rabi-hamiltonian). First, Eqs. (-@eq:qdlaser:rwa-semiclassical-system-1)-(-@eq:qdlaser:rwa-semiclassical-system-4) are replaced by
 
 \begin{align}
@@ -362,58 +360,174 @@ After the semiclassical approximation, setting again $\Gamma_L = \Gamma_R/2  = \
 \dot{S}_{x} &=- \Gamma S_{x}-2 g A[\sin (2 \omega_{0} t-\phi)+\sin \phi] S_{z}, \label{eq:qdlaser:no-rwa-semiclassical-system-1} \\ 
 \dot{S}_{y} &=-\Gamma S_{y}-2 g A[\cos (2 \omega_{0} t-\phi)+\cos \phi] S_{z},\label{eq:qdlaser:no-rwa-semiclassical-system-2} \\ 
 \dot{S}_{z} &=-\Gamma S_{z}+2 g A \{[\sin (2 \omega_{0} t-\phi)+\sin \phi] S_{x} +[\cos (2 \omega_{0} t-\phi)+\cos \phi] S_{y}\}+\Gamma, \label{eq:qdlaser:no-rwa-semiclassical-system-3} \\ 
-\dot{A} &= -\frac{\kappa}{2} A+\frac{g}{2}\left\{\left[\sin \left(2 \omega_{0} t-\phi\right)-\sin \phi\right] S_{x} + \left[\cos \left(2 \omega_{0} t-\phi\right)+\cos \phi\right] S_{y}\right\}, \label{eq:qdlaser:no-rwa-semiclassical-system-4} \\ 
+\dot{A} &= -\frac{\kappa}{2} A+\frac{g}{2}\left\{\left[\sin \left(2 \omega_{0} t-\phi\right)-\sin \phi\right] S_{x} + \left[\cos \left(2 \omega_{0} t-\phi\right)-\cos \phi\right] S_{y}\right\}, \label{eq:qdlaser:no-rwa-semiclassical-system-4} \\ 
 \dot{\phi} &= -\frac{g}{2 A}\left\{\left[\cos \left(2 \omega_{0} t-\phi\right)+\cos \phi\right] S_{x} -\left[\sin \left(2 \omega_{0} t-\phi\right)+\sin \phi\right] S_{y}\right\}. \label{eq:qdlaser:no-rwa-semiclassical-system-5}
 \end{align}
 
 Contrary to the RWA case, this nonlinear set of equations does not have a stationary solution in the rotating frame: The resonator will approach a limit-cycle oscillating solution. A more thorough analysis is then necessary to gain further quantitative information on the long-time limit behavior of the resonator dynamics.
-The basic idea consists in studying Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) in Fourier space, deriving an effective expression for the nonlinear damping of the resonator, $\gamma_\mathrm{eff}$. To achieve this, it is crucial to exploit the fact that the dynamics of the resonator amplitude $A$ is *slow* compared to the electronic driving and to the oscillations themselves, a condition satisfied when $\kappa \ll \{\Gamma; g; \omega_0\}$. I also assume that, eventually, the phase of the oscillator evolves harmonically as $\phi = \omega_0 t$. This can be checked empirically by solving numerically the time-dependent equations (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) and looking at the long-time behavior of $A(t)$. It is then possible to average the charge dynamics \[determined by Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-3)\] over a resonator period $\mathcal{T} = 2\pi/\omega_0$, during which $A$ can be considered constant. In this way, one can calculate the coarse-grained effect of the charge dynamics on the resonator amplitude. Averaging Eq. (-@eq:qdlaser:no-rwa-semiclassical-system-4) over $\mathcal{T}$, we obtain
+The basic idea consists in studying Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) in Fourier space, deriving an effective expression for the nonlinear damping of the resonator, $\gamma_\mathrm{eff}$. To achieve this, it is crucial to exploit the fact that the dynamics of the resonator amplitude $A$ is *slow* compared to the electronic driving and to the oscillations themselves, a condition satisfied when $\kappa \ll \{\Gamma; g; \omega_0\}$. I also assume that, eventually, the phase of the oscillator in the rotating frame is almost constant. As in the RWA case, the final result will be independent on $\phi$ and it can be set to 0. This can be checked empirically by solving numerically the time-dependent equations (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-5) and looking at the long-time behavior of $A(t)$. It is then possible to average the charge dynamics \[determined by Eqs. (-@eq:qdlaser:no-rwa-semiclassical-system-1)-(-@eq:qdlaser:no-rwa-semiclassical-system-3)\] over a resonator period $\mathcal{T} = 2\pi/\omega_0$, during which $A$ can be considered constant. In this way, one can calculate the coarse-grained effect of the charge dynamics on the resonator amplitude. Averaging Eq. (-@eq:qdlaser:no-rwa-semiclassical-system-4) over $\mathcal{T}$, we obtain
 
 $$
-\dot{\bar{A}} = -\frac{\kappa}{2}\bar{A} + \frac{g}{\mathcal{T}} \int_0^\mathcal{T} dt' \cos (\omega_0 t') S_y(t', \bar{A}),
+\dot{\bar{A}} = -\frac{\kappa}{2}\bar{A} + \frac{g}{2 \mathcal{T}} \int_0^\mathcal{T} dt'\left\{ \sin (2\omega_0 t') S_x(t', \bar{A}) + [\cos (2\omega_0 t') -1] S_y(t', \bar{A}) \right\},
 $$
 {#eq:qdlaser:average-A-equation-1}
 
-
-![Multistability of the resonator. (a) Average photon occupation $\bar{n}$ in the resonator as a function of spin energy splitting $\Delta\epsilon$ and spin-resonator coupling strength $g$. (b)-(d) Steady-state Fock distributions $p_n$ at three different points (triangle, star, and circle). (e) Number of distinct peaks in the Fock distribution (indicated by italic numbers) obtained numerically. (f) Number of stable amplitudes of oscillations (italic numbers) obtained by semiclassical analysis. Parameters: $\Gamma_L = \Gamma_R = 0.1\omega_0,\ Q=10^3,\ T=0,\ P=1$.](figures/qdlaser-stability.pdf){#fig:qdlaser:stability}
-
-where $\bar{A} = 1/\mathcal{T}\int_0^\mathcal{T} dt' A(t')$. The cosine term in the integration acts as a Fourier filter, eliminating all Fourier components of $S_y$ except for the ones oscillating at $\pm\omega_0 t$. The Fourier transforms of the spin quantities are defined as
+where $\bar{A} = 1/\mathcal{T}\int_0^\mathcal{T} dt' A(t')$. The cosine term in the integration acts as a Fourier filter, eliminating all Fourier components of $S_x$ and $S_y$ except for the ones oscillating at $\pm 2\omega_0 t$. The Fourier transforms of the spin quantities are defined as
 
 $$
 \begin{aligned}
-  S_k (t) &= \sum_{n=-\infty}^{+\infty} e^{-i\omega_0 n t}S_k^{(n)}, \\
-  S_k^{(n)}&= \frac{1}{\mathcal{T}}\int_0^\mathcal{T} dt S_k(t) e^{i\omega_0 n t},
+  S_k (t) &= \sum_{n=-\infty}^{+\infty} e^{-2i\omega_0 n t}S_k^{(n)}, \\
+  S_k^{(n)}&= \frac{1}{\mathcal{T}}\int_0^\mathcal{T} dt S_k(t) e^{2i\omega_0 n t},
 \end{aligned}
 $$
+{#eq:qdlaser:fourier-expansion}
 
 with $k = x,y,z$. Because $S_k (t)$ is real, then $S_k^{(-n)} = S_k^{(n)*}$, and Eq. (-@eq:qdlaser:average-A-equation-1) becomes
 
 $$
-\dot{\bar{A}} = -\frac{\kappa}{2}\bar{A} + g\ \mathrm{Re} [S_y^{(1)}(\bar{A})] = -\frac{\bar{A}}{2} [ \kappa + \gamma_\mathrm{eff}(\bar{A})].
+\dot{\bar{A}} = -\frac{\kappa}{2}\bar{A} + \frac{g}{2}\ \{ -S_y^{(0)} + \mathrm{Re} [S_y^{(1)}(\bar{A}) - \mathrm{Im} [S_x^{(1)}(\bar{A})]] \} = -\frac{\bar{A}}{2} [ \kappa + \gamma_\mathrm{eff}(\bar{A})].
 $$
+
 The nonlinear damping is given by 
 
 $$
-\gamma_\mathrm{eff}(\bar{A}) = - \frac{2 g}{\bar{A}}\ \mathrm{Re} [S_y^{(1)}(\bar{A})].
+\gamma_\mathrm{eff}(\bar{A}) = - \frac{g}{\bar{A}}\  \left\{ \mathrm{Re} [S_y^{(1)}(\bar{A})] - \mathrm{Im} [S_x^{(1)}] - S_y^{(0)}\right\}.
 $$
+{#eq:qdlaser:nldamping-1}
+
+Equation (-@eq:qdlaser:nldamping-1) can be recast to be dependent only on $S_z^{(0)}$ and $S_z^{(1)}$. First, we write the equations for the spin variables assuming constant $A$ as the vector equation
+
+$$
+\dot{\vec{S}}(t)=\Gamma \hat{u}_{z}-\Gamma \vec{S}(t)+\vec{S}(t) \times \vec{B}(t),
+$$
+{#eq:qdlaser:system-vector}
+
+with $\hat{u}_z$ the unit vector in $z$-direction and 
+
+$$
+\vec{B}(t)=\left(\begin{array}{c}B_{x}(t) \\ B_{y}(t)\end{array}\right)=2 g A\left(\begin{array}{c}-1-\cos \left(2 \omega_{0} t\right) \\ \sin \left(2 \omega_{0} t\right)\end{array}\right).
+$$
+
+![Effective negative nonlinear damping, $\gamma_\mathrm{eff}$, acting on the resonator as a function of the time-averaged amplitude $\bar{A}$, on resonance ($\Delta\epsilon = \omega_0$), $g = 0.056\omega_0$ and $P=1$, for two different values of $\Gamma_L = \Gamma_R/2 = \Gamma$ (solid lines). The dashed curves indicate the corresponding behavior of $\gamma_\mathrm{RWA}$. The intersections with the horizontal dotted line at $\kappa = 10^{-4}\omega_0$ indicate limit cycles, which can be stable (filled green circles) or unstable (red open circle).](figures/qdlaser-nldamping.pdf){#fig:qdlaser:nldamping}
+
+Equation (-@eq:qdlaser:system-vector) describes the motion of a spin under a varying effective magnetic field $\vec{B}(t)$. The behavior of its solutions is similar to that seen in previous studies on cQED and optomechanical systems [@Marquardt2006;@Rodrigues2007;@Rodrigues2007a], although in this case a closed approximate analytical solution cannot be found. However, we can look at Eq. (-@eq:qdlaser:system-vector) in Fourier space using expansion (-@eq:qdlaser:fourier-expansion), which yields a recursion relation for the Fourier coefficient $S_z^{(n)}$ in terms of $S_z^{(n\pm1)}$. It reads:
+
+$$
+\left[\chi_{n}^{-1}+\left(\frac{2 g A}{\Gamma}\right)^{2}\left(\chi_{n}+\frac{\chi_{n-1}+\chi_{n+1}}{2}\right)\right] S_{z}^{(n)}= \delta_{n, 0}-\left(\frac{2 g A}{\Gamma}\right)^{2}\left(\frac{\chi_{n}+\chi_{n+1}}{2} S_{z}^{(n+1)}+\frac{\chi_{n-1}+\chi_{n}}{2} S_{z}^{(n-1)}\right).
+$$
+{#eq:qdlaser:equation-recursive-sz}
+
+We have introduced the generalized dimensionless susceptibility $\chi_{n}=\Gamma /\left(\Gamma+2 i n \omega_{0}\right)$. Equation (-@eq:qdlaser:equation-recursive-sz) is a matrix equation with an infinite band-diagonal matrix, having only three nonzero diagonals, and a constant vector. It can be solved numerically by truncating the resulting matrix, since the Fourier coefficients decay rapidly for increasing $n$. In practice, using $n \approx 15$ is sufficient to ensure convergence for the cases considered here. After solving numerically Eq. (-@eq:qdlaser:equation-recursive-sz), one can find $S_x^{(n)}$ and $S_y^{(n)}$ in terms of $S_z^{(n)}$, and plug the solution into Eq. (-@eq:qdlaser:nldamping-1), obtaining
+
+$$
+\gamma_{\mathrm{eff}}(\bar{A})=-\frac{2 \lambda^{2}}{\Gamma}\left[\frac{4 \omega_{0}^{2}}{\Gamma^{2}+4 \omega_{0}^{2}} S_{z}^{(0)}-\operatorname{Im}\left(\frac{2 \omega_{0}}{\Gamma+2 i \omega_{0}} S_{z}^{(1)}\right)\right].
+$$
+
+The treatment can be readily generalized for $\Delta\epsilon \neq \omega_0$. In this case, the Fourier coefficients of $S_z$ will satisfy
+
+$$
+\begin{split}
+ S_{z}^{(n)} = \frac{\delta_{n, 0}-\left(\frac{2 g A}{\Gamma}\right)^{2}\left(\frac{\chi_{n}^{+}+\chi_{n}^{-}}{2} S_{z}^{(n+1)}+\frac{\chi_{n-1}^{+}+\chi_{n-1}^{-}}{2} S_{z}^{(n-1)}\right)}{\frac{\left(\chi_{n-1}^{-}\right)^{-1}+\left(\chi_{n}^{+}\right)^{-1}}{2}+ \left(\frac{2 g A}{\Gamma}\right)^{2}\left(\frac{\chi_{n}^{+}+\chi_{n}^{-}+\chi_{n-1}^{+}+\chi_{n-1}^{-}}{2}\right)},
+\end{split}
+$$
+
+with the generalized susceptibilities
+
+$$
+\chi_{n}^{-}=\frac{\Gamma}{\Gamma+i\left[2 \omega_{0} n+\left(\omega_{0}-\Delta \varepsilon\right)\right]},\quad  \chi_{n}^{+}=\frac{\Gamma}{\Gamma+i\left[2 \omega_{0} n+\left(\omega_{0}+\Delta \varepsilon\right)\right]}.
+$$
+
+For $\Delta\epsilon = \omega_0$, we recover $\chi_n^- = \chi_n$ and $\chi_n^+ = \chi_{n+1}$. The expression for the nonlinear damping is then given by
+
+$$
+\gamma_{\mathrm{eff}}(\bar{A})=-\frac{2 g^{2}}{\Gamma}\left\{\frac{4 \omega_{0} \Delta \epsilon}{\Gamma^{2}\left(1+\frac{\Delta \epsilon^{2}-\omega_{0}^{2}}{\Gamma^{2}}\right)^{2}+4 \omega_{0}^{2}} S_{z}^{(0)}-\operatorname{Im}\left[\frac{2 \Delta \epsilon}{\Gamma\left(1+\frac{\Delta \epsilon^{2}-\omega_{0}^{2}}{\Gamma^{2}}\right)+2 i \omega_{0}} S_{z}^{(1)}\right]\right\}.
+$$
+{#eq:qdlaser:nonlinear-damping-off-resonance}
 
 
 
 ### Multistability analysis of the resonator
 
-From the equation of the nonlinear damping to the multistability; plot of nonlinear damping and stability diagram, comparison with numerical results. @fig:qdlaser:stability.
+The behavior of the nonlinear damping as a function of the time-average amplitude $\bar{A}$ is shown at resonance ($\Delta\epsilon = \omega_0$) in @fig:qdlaser:nldamping. At low amplitudes, and for low tunneling rates $\Gamma$, $\gamma_\mathrm{eff} \approx \gamma_\mathrm{RWA}$, i.e., the RWA is recovered. By contrast, if $\Gamma$ is increased, the nonlinear damping shows a nonmonotonic and oscillatory behaviour, with maxima close to points $g\bar{A} \approx j\omega_0$, with $j$ integer. Whenever the curve of $-\gamma_\mathrm{eff}$ is equal to the intrinsic damping rate $\kappa$, a limit cycle for the resonator amplitude is found. As pictured in @fig:qdlaser:nldamping, the oscillatory behaviour of $\gamma_\mathrm{eff}$ permits the coexistence of multiple solutions. The stability of the limit cycles will depend on the gradient of $d\bar{A}/dt$ with respect to $\bar{A}$ according to the standard analysis, i.e., a limit cycle is stable if the gradient is negative [@Rodrigues2007a;@Strogatz2015].
 
-## Detecting lasing and multistability with transport measurements
+![Multistability of the resonator. (a) Number of stable amplitudes of oscillations (italic numbers) obtained by semiclassical analysis. (b) Number of distinct peaks in the Fock distribution (indicated by italic numbers) obtained numerically. (c) Average photon occupation $\bar{n}$ in the resonator as a function of spin energy splitting $\Delta\epsilon$ and spin-resonator coupling strength $g$. (d)-(f) Steady-state Fock distributions $p_n$ at three different points (triangle, star, and circle).   Parameters: $\Gamma_L = \Gamma_R = 0.1\omega_0,\ Q=10^3,\ T=0,\ P=1$.](figures/qdlaser-stability.pdf){#fig:qdlaser:stability}
 
-In this Section, I describe a method to efficiently detect the lasing state in the resonator as well as the multistability.
+Equation (-@eq:qdlaser:nonlinear-damping-off-resonance) allows us to compute the number of stable solutions also off-resonance ($\Delta\epsilon \neq \omega_0$),  yielding the complex stability diagram pictured in @fig:qdlaser:stability(a). To test the validity of the results, it is straightforward to compare these results to the numerics, by computing the number of peaks in the steady-state Fock distribution \[@fig:qdlaser:stability(b)\]. Notice that the two predictions are almost equivalent, witnessing a good performance of the semiclassical approximation. In @fig:qdlaser:stability(c)-(f), I further show the average Fock occupation and the actual Fock distribution in three characteristic points of the $(\Delta\epsilon, g)$ parameter space, indicating one, two and three peaks.
 
-### Full-counting statistics
+
+To conclude this Section, I remark a strong advantage of the semiclassical approximation. Because its good agreement with the numerical calculation has been verified, it can be used to predict the onset of bi- and multistability at much lower coupling strengths, $g < 10^{-3}\omega_0$, and large quality factors, $Q > 10^5$, which are most likely to be reached in real experiments (see below, @sec:qdlaser:feasibility). Furthermore, the average number of photons in these cases will be generally much higher, and the semiclassical approximation is expected to work even better. In the results shown above, I was able to compare numerics and semiclassical models only for modest values of $Q$, yielding multistability only at large couplings $g \approx 0.1\omega_0$. For larger $Q$, the numerical solution of the master equation requires taking into account many more Fock states for the resonator Hilbert space (up to $n \gtrsim 500$), making the search for the steady state prohibitively slow and memory-consuming. 
+
+
+## Detecting lasing and multistability with transport measurements {#sec:qdlaser:current}
+
+In this Section, I describe a method to efficiently detect the lasing state in the resonator as well as the multistability. With a large bias voltage between the leads, transport is only allowed from left to right. The average stationary current through the right lead will simply be proportional to the populations of the spin levels, according to
+
+$$
+I = e(\Gamma_R^\uparrow \rho_\uparrow + \Gamma_R^\downarrow \rho_\downarrow),
+$$
+{#eq:qdlaser:average-current-finite-polarization}
+
+where $e>0$ is the elementary charge. This result can also be rigorously derived using full-counting statistics (see Appendix -@sec:qdlaser:full-counting-statistics and Refs. \onlinecite{Levitov1993,Levitov1996,Blanter2000,Bagrets2003,Flindt2005}). For fully polarized leads, Eq. (-@eq:qdlaser:average-current-finite-polarization) reduces to $I = e\Gamma_R \rho_\downarrow$, and offers a simple energy balance condition between the average number of photons in the cavity and the average current:
+
+$$
+\kappa \bar{n} = \frac{I}{e}.
+$$
+{#eq:qdlaser:energy-balance-current-photons}
+
+Equation (-@eq:qdlaser:energy-balance-current-photons) states that the outgoing flux of quanta of oscillation equals the ingoing flux of electrons in the system. When the resonator is deep into the lasing state, the small quantum fluctuations (sub-Poissonian photon statistics) reflect in the electron counting statistics through the right electrode, and the average current is much larger than its variance, $\Delta I$. Therefore, a time-monitoring of the current provides an indirect measure of the oscillator amplitude, as sketched in @fig:qdlaser:current(a).
 
 ### Current jumps and two-state model
 
+When the resonator is bistable, it is still possible to exploit current measurements to detect the bistability. For a well-developed bistability, the resonator exists in a mixed state containing two different limit cycles, which in the semiclassical pictures consist of well-separated amplitudes $A_\mathrm{I}$ and $A_\mathrm{II}$, with probabilities $\mathcal{P}_\mathrm{I}$ and $\mathcal{P}_\mathrm{II}$. Quantum mechanically, we have seen that the bistability appears as doubly-peaked Fock distribution, see inset of @fig:qdlaser:beyond-rwa(c) and @fig:qdlaser:stability(e), with the area of the peaks roughly corresponding to $\mathcal{P}_\mathrm{I}$ and $\mathcal{P}_\mathrm{II}$. If $\mathcal{P}_\mathrm{I} \approx \mathcal{P}_\mathrm{II}$, the resonator amplitude switches randomly between the two well-defined plateaus of values $A_\mathrm{I}$ and $A_\mathrm{II}$. Since the current is closely connected with the resonator state, it is reasonable to assume that a time-monitoring of the current in the bistable scenario will display a *telegraph* dynamics: The current will randomly switch between plateaus of different average current, associated with different amplitudes of oscillation [@Kirton2013]. Figure -@fig:qdlaser:current(b) illustrates this situation with a qualitative diagram. The semiclassical treatment offers a natural interpretation of this behavior, since for each stable solution $A_\mathrm{I},\ A_\mathrm{II}$, one has a different solution for the average current, $I_\mathrm{I}$ and $I_\mathrm{II}$.
+
+Without resorting to a time-dependent numerical simulation of the system dynamics, we can still predict whether the current will display a telegraph dynamics. Three conditions must be satisfied:
+
+(i) The two states interested by the bistability should have similar probabilities, $\mathcal{P}_\mathrm{I} \approx \mathcal{P}_\mathrm{II}$;
+(ii) The variance associated to each current plateau should be smaller than their distance, i.e.,
+$$
+  \Delta I_\mathrm{I},\ \Delta I_\mathrm{II} \ll |I_\mathrm{II} - I_\mathrm{I}|;
+$$
+(iii) Each plateau should have a sufficiently long lifetime, such that separated jumps can be observable.
+
+Under conditions (i)-(iii), the system can be approximated with a classical two-state model, with the transition rates $W_{\mathrm{I} \rightarrow \mathrm{II}}$ and $W_{\mathrm{II} \rightarrow \mathrm{I}}$. The probabilities are related to the rates through
+
+$$
+\mathcal{P}_{\mathrm{I}}=\frac{W_{\mathrm{II} \rightarrow \mathrm{I}}}{W_{\mathrm{I} \rightarrow \mathrm{II}}+W_{\mathrm{II} \rightarrow \mathrm{I}}}, \quad \mathcal{P}_{\mathrm{II}}=\frac{W_{\mathrm{I} \rightarrow \mathrm{II}}}{W_{\mathrm{I} \rightarrow \mathrm{II}}+W_{\mathrm{II} \rightarrow \mathrm{I}}},
+$$
+{#eq:qdlaser:probabilities-rates-tsm}
+
+and the average current will be given by the weighted average
+
+$$
+I_\mathrm{tsm}=\frac{W_{\mathrm{II} \rightarrow \mathrm{I}} I_{\mathrm{I}}+W_{\mathrm{I} \rightarrow \mathrm{II}} I_{\mathrm{II}}}{W_{\mathrm{I} \rightarrow \mathrm{II}}+W_{\mathrm{II} \rightarrow \mathrm{I}}}.
+$$
+{#eq:qdlaser:average-current-tsm}
+
+Another relevant quantity is the zero-frequency (shot) current noise, given by
+
+$$
+S(0)_\mathrm{tsm}=\frac{4 \mathcal{P}_{\mathrm{I}} \mathcal{P}_{\mathrm{II}}\left(I_{\mathrm{I}}-I_{\mathrm{II}}\right)^{2}}{W_{\mathrm{I} \rightarrow \mathrm{II}}+W_{\mathrm{II} \rightarrow \mathrm{I}}},
+$$
+{#eq:qdlaser:shot-noise-tsm}
+
+where the numerator corresponds to the two-state current variance [@Harvey2008]. The idea is now the following: In order to prove conditions (ii) and (iii), I first take a steady resonator state satisfying (i), such as the one depicted in @fig:qdlaser:stability(e). Notice that the $p_n$ between the two peaks is negligible, i.e., the two maxima of $p_n$ are well separated. I identify $\mathcal{P}_\mathrm{I}$ and $\mathcal{P}_\mathrm{II}$ as the area of each peak, i.e., the sum of the $p_n$ underlying each peak. Next, I set to zero the density matrix elements corresponding to one of the two states, obtaining two *truncated* density matrices which carry the information of each state separately. Using Eq. (-@eq:qdlaser:average-current-finite-polarization), I can calculate both $I_\mathrm{I}$ and $I_\mathrm{II}$. To estimate the variance associated with each current state, we can use
+
+$$
+\Delta I_\mathrm{I, II} \approx \sqrt{\Gamma_R S(0)_\mathrm{I, II}},
+$$
+
+where $S(0)_\mathrm{I,II}$ is the zero-frequency shot noise. It can be calculated numerically using the full-counting statistics method, see Appendix -@sec:qdlaser:full-counting-statistics, using the truncated states. In this way, we can check condition (ii). Finally, we have access to the sum of the rates,  $W_{\mathrm{I} \rightarrow \mathrm{II}} + W_{\mathrm{II} \rightarrow \mathrm{I}}$, by computing numerically the noise, $S(0)$, using the full density matrix, and then comparing it to the two-state relation Eq. (-@eq:qdlaser:shot-noise-tsm). The individual rates follow through Eq. (-@eq:qdlaser:probabilities-rates-tsm). One must then ensure *a posteriori* that both rates are much smaller than $\kappa$, which is the relaxation rate of the resonator, giving condition (iii).
+
 ![Detection of bistability through current measurements. (a) and (b): Sketch of the dc-current in real time for the case of single stable amplitude (a) and bistability (b). (c) Occupation probabilities $\mathcal{P}_\mathrm{I}$ and $\mathcal{P}_\mathrm{II}$ for the two states, computed numerically. (d) Average current computed numerically (solid blue line) and with the effective two-state model (orange dashed line). The upper (red) and lower (black) dotted lines show the two current states $I_\mathrm{I}$ and $I_\mathrm{II}$ along with their variance, represented by the shaded areas. (e) Comparison between the inverse smallest nonzero eigenvalue of the Liouvillian ($|\lambda_1|$, blue circles) and the inverse sum of the two rates, $(W_{\mathrm{I}\rightarrow\mathrm{II}} + W_{\mathrm{II}\rightarrow\mathrm{I}})^{-1}$, as obtained with the two-state model approximation (orange dashed line). The curves are rescaled to the typical relaxation time of the resonator, $\kappa^{-1}$. Parameters: $g = 0.13\omega_0,\ \Gamma_L = \Gamma_R = 0.1\omega_0,\ Q=10^3,\ T=0,\ P=1$. ](figures/qdlaser-current.pdf){#fig:qdlaser:current}
 
-## Experimental feasibility: Multistability in nonideal cases
+In @fig:qdlaser:current(c)-(d), I demonstrate the appropriateness of the two-state approximation for a parameter region where the oscillator develops a bistability. The solid blue line in @fig:qdlaser:current(d) shows Eq. (-@eq:qdlaser:average-current-finite-polarization) calculated numerically, while the dotted lines are the single-state currents, with probabilities pictured in panel (c). The orange dashed line is the result of Eq. (-@eq:qdlaser:average-current-tsm), which agrees well with the full numerics. 
+
+To further check the validity of the two-state model, it is possible to exploit the properties of the Liouvillian superoperator $\mathcal{L}$ of the system. If the system is truly bistable, the current noise is dominated by a very slow timescale, which is the real part of the smallest nonzero eigenvalue, $\lambda_1$, of $\mathcal{L}$. If $\lambda_1$ is small in magnitude and well-separated from the others (i.e., $|\lambda_1| \ll |\lambda_p|$ for $p>1$), one can discard the other eigenvalues, and identify $-\mathrm{Re}\ \lambda_1 = W_{\mathrm{I} \rightarrow \mathrm{II}} + W_{\mathrm{II} \rightarrow \mathrm{I}}$ by comparison with  Eq. (-@eq:qdlaser:shot-noise-tsm). In @fig:qdlaser:current(e), I report the behavior of $-\mathrm{Re}\ \lambda_1$ and the sum of rates obtained with the two-state model (in the bistable region of $\Delta\epsilon$, where the calculation makes sense). Despite a small difference, the agreement is quite good, showing that the dynamics of the system can truly be approximated by only two states.
+
+The method presented above can be in principle generalized to detect more than two current plateaus, providing a simple way to detect multistability in the resonator, without the need to resort to optical detection of a mechanical motion or quantum state tomography techniques (for the case of microwave cavities).
+
+
+## Experimental feasibility: Multistability in nonideal cases {#sec:qdlaser:feasibility}
 
 The scope of this Section is to provide a realizability study for the system, by considering a number of processes which can hinder the onset of lasing and multistability in the cavity. Specifically, I will consider: (a) The effect of finite polarization ($P<1$) in the leads; (b) the effect of spin relaxation in the quantum dot; (c) for low-frequency mechanical oscillators, the effect of finite temperature and Duffing nonlinearity.
 

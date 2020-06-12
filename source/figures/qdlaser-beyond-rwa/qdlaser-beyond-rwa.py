@@ -97,8 +97,10 @@ def plot_data(**kwargs):
     cax.xaxis.set_label_coords(0.015, 1.5, transform=cax.xaxis.get_ticklabels()[0].get_transform())
 
     ax3.axvline(x=0.0559, ls=':', color='dimgray')
+    ax3.plot(0.0559, 250, marker='v', markeredgecolor='k', markerfacecolor='lightskyblue')
 
     axins.fill_between(dataDict[2][:,0], dataDict[2][:,1], cmap='Blues')
+    axins.plot(30,0.0065, marker='v', markeredgecolor='k', markerfacecolor='lightskyblue')
 
     # Adjustments
     ax1.set_xticklabels([])

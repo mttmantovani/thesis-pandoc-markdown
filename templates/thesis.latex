@@ -124,6 +124,24 @@ $endif$
   \setcounter{tocdepth}{#1}%
 }
 
+% \rrangle and \llangle
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+	\mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+	\mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\de}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\dt}[1]{\frac{\od #1}{\od t}}
+\newcommand{\od}{\text{d}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mean}[1]{\langle #1 \rangle}
+
 %==============================BIBLATEX TWEAKS================================%
 
 % Exclude fullcited refs from bibliography (but keeps them with \cite)
