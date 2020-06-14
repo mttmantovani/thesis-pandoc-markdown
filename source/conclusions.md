@@ -1,5 +1,5 @@
 
-# Conclusions and outlook {#ch:conclusions}
+# Conclusions and outlook {#sec:conclusions}
 
 In this work, I have presented different hybrid quantum circuits composed of quantum dots
 or Josephson junctions coupled to electromagnetic or mechanical cavities.
@@ -43,7 +43,7 @@ proposed setup is therefore a versatile tool to fully
 inspect heat exchange mechanisms in hybrid circuits, leading to nanoscale heat
 pumps and cooling devices.
 
-In a third work, I have investigated the double-Cooper pair tunneling mechanism in a Josephson
+Finally, in a third work, I have investigated the double-Cooper pair tunneling mechanism in a Josephson
 junction coupled to a microwave LC-resonator. By deriving
 an effective Hamiltonian description for the circuit when the Josephson frequency is
 half of the resonator frequency, it is possible to distinguish two regimes
@@ -58,7 +58,7 @@ explore how microwave resonators can control electron transport and has
 potential implications in the study of overbias photon emission in
 superconducting scanning tunneling microscopy.
 
-Finally, I have studied numerically the relaxation dynamics of a hybrid circuit
+<!-- Finally, I have studied numerically the relaxation dynamics of a hybrid circuit
 formed by a fluxonium superconducting qubit strongly coupled to a chain of
 LC-resonators. The system, envisaged within an experimental collaboration, can
 be
@@ -70,7 +70,7 @@ fabricated components. The results show how relaxation takes the form of
 collapse and revival of qubit oscillations, due to the coherent coupling to a small number of environmental resonators. As a consequence, this setup can be used
 for an in-depth analysis of the onset of dissipation in solid-state circuits, as
 well as a platform of reservoir-engineering in quantum information processing
-and quantum simulation.
+and quantum simulation. -->
 
 The above discussion demonstrates how hybrid systems are a powerful tool to
 explore novel regimes of interactions, or to gain deeper knowledge on the

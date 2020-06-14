@@ -14,7 +14,8 @@ This is an equation:
 
 $$
 hello
-$$ {#eq:one}
+$$
+{#eq:one}
 
 hello. Reference to Eq. @eq:one. This is reference to this chapter: @sec:introduction.
 
@@ -40,4 +41,35 @@ Circuit QED:
 Hybrid systems:
 
 * Topology [@Kim2020];
+  
+
+## Structure of this Thesis and goals
+
+The main goal of this Thesis is to discuss and investigate a
+family of hybrid setups where quantum dots (or Josephson junctions) are coupled to bosonic cavities (nanomechanical
+resonators or superconducting microwave cavities), and drive the latter into highly
+nonequilibrium states through electron tunneling events. I outline below the content of each Chapter:
+
+* In Ch. -@sec:theory I introduce the theoretical and numerical framework
+  upon which the main results are obtained, i.e., the Markovian quantum master
+  equation to study the evolution of typical mesoscopic QED architectures.
+* In Ch. -@sec:qdlaser I discuss a solid-state implementation of a
+  single-atom maser, which is realized using a quantum dot in a
+  spin-valve configuration between ferromagnetic contacts; I show how the
+  systems exhibits unique features, such as the breakdown of the rotating-wave
+  approximation, widely used in the light-matter interaction context, and a
+  multistable lasing regime.
+* In Chapter -@sec:cps I present a single-photon pump device based on a
+  quantum-dot implementation of a Cooper-pair splitter, where an effective
+  coupling between two distant
+  harmonic resonators can be activated through Cooper-pair transport from a
+  superconducting contact. This enables an efficient photon transfer mechanism, as well
+  as cavity ground-state cooling.
+* In Chapter -@sec:jjcavity I discuss the theory of double-Cooper-pair
+  tunneling in a voltage-biased Josephson junction coupled to a microwave
+  resonator. I analyze the transition regime between coherent and incoherent
+  double-Cooper-pair tunneling, and further show how the system can be used as a
+  single-photon source.
+* In Chapter -@sec:conclusions I draw the conclusions and give an outlook on
+  the work presented.
 
