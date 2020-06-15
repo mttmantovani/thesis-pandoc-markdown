@@ -286,18 +286,48 @@ The secular approximation consists in neglecting the terms with $\omega'\neq \om
 $$
 \dot{\rho}_S = \sum_{\alpha \beta} \sum_{\omega} \Gamma_{\alpha \beta} (\omega) \left[A_\beta(\omega) \rho_S(t) A^\dagger_\alpha (\omega) - A^\dagger_\alpha(\omega) A_\beta (\omega) \rho_S(t) \right] + \mathrm{H.c.}
 $$
+{#eq:theory:bloch-redfield-after-secular}
 
 Now, we split the function $\Gamma_{\alpha \beta} (\omega)$ into
 
-\begin{align}
+$$
+\begin{aligned}
  \Gamma_{\alpha \beta}(\omega) &=\frac{1}{2} \gamma_{\alpha \beta}(\omega)+\frac{1}{2} \sigma_{\alpha \beta}(\omega), \\ \Gamma_{\beta \alpha}^{*}(\omega) &=\frac{1}{2} \gamma_{\alpha \beta}(\omega)-\frac{1}{2} \sigma_{\alpha \beta}(\omega),
-\end{align}
+\end{aligned}
+$$
+{#eq:theory:damping-coefficients-1}
 
 where
 
 $$
 \begin{array}{l}\gamma_{\alpha \beta}(\omega)=\Gamma_{\alpha \beta}(\omega)+\Gamma_{\beta \alpha}^{*}(\omega)=\int_{-\infty}^{+\infty} C_{\alpha \beta}(\tau) e^{+i \omega \tau} d \tau, \\ \sigma_{\alpha \beta}(\omega)=\Gamma_{\alpha \beta}(\omega)-\Gamma_{\beta \alpha}^{*}(\omega)=\int_{-\infty}^{+\infty} C_{\alpha \beta}(\tau) \operatorname{sgn}(\tau) \mathrm{e}^{+\mathrm{i} \omega \tau} \mathrm{d} \tau.\end{array}
 $$
+{#eq:theory:damping-coefficients-2}
+
+With the help of Eq. (-@eq:theory:damping-coefficients-1), rearranging the terms in Eq. (-@eq:theory:bloch-redfield-after-secular) yields the Lindblad form
+
+$$
+\dot{\rho}_S = -i [H_{LS}, \rho_S(t)] + \sum_\omega \sum_{\alpha,\beta} \gamma_{\alpha\beta}(\omega) \left[ A_\beta(\omega) \rho_S(t) A^\dagger_\alpha(\omega) - \frac{1}{2} \{ A^\dagger_\alpha(\omega) A_\beta(\omega), \rho_S(t)\} \right].
+$$
+
+The notation $\{ \cdot, \cdot \}$ refers to the anticommutator. The operator
+
+$$
+H_{LS} = \sum_{\omega} \sum_{\alpha\beta} \frac{1}{2i} \sigma_{\alpha\beta}(\omega) A^\dagger_\alpha(\omega) A_\beta (\omega)
+$$
+
+is called Lamb-shift Hamiltonian, and its effect is a renormalization of the unperturbed energy levels of the system, arising from the system-environment coupling. In most practical applications (including the ones presented in this work) the Lamb shift is usually neglected. It can be shown that the matrix $\gamma_{\alpha\beta} (\omega)$ is hermitian and positive [@Breuer2002], hence it is diagonalizable with positive damping coefficients yielding a diagonal form of the master equation. In the special case where the energy dependence of the damping coefficients can be neglected, the Lindblad form is particularly simple and given by
+
+$$
+\dot{\rho}_S = -i[H_{LS}, \rho_S(t)] - \sum_{\alpha} \gamma_\alpha \mathcal{D}(A_\alpha)\rho_S(t),
+$$
+
+where I have introduced the *Lindblad dissipator* with operator $A$ acting on the state $\rho$,
+
+$$
+\mathcal{D}(A)\rho = A \rho A^\dagger - \frac{1}{2}\{ A^\dagger A, \rho \}.
+$$
+
 
 ### Master equation in the energy representation
 
@@ -313,9 +343,34 @@ $$
 \dot{\rho}_S = -i [H_S + H_{LS}, \rho_S(t)] + \sum_{nmpq} \gamma_{nm,pq} \left[ L_{nm} \rho_S(t) L_{pq}^\dagger - \frac{1}{2} \{L_{pq}^\dagger L_{nm}, \rho_S(t) \}\right].
 $$
 
+The Lamb-shift Hamiltonian is $H_{LS} = \sum_{nm} \sigma_{nm} L_{nm}$, with matrix elements
+
+$$
+\sigma_{n m}=-\frac{i}{2} \delta_{\omega_{mn}}\sum_{\alpha \beta} \sum_{p}  \sigma_{\alpha \beta}\left(\omega_{mp}\right) (A_\beta)_{pm} (A_\alpha)_{pn}^*,
+$$
+
+and the damping coefficients in the dissipative part read explicitly
+
+$$
+\gamma_{nm,pq} = \delta_{\omega_{mn},\omega_{qp}} \sum_{\alpha\beta} \gamma_{\alpha\beta}(\omega_{mn})  (A_\beta)_{nm} (A_\alpha)^*_{pq}.
+$$
+
 ### Equivalence to rate equations
 
+A further, relevant simplification of the master equation can be made if the spectrum of the system Hamiltonian $H_S$ is nondegenerate. In this case, the Kronecker delta functions appearing in the definitions of the damping coefficients simplify into $\delta_{\omega_{mn}} \rightarrow \delta_{mn}$. By looking at the equation for the populations of the density matrix, $\rho_{nn} = \langle n | \rho_S | n \rangle$, we obtain
 
+$$
+\dot{\rho}_{nn} = \sum_m \gamma_{nm,nm} \rho_{mm} - \left[ \sum_m \gamma_{mn,mn} \right] \rho_{nn},
+$$
+{#eq:theory:pauli-rate-equation}
+
+i.e., populations only couple to the populations, while the coherences ($\rho_{nm}$ with $n \neq m$) decay to zero. The coefficients $\gamma_{nm,nm}$ correspond to the transition rates from state $m$ to $n$, and are equivalent to those obtained by Fermi's golden rule:
+
+$$
+\gamma_{nm,nm} = w_{m \rightarrow n} = \sum_{\alpha\beta} \gamma_{\alpha\beta} (\omega_{mn}) (A_\beta)_{nm} (A_\alpha)_{nm}^*.
+$$
+
+Equation (-@eq:theory:pauli-rate-equation) is known as Pauli master equation. It allows to compute the evolution of an open system by taking into account only the populations of the eigenstates (which are $N$ for a $N$-dimensional Hilbert space of the system) and not the full density matrix (composed of $N^2$ elements). Therefore, whenever the conditions to use it apply, it is of great numerical advantage for a large system.
 
 ### Discussion on the assumptions made
 
@@ -347,15 +402,22 @@ Equation (-@eq:theory:liouville-interaction-picture-third-order) is formally exa
 
 ## Solution of the master equation
 
+I briefly present here a number of analytical and numerical tools than can be used to solve the master equation, some of which are employed in the following Chapters of the Thesis.
+
+
 ### Analytical techniques
 
 #### Equation of motion
+
+The master ...
 
 #### Quantum regression theorem
 
 ### Numerical techniques
 
 #### Steady-state solution
+
+Also case of Pauli rate eq.
 
 #### Numerical integration
 
