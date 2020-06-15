@@ -299,7 +299,7 @@ $$
 \begin{array}{l}\gamma_{\alpha \beta}(\omega)=\Gamma_{\alpha \beta}(\omega)+\Gamma_{\beta \alpha}^{*}(\omega)=\int_{-\infty}^{+\infty} C_{\alpha \beta}(\tau) e^{+i \omega \tau} d \tau, \\ \sigma_{\alpha \beta}(\omega)=\Gamma_{\alpha \beta}(\omega)-\Gamma_{\beta \alpha}^{*}(\omega)=\int_{-\infty}^{+\infty} C_{\alpha \beta}(\tau) \operatorname{sgn}(\tau) \mathrm{e}^{+\mathrm{i} \omega \tau} \mathrm{d} \tau.\end{array}
 $$
 
-### Master equation in the energy eigenbasis
+### Master equation in the energy representation
 
 A sometimes useful representation of the master equation (without employing the spectral decomposition) is found by projecting Eq. (-@eq:theory:bloch-redfield) in the energy eigenbasis $|n\rangle$, which yields
 
@@ -307,7 +307,11 @@ $$
 \dot{\rho}_S = \sum_{\alpha\beta} \sum_{nmpq} \Gamma_{\alpha\beta}(\omega_{mn})e^{i[\omega_{mn} - \omega_{qp}]t} (A_\beta)_{nm} (A_\alpha)_{pq}^* \left\{ L_{nm} \rho_S (t) L_{pq}^\dagger - L^\dagger_{pq} L_{nm} \rho_S(t) \right\} + \mathrm{H.c.}
 $$
 
-We have introduced the shorthands $(A_\alpha)_{nm} = \langle n | A_\alpha | m \rangle$ and $L_{nm} = |n \rangle \langle m|$ (the latter is the Lindblad jump operator in the energy representation). The secular approximation amounts here to neglecting all terms where $\omega_{nm} \neq \omega_{qp}$.
+We have introduced the shorthands $(A_\alpha)_{nm} = \langle n | A_\alpha | m \rangle$ and $L_{nm} = |n \rangle \langle m|$ (the latter is the Lindblad jump operator in the energy representation). The secular approximation amounts here to neglecting all terms where $\omega_{nm} \neq \omega_{qp}$. The Lindblad form of the master equation in the Schrödinger picture reads
+
+$$
+\dot{\rho}_S = -i [H_S + H_{LS}, \rho_S(t)] + \sum_{nmpq} \gamma_{nm,pq} \left[ L_{nm} \rho_S(t) L_{pq}^\dagger - \frac{1}{2} \{L_{pq}^\dagger L_{nm}, \rho_S(t) \}\right].
+$$
 
 ### Equivalence to rate equations
 
