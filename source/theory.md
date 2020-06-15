@@ -94,25 +94,7 @@ $$
    i \frac{\partial}{\partial t}U(t,0) = H(t) U(t,0).
 $$
 
-## Solution of the master equation
-
-### Analytical techniques
-
-#### Equation of motion
-
-#### Quantum regression theorem
-
-### Numerical techniques
-
-#### Steady-state solution
-
-#### Numerical integration
-
-#### Quantum trajectories (piecewise deterministic processes)
-
-![Numerical scheme for the propagation of one time step in the quantum trajectories (PDP) method.](figures/theory-quantum-trajectories.pdf){#fig:theory:quantum-trajectories}
-
-<!-- ### Interaction picture
+### Interaction picture {#sec:theory:interaction-picture}
 
 Equations (-@eq:theory:liouville)-(-@eq:theory:liouville-evolution-unitary-operator)
 are written in the Schrödinger picture, where the time evolution of the system
@@ -158,7 +140,184 @@ $$
 {#eq:theory:liouville-equation-interaction-picture}
 
 Notice that $H_I(t)$ is the interaction Hamiltonian transformed to the
-interaction picture according to Eq. (-@eq:theory:operator-interaction-picture). We now consider the formal expression for $\rho_I(t + \delta t)$:
+interaction picture according to Eq. (-@eq:theory:operator-interaction-picture). 
+
+To start the formal derivation of the master equation, it will be necessary to perform a partial trace over the degrees of freedom of the environment, in order to get an equation for the reduced density matrix of the system, $\rho_S = \Tr_E [\rho]$. To this end, we will consider a specific form of the interaction Hamiltonian $H_I$, given by
+
+$$
+H_I = \sum_\alpha A_\alpha \otimes B_\alpha,
+$$
+{#eq:theory:interaction-hamiltonian-form}
+
+where $A_\alpha$ are system operators and $B_\alpha$ are bath operators. In the interaction picture, Eq. (-@eq:theory:interaction-hamiltonian-form) transforms into
+
+$$
+H_I(t) = \sum_\alpha A_{\alpha,I}(t) \otimes B_{\alpha,I}(t),
+$$
+
+using Eq. (-@eq:theory:operator-interaction-picture). We will assume throughout for simplicity hermitian operators $A_\alpha = A_\alpha^\dagger$ and $B_\alpha = B_\alpha^\dagger$, although this is not a strict requirement, as long as $H_I$ is hermitian as a whole (see Appendix -@sec:theory:aux:1).
+
+The standard derivation of the master equation stems from perturbation theory applied to Eq. (-@eq:theory:liouville-equation-interaction-picture), under the assumption of *weak coupling* between the system and the environment, followed by the subsequent application of the Born, Markov and secular approximations  [@Breuer2002]. Let us first integrate formally Eq. (-@eq:theory:liouville-equation-interaction-picture) and then insert the solution back on its right-hand side. After tracing over the environment, we obtain
+
+$$
+\dot{\rho}_S = -i \Tr_E \{ [H_I(t), \rho(0)]\} - \int_0^t \Tr_E \{ [H_I(t), [H_I(t'), \rho(t')]] \} dt'.
+$$
+{#eq:theory:liouville-equation-iteration}
+
+Equation (-@eq:theory:liouville-equation-iteration) is exact, but depends on the full density matrix $\rho$ at all previous times. 
+
+### Born approximation
+
+The Born approximation relies on the fact that the environment is large, such that it is barely perturbed by the system, and the system-environment coupling is small: We assume that $H_I(t) \sim \mathcal{O}(\varepsilon)$, where $\varepsilon$ is a small perturbative dimensionless parameter. The density matrix at all times is then assumed to be of the form
+
+$$
+\rho(t) = \rho_S(t) \otimes \rho_E + \mathcal{O}(\varepsilon),
+$$
+
+with the factorized initial density matrix $\rho(0) = \rho_S(0) \otimes \rho_B$. Notice that the presence of the $\mathcal{O}(\varepsilon)$ term is crucial to induce correlations between the system and the environment, which allow the state of the system to evolve. After the Born approximation we obtain a perturbative expansion of Eq. (-@eq:theory:liouville-equation-iteration) which is valid to second order in $\varepsilon$:
+
+$$
+\dot{\rho}_S =  -i \Tr_E \{ [H_I(t), \rho_S(0) \otimes \rho_E]\} - \int_0^t \Tr_E \{ [H_I(t), [H_I(t'), \rho_S(t') \otimes \rho_E]] \} dt' + \mathcal{O}(\varepsilon^3).
+$$
+{#eq:theory:master-equation-born-approximation}
+
+The truncation of the Lioville-von Neumann equation to second order requires a justification, which will be made clear later.
+
+We now make the assumption
+
+$$
+\Tr \{ B_\alpha (t) \rho_E \} = 0.
+$$
+{#eq:theory:single-particle-exp-val}
+
+This is not a restrictive condition, as it is always possible to modify the system Hamiltonian and the bath operators $B_\alpha$ to let the trace vanish (see Appendix -@sec:theory:aux:2). Using the interaction Hamiltonian decomposition (-@eq:theory:interaction-hamiltonian-form) and condition (-@eq:theory:single-particle-exp-val), Eq. (-@eq:theory:master-equation-born-approximation) becomes
+
+$$
+\dot{\rho}_S = -\sum_{\alpha \beta} \int_0^t dt' \left\{C_{\alpha\beta} (t,t') [A_\alpha (t), A_\beta (t') \rho_S(t')] + C_{\beta\alpha}(t',t) [\rho_S(t') A_\beta(t'), A_\alpha(t)] \right\},
+$$
+{#eq:theory:master-equation-born-approximation-corr-fun}
+
+where we have defined the environmental correlation functions
+
+$$
+C_{\alpha\beta} (t, t') = \Tr \{ B_\alpha(t) B_\beta (t') \rho_E\}.
+$$
+{#eq:theory:environment-correlation-function}
+
+
+### Markov approximation
+
+Equation (-@eq:theory:master-equation-born-approximation-corr-fun) is closed (depends only on $\rho_S$), but it is non-Markovian, as $\rho_S$ must be known at all previous times. However, under the weak-coupling and large-reservoir approximations, it is possible to obtain a Markovian expression.
+
+The next assumption in our treatment consists in assuming that the state of the environment is stationary, i.e., it is in thermal equilibrium,
+
+$$
+\rho_E = \frac{e^{-\beta H_E}}{\Tr \{e^{-\beta H_E}\}},
+$$
+
+where $\beta$ is the environmental inverse temperature. As a consequence, the environment Hamiltonian commutes with the bath density operator, $[H_E, \rho_E] = 0$. The correlation functions for a stationary bath satisfy the property
+
+$$
+C_{\alpha\beta}(t,t') = C_{\alpha\beta}(\tau \equiv t - t'),
+$$
+
+with
+
+$$
+C_{\alpha\beta}(\tau) = \Tr \{ e^{iH_E \tau }B_\alpha e^{-i H_E \tau }B_\beta \rho_E\}.
+$$
+
+Assuming hermitian bath operators $B_\alpha$, we will have additionally $C_{\alpha \beta}(\tau) = C^*_{\beta\alpha}(-\tau)$. The central idea behind the Markov approximation is that, when the environment is large and its spectrum becomes quasi-dense, the correlation functions $C_{\alpha\beta}(\tau)$ will by strongly peaked around $\tau = 0$ and will decay to zero *much faster* than the rate of variation of $\rho_S$. The consequence of this is twofold: first, we are allowed to replace $\rho_S(t')$ with $\rho_S(t)$ in Eq. (-@eq:theory:master-equation-born-approximation-corr-fun); second, we can push the integration limits to $t \rightarrow \infty$. In order to do this, we just make the change of variable $\tau = t - t'$ in Eq. (-@eq:theory:master-equation-born-approximation-corr-fun), obtaining
+
+$$
+\dot{\rho}_S = - \sum_{\alpha\beta} \int_0^\infty d\tau \{ C_{\alpha\beta} [A_\alpha(t), A_\beta(t - \tau) \rho_S (t)] + C_{\beta\alpha}(-\tau) [\rho_S(t)A_\beta(t - \tau),A_\alpha(t)]\}. 
+$$
+{#eq:theory:bloch-redfield}
+
+After transforming back to the Schrödinger picture, we obtain
+
+$$
+\begin{split}
+\dot{\rho}_S = &-i [H_S, \rho_S(t)] \\
+&- \sum_{\alpha\beta} \int_0^\infty d\tau \{ C_{\alpha\beta} [A_\alpha,e^{-i H_S \tau} A_\beta e^{i H_S \tau} \rho_S (t)] + C_{\beta\alpha}(-\tau) [\rho_S(t) e^{-i H_S \tau} A_\beta e^{i H_S \tau},A_\alpha]\}.
+\end{split}
+$$
+{#eq:theory:bloch-redfield-schroedinger}
+
+Equation (-@eq:theory:bloch-redfield-schroedinger) is known as the Bloch-Redfield master equation [@Redfield1957;@Carmichael1993;@Breuer2002]; it is local in time and trace-preserving, but it is not guaranteed to preserve the positivity of the density matrix, because it cannot be generally put in a Lindblad form. To deal with this, the secular approximation must be employed.
+
+### Secular approximation
+
+To apply the secular approximation, it is crucial to start with the *interaction picture* master equation (-@eq:theory:bloch-redfield). Let us define the energy eigenbasis of the system Hamiltonian
+
+$$
+H_S |n \rangle = E_n |n \rangle,
+$$
+
+allowing the possibility of degeneration ($E_n = E_m$ for $n \neq m$). We introduce the *spectral decomposition* of the system operators $A_\alpha$ through the relations
+
+\begin{align}
+A_\alpha (\omega) &= \sum_{nm} \delta (\omega_{mn} - \omega) |n \rangle \langle n | A_\alpha |m \rangle \langle m |, \\
+A_\alpha^\dagger (\omega) &= \sum_{nm} \delta (\omega_{nm} - \omega) |n \rangle \langle n | A_\alpha^\dagger |m \rangle \langle m |,
+\end{align}
+
+with the Bohr frequencies $\omega_{mn} = E_m - E_n$. The $A_\alpha(\omega)$ satisfy $\sum_\omega A_\alpha(\omega) = A_\alpha$, and in the interaction picture they become
+
+$$
+e^{i H_S t} A_\alpha(\omega) e^{-i H_S t} = e^{-i\omega t} A_{\alpha} (\omega).
+$$
+{#eq:theory:spectral-decomposition-int-pic}
+
+Introducing Eq. (-@eq:theory:spectral-decomposition-int-pic) into Eq. (-@eq:theory:bloch-redfield) we arrive at
+
+$$
+\dot{\rho}_S = \sum_{\alpha \beta} \sum_{\omega \omega'} e^{i(\omega' - \omega)t} \Gamma_{\alpha \beta} (\omega) \left[A_\beta(\omega) \rho_S(t) A^\dagger_\alpha (\omega') - A^\dagger_\alpha(\omega') A_\beta (\omega) \rho_S(t) \right] + \mathrm{H.c.},
+$$
+{#eq:theory:bloch-redfield-after-spectral-decomposition}
+
+with the one-sided Fourier transforms of the bath correlation functions
+
+$$
+\Gamma_{\alpha \beta} (\omega) = \int_0^\infty C_{\alpha \beta} (\tau) e^{i\omega \tau} d\tau.
+$$
+
+The secular approximation consists in neglecting the terms with $\omega'\neq \omega$ in Eq. (-@eq:theory:bloch-redfield-after-spectral-decomposition). For this to make sense, one must assume that the timescale on which $\rho_S$ varies appreciably is *much larger* than the typical values of $|\omega' - \omega|^{-1}$, such that the fast oscillating exponential terms in Eq. (-@eq:theory:bloch-redfield-after-spectral-decomposition) can be averaged out to zero if $\omega' \neq \omega$. Upon the secular approximation, we obtain
+
+$$
+\dot{\rho}_S = \sum_{\alpha \beta} \sum_{\omega} \Gamma_{\alpha \beta} (\omega) \left[A_\beta(\omega) \rho_S(t) A^\dagger_\alpha (\omega) - A^\dagger_\alpha(\omega) A_\beta (\omega) \rho_S(t) \right] + \mathrm{H.c.}
+$$
+
+Now, we split the function $\Gamma_{\alpha \beta} (\omega)$ into
+
+\begin{align}
+ \Gamma_{\alpha \beta}(\omega) &=\frac{1}{2} \gamma_{\alpha \beta}(\omega)+\frac{1}{2} \sigma_{\alpha \beta}(\omega), \\ \Gamma_{\beta \alpha}^{*}(\omega) &=\frac{1}{2} \gamma_{\alpha \beta}(\omega)-\frac{1}{2} \sigma_{\alpha \beta}(\omega),
+\end{align}
+
+where
+
+$$
+\begin{array}{l}\gamma_{\alpha \beta}(\omega)=\Gamma_{\alpha \beta}(\omega)+\Gamma_{\beta \alpha}^{*}(\omega)=\int_{-\infty}^{+\infty} C_{\alpha \beta}(\tau) e^{+i \omega \tau} d \tau, \\ \sigma_{\alpha \beta}(\omega)=\Gamma_{\alpha \beta}(\omega)-\Gamma_{\beta \alpha}^{*}(\omega)=\int_{-\infty}^{+\infty} C_{\alpha \beta}(\tau) \operatorname{sgn}(\tau) \mathrm{e}^{+\mathrm{i} \omega \tau} \mathrm{d} \tau.\end{array}
+$$
+
+### Master equation in the energy eigenbasis
+
+A sometimes useful representation of the master equation (without employing the spectral decomposition) is found by projecting Eq. (-@eq:theory:bloch-redfield) in the energy eigenbasis $|n\rangle$, which yields
+
+$$
+\dot{\rho}_S = \sum_{\alpha\beta} \sum_{nmpq} \Gamma_{\alpha\beta}(\omega_{mn})e^{i[\omega_{mn} - \omega_{qp}]t} (A_\beta)_{nm} (A_\alpha)_{pq}^* \left\{ L_{nm} \rho_S (t) L_{pq}^\dagger - L^\dagger_{pq} L_{nm} \rho_S(t) \right\} + \mathrm{H.c.}
+$$
+
+We have introduced the shorthands $(A_\alpha)_{nm} = \langle n | A_\alpha | m \rangle$ and $L_{nm} = |n \rangle \langle m|$ (the latter is the Lindblad jump operator in the energy representation). The secular approximation amounts here to neglecting all terms where $\omega_{nm} \neq \omega_{qp}$.
+
+### Equivalence to rate equations
+
+
+
+### Discussion on the assumptions made
+
+
+
+<!-- We now consider the formal expression for $\rho_I(t + \delta t)$:
 
 $$
     \rho_I (t+\delta t) = \rho_I(t) - i \int_t^{t+\delta t} d\tau [H_I(\tau), \rho_I(\tau)],
@@ -180,7 +339,27 @@ $$
 $$
 {#eq:theory:liouville-interaction-picture-third-order}
 
-Equation (-@eq:theory:liouville-interaction-picture-third-order) is formally exact. In the time integrals, the time ordering follows $t + \delta t \geq \tau \geq \tau' \geq \tau'' \geq t$. 
+Equation (-@eq:theory:liouville-interaction-picture-third-order) is formally exact. In the time integrals, the time ordering follows $t + \delta t \geq \tau \geq \tau' \geq \tau'' \geq t$.  -->
+
+## Solution of the master equation
+
+### Analytical techniques
+
+#### Equation of motion
+
+#### Quantum regression theorem
+
+### Numerical techniques
+
+#### Steady-state solution
+
+#### Numerical integration
+
+#### Quantum trajectories (piecewise deterministic processes)
+
+![Numerical scheme for the propagation of one time step in the quantum trajectories (PDP) method.](figures/theory-quantum-trajectories.pdf){#fig:theory:quantum-trajectories}
+
+<!-- 
 
 ### Born approximation
 

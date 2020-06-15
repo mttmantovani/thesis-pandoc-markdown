@@ -1,5 +1,48 @@
 \appendix
 
+# Complements to the derivation of the master equation {#sec:theory:aux}
+
+I clarify here a few assumptions made throughout the derivation of the master equation outlined in Ch -@sec:theory.
+
+## Hermiticity of the interaction operators {#sec:theory:aux:1}
+
+In @sec:theory:interaction-picture, I have argued that the hermiticity of operators $A_\alpha$ and $B_\alpha$ making up the interaction Hamiltonian $H_I$ does not affect the generality of the results. It is sufficient that the resulting $H_I$ is hermitian. Indeed, if $A_\alpha$ and $B_\alpha$ are not hermitian but $H_I = H_I^\dagger$, we must conclude that $H_I$ contains operators $A_\alpha$ and $B_\alpha$ as well as their hermitian conjugates. It is then possible to construct linear combinations of $A_\alpha, B_\alpha$ and $A_\alpha^\dagger, B_\alpha^\dagger$ such that we can write $H_\alpha = \sum_\alpha \tilde{A}_\alpha \otimes \tilde{B}_\alpha,$ with $\tilde{A}_\alpha = \tilde{A}^\dagger_\alpha$ and $\tilde{B}_\alpha = \tilde{B}^\dagger_\alpha$.
+
+As a simple example, given the hermitian Hamiltonian
+
+$$
+H_I = A \otimes B^\dagger + A^\dagger \otimes B,
+$$
+
+with $A$ and $B$ nonhermitian, it is sufficient to define the hermitian operators
+
+$$
+\begin{split}
+&\tilde{A}_1 = \frac{1}{\sqrt{2}}(A + A^\dagger), \quad \tilde{B}_1 = \frac{1}{\sqrt{2}}(B + B^\dagger), \\
+&\tilde{A}_2  = \frac{i}{\sqrt{2}}(A - A^\dagger), \quad \tilde{B}_2 = \frac{i}{\sqrt{2}}(B - B^\dagger),
+\end{split}
+$$
+
+through which one has $H_I = \sum_{i=1}^2 \tilde{A}_i \otimes \tilde{B}_i$.
+
+## Vanishing expectation values of single operator {#sec:theory:aux:2}
+
+Here, we show that it is always possible to construct an Hamiltonian that satisfies Eq. (-@eq:theory:single-particle-exp-val). It is sufficient to rewrite
+
+$$
+H_I' = \sum_\alpha A_\alpha \otimes \left(B_\alpha - \langle B_\alpha \rangle_E\right) = H_I - \sum_\alpha A_\alpha \otimes ( \langle B_\alpha \rangle_E \mathds{1}),
+$$
+
+where $\langle B_\alpha \rangle_E = \Tr_E \{B_\alpha \rho_E\}$. It is easy to check that $\langle H_I'\rangle_E = 0$. One can then reabsorb this term through a shift in the energy of the system Hamiltonian, since
+
+$$
+\begin{split}
+H_I &= H_S \otimes \mathds{1}_E + \mathds{1}_E \otimes H_E + H_I \\
+    &= H_S \otimes \mathds{1}_E + \mathds{1}_E \otimes H_E + H_I' +  \sum_\alpha A_\alpha \otimes ( \langle B_\alpha \rangle_E \mathds{1}) \\
+    & = \left(H_S + \sum_\alpha \langle B_\alpha \rangle_E A_\alpha \right) \otimes \mathds{1}_E + \mathds{1}_E \otimes H_E + H_I'. 
+\end{split}
+$$
+
 # Steady-state Fock distribution for the resonator in RWA {#sec:qdlaser:pn-analytical-derivation}
 
 In this Appendix, I derive the analytical expression in RWA for the steady-state 
