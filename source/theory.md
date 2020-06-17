@@ -15,9 +15,8 @@ compared to the timescale on which the state of the system varies appreciably.
 
 The most general form of a Markovian master equation can be rigorously
 formulated in terms of the generator of a quantum dynamical semigroup, giving rise to the standard
-Gorini-Kossakowski-Sudarshan-Lindblad (GKLS or, more commonly, Lindblad) equation [@Gorini1976;@Lindblad1976]. Here, I will instead focus on a derivation of the master equation which follows a well-developed microscopic approach and leads to the Bloch-Redfield equation [@Redfield1957;@Carmichael1993;@Breuer2002]. I will discuss critically the validity regime of the Bloch-Redfield equation, showing the condition under which it has a Lindblad form. Later, I will apply it to a class of pedagogical models that will be instrumental to the analysis of the systems presented in the following Chapters. 
-
-In addition to the Bloch-Redfield equation, I will also discuss the quantum trajectories method [@Scully1997;@Carmichael2008;@Walls2008;@Wiseman2010], or Monte Carlo wavefunction method [@Dalibard1992;@Molmer1993]. Besides being of great numerical advantage when dealing with the dynamics of large systems (made up by several few-level systems or highly excited harmonic resonators), it also offers a purely stochastic representation of the evolution of a system in contact to an environment or to a measurement apparatus, which goes beyond the ensemble-average representation given by the density-matrix theory.
+Gorini-Kossakowski-Sudarshan-Lindblad (GKLS or, more commonly, Lindblad) equation [@Gorini1976;@Lindblad1976]. Here, I will instead focus on a derivation of the master equation which follows a well-developed microscopic approach and leads to the Bloch-Redfield equation [@Redfield1957;@Carmichael1993;@Breuer2002]. I will discuss critically the validity regime of the Bloch-Redfield equation, showing the condition under which it has a Lindblad form.
+After presenting the master equation, I will briefly summarize a few commonly used methods (analytical and numerical) to solve it.
 
 ## Microscopic derivation of the quantum master equation
 
@@ -181,7 +180,7 @@ $$
 $$
 {#eq:theory:master-equation-born-approximation}
 
-The truncation of the Lioville-von Neumann equation to second order requires a justification, which will be made clear later.
+<!-- The truncation of the Lioville-von Neumann equation to second order requires a justification, which will be made clear later. -->
 
 We now make the assumption
 
@@ -321,6 +320,7 @@ is called Lamb-shift Hamiltonian, and its effect is a renormalization of the unp
 $$
 \dot{\rho}_S = -i[H_{LS}, \rho_S(t)] - \sum_{\alpha} \gamma_\alpha \mathcal{D}(A_\alpha)\rho_S(t),
 $$
+{#eq:theory:lindblad-equation-diagonal}
 
 where I have introduced the *Lindblad dissipator* with operator $A$ acting on the state $\rho$,
 
@@ -355,7 +355,7 @@ $$
 \gamma_{nm,pq} = \delta_{\omega_{mn},\omega_{qp}} \sum_{\alpha\beta} \gamma_{\alpha\beta}(\omega_{mn})  (A_\beta)_{nm} (A_\alpha)^*_{pq}.
 $$
 
-### Equivalence to rate equations
+### Equivalence to rate equations {#sec:theory:rate-equations}
 
 A further, relevant simplification of the master equation can be made if the spectrum of the system Hamiltonian $H_S$ is nondegenerate. In this case, the Kronecker delta functions appearing in the definitions of the damping coefficients simplify into $\delta_{\omega_{mn}} \rightarrow \delta_{mn}$. By looking at the equation for the populations of the density matrix, $\rho_{nn} = \langle n | \rho_S | n \rangle$, we obtain
 
@@ -367,12 +367,12 @@ $$
 i.e., populations only couple to the populations, while the coherences ($\rho_{nm}$ with $n \neq m$) decay to zero. The coefficients $\gamma_{nm,nm}$ correspond to the transition rates from state $m$ to $n$, and are equivalent to those obtained by Fermi's golden rule:
 
 $$
-\gamma_{nm,nm} = w_{m \rightarrow n} = \sum_{\alpha\beta} \gamma_{\alpha\beta} (\omega_{mn}) (A_\beta)_{nm} (A_\alpha)_{nm}^*.
+\gamma_{nm,nm} = w_{n \leftarrow m} = \sum_{\alpha\beta} \gamma_{\alpha\beta} (\omega_{mn}) (A_\beta)_{nm} (A_\alpha)_{nm}^*.
 $$
 
 Equation (-@eq:theory:pauli-rate-equation) is known as Pauli master equation. It allows to compute the evolution of an open system by taking into account only the populations of the eigenstates (which are $N$ for a $N$-dimensional Hilbert space of the system) and not the full density matrix (composed of $N^2$ elements). Therefore, whenever the conditions to use it apply, it is of great numerical advantage for a large system.
 
-### Discussion on the assumptions made
+<!-- ### Discussion on the assumptions made -->
 
 
 
@@ -402,108 +402,238 @@ Equation (-@eq:theory:liouville-interaction-picture-third-order) is formally exa
 
 ## Solution of the master equation
 
-I briefly present here a number of analytical and numerical tools than can be used to solve the master equation, some of which are employed in the following Chapters of the Thesis.
+I briefly present here a number of analytical and numerical tools than can be used to solve the master equation, some of which are employed in the following Chapters of the Thesis. For simplicity, I will restrict to the case of a master equation with time-independent Liouvillian, $\dot{\rho}(t)= \mathcal{L} \rho (t)$, which can be put in the diagonal form of Eq. (-@eq:theory:lindblad-equation-diagonal). I will drop the subscript $S$ and reference to the system density matrix as $\rho$.
 
 
 ### Analytical techniques
 
 #### Equation of motion
 
-The master ...
+The master equation for the density matrix can directly used to compute the dynamical evolution of the relevant expectation values of the system, by simply exploiting the relation $\langle O_i \rangle = \Tr [ O_i \rho]$, where $\{O_i\}$ is a family of system observables. Usually, this leads to a system of first-order linear differential equations involving the observables. If the system cannot be closed, further approximations may be required. It is worth stressing that for infinitely-dimensional Hilbert spaces (e.g., systems involving harmonic oscillators), this method is extremely useful. We write
 
-#### Quantum regression theorem
+$$
+\begin{split}
+\langle \dot{O}_i \rangle &= \Tr [O_i \dot {\rho}] = \Tr [O_i \mathcal{L}\rho] \\
+    &= -i \langle [O_i, H + H_{LS}] \rangle + \sum_\alpha \gamma_\alpha \left[ \langle A_\alpha^\dagger O_i A_\alpha \rangle - \frac{1}{2} \langle \{O_i, A^\dagger_\alpha A_\alpha \} \rangle \right].
+\end{split}
+$$
+
+For a finite-dimensional system, there exists a finite number of linearly independent observables $\{O_i \rangle\}$, hence one will end up with a linear system of the form
+
+$$
+\langle \dot{O}_i \rangle = \sum_j M_{ij} \langle O_j \rangle,
+$$
+{#eq:theory:exp-val-system}
+
+where $M_{ij}$ are the entries of a matrix $\mathbf{M}$.
+
+
+#### Adjoint master equation and quantum regression theorem
+
+Similarly to the Heisenberg evolution of closed systems, it is possible to derive a master equation in which the state is kept constant while the system operators are left to evolve. This might be simply implied from Eq. (-@eq:theory:exp-val-system), yielding 
+
+$$
+\begin{split}
+\dot{O}_i(t) &= -i[O_i(t), H+ H_{LS}] + \sum_\alpha \gamma_\alpha \left[A^\dagger_\alpha O_i(t) A_\alpha - \frac{1}{2} \{O_i(t), A^\dagger_\alpha A_\alpha \} \right] \equiv \mathcal{L}^\dagger O_i(t) \\
+&= \sum_j M_{ij} O_j (t)
+\end{split}
+$$
+{#eq:theory:adjoint-equation}
+
+which is known as adjoint master equation with the hermitian conjugate of the Liouvillian, $\mathcal{L}^\dagger$ [@Breuer2002]. The time dependence in the operators implies we are working in the Heisenberg picture. Formally, this follows from the relation
+
+$$
+\langle O_i \rangle (t) =  \Tr_S [ O_i \rho(t) ] = \Tr_S [O_i e^{\mathcal{L} t} \rho] = \Tr_S [ (e^{\mathcal{L}^\dagger t} O_i) \rho],
+$$
+
+from which we define $O_i (t) = e^{\mathcal{L}^\dagger t} O_i$. Differentiating with respect to time yields Eq. (-@eq:theory:adjoint-equation).
+The adjoint master equation becomes useful to calculate two-point correlation functions at different times, by knowing only single-point correlation functions (expectation values), a result known as quantum regression theorem [@Carmichael1999;@Gardiner2004]. From
+
+$$
+\frac{d}{d\tau} O_i (t + \tau) = \frac{d}{d\tau} e^{\mathcal{L}^\dagger (t + \tau)}O_i = \mathcal{L}^\dagger O_i(t + \tau) = \sum_j M_{ij}O_j (t + \tau),
+$$
+
+it follows
+
+$$
+\frac{d}{d\tau} \langle O_i (t + \tau) O_j (t) \rangle = \sum_j M_{ij} \langle O_i (t + \tau) O_j (t) \rangle,
+$$
+
+i.e., the same matrix coefficients stemming from the dynamical equations of single operators can be used. Two-time correlation functions are extremely useful when working with open systems, as they provide more statistical information than the expectation values. For example, the frequency spectrum of photons emitted from a cavity is given by the Fourier transform of the correlation function
+
+$$
+g^{(1)}(\tau) = \langle a^\dagger (t + \tau) a (t) \rangle,
+$$
+
+where $a$ is the bosonic mode of the cavity.
+
+### Laplace transform
+
+The Laplace transform method [@Schiff1999] is especially useful if one wants to compute the stationary state of a system, satisfying $\dot{\rho} = 0$. The Laplace transform is defined as
+
+$$
+\tilde{\rho}(z) = \int_0^\infty dt e^{-zt} \rho (t),
+$$
+
+from which one deducts
+
+$$
+\tilde{\rho}(z) = \frac{1}{z \mathds{1} - \mathcal{L}} \rho(0).
+$$
+
+with the identity matrix in Liouville space, $\mathds{1}$. The calculation of the inverse of the matrix $z \mathds{1} - \mathcal{L}$ is much simpler that exponentiating $\mathcal{L}t$, but one is then left with the problem of inverting the Laplace-transformed $\tilde{\rho}(z)$ back to real time, which is usually achieved through contour integration in complex space after identification of the poles of $(z\mathds{1} - \mathcal{L})^{-1}$.
+The stationary state of the system is formally obtained by taking the limit 
+
+$$
+\rho_\mathrm{st} = \lim_{t\rightarrow \infty} \rho(t) = \lim_{z\rightarrow 0} z \tilde{\rho}(z).
+$$
 
 ### Numerical techniques
 
-#### Steady-state solution
-
-Also case of Pauli rate eq.
-
 #### Numerical integration
+
+To propagate numerically a master equation $\dot{\rho} = \mathcal{L} \rho$ the general idea is time discretization into small time steps $\Delta t$. Explicit schemes rely on the recipe
+
+$$
+\frac{\rho(t + \Delta t) - \rho(t)}{\Delta t} = \mathcal{L} \rho(t),
+$$
+
+where $\mathcal{L}$ is applied to the "known" $\rho(t)$, while implicit methods are, e.g.,
+
+$$
+\frac{\rho(t + \Delta t) - \rho(t)}{\Delta t} = \mathcal{L} \frac{1}{2} [ \rho(t) + \rho(t + \Delta t)].
+$$
+
+Other solution schemes exist, such as semi-implicit methods and splitting strategies. As an example of an explicit method widely used for its stability, I briefly outline the fourth-order Runge-Kutta method [@Ascher1998]. For a choice of step size $\Delta t$, the density matrix at time $t + \Delta t$ ($\rho_{n+1}$) is calculated from the density matrix at time $t$ ($\rho_n$) according to
+
+$$
+\rho_{n+1} = \rho_n + \frac{1}{6} \Delta t (k_1 + 2k_2 + 2k_3 + k_4),
+$$
+
+with
+
+$$
+\begin{aligned}
+k_1 &= \mathcal{L} \rho_n, \\
+k_2 &= \mathcal{L} \left(\rho_n + \frac{1}{2} \Delta t k_1 \right), \\
+k_3 &= \mathcal{L} \left(\rho_n + \frac{1}{2}\Delta t k_2\right), \\
+k_4 &= \mathcal{L} \left(\rho_n + \Delta t k_3\right).
+\end{aligned}
+$$
+
+The method applies the Liouvillian four times for each time step, and is indeed equivalent to the fourth-order expansion 
+
+$$
+\rho_{n+1} = \left[ \mathds{1} + \Delta t \mathcal{L} + \frac{1}{2!}(\Delta t)^2 \mathcal{L}^2 + \frac{1}{3!}(\Delta t)^3 \mathcal{L}^3 + \frac{1}{4!}(\Delta t)^4 \mathcal{L}^4 \right]\rho_n + \mathcal{O}\{(\Delta t)^5\}.
+$$
+
 
 #### Quantum trajectories (piecewise deterministic processes)
 
+The basic idea underlying the quantum trajectories theory consists of rewriting
+the master equation as an ensemble average over the individual stochastic
+trajectories of an initial pure state of the system [@Dalibard1992;@Molmer1993;@Carmichael2008]. Specifically, an effective *deterministic* evolution is interrupted by stochastic jumps of the system, due to the interaction with the environment. This means that the master equation can be represented by a piecewise deterministic process (PDP) [@Breuer2002]. It is
+possible to achieve this result in several ways, which correspond to different stochastic
+*unravelings* of the master equation. The choice of the unraveling corresponds
+to a set of probabilistic decisions over time, which defines the evolution of
+the system (the "trajectory") and is inevitably lost in the ensemble-average
+representation of the density matrix. The numerical advantage of the quantum trajectories method lies in the fact that it does not require to store the full density matrix (consisting of $N^2$ elements for a $N$-dimensional Hilbert space), but consists instead in realizing a large number $M \gg 1$ of trajectories starting from a pure state, which requires only $N$ complex observables to be stored. For larger systems, $M \ll N^2$ trajectories are in general sufficient to guarantee a good ensemble statistics.
+
+A possible formulation of the quantum trajectories method can be devised in
+terms of photon counting from a cavity using a detector.
+This corresponds to the "quantum jump" approach to damping, which I will consider here. 
+An equivalent derivation of a quantum trajectory follows from the description 
+of the conditional evolution of a system under a continuous
+measurement, conditioned on a stochastic record of measurements, and is generally referred
+to as the "diffusive limit" of the master equation unraveling [@Walls2008;@Wiseman2010]. A common application of this limit is the
+homodyne or heterodyne detection of the field leaving the cavity.
+
+The idea behind the quantum jump approach is to consider the following nonlinear equation for a state $|\psi(t)\rangle$ of the system:
+
+$$
+| \dot{\psi} \rangle = -i \left(H - \frac{i}{2} \sum_\alpha \gamma_\alpha A^\dagger_\alpha A_\alpha \right)|\psi \rangle + \frac{1}{2} \left( \sum_\alpha \gamma_\alpha \langle \psi | A^\dagger_\alpha A_\alpha | \psi \rangle \right) | \psi \rangle.
+$$
+
+Its solution is given by [@Walls2008]
+
+$$
+| \psi(t) \rangle = \frac{e^{-i  H_\mathrm{eff} t} }{\sqrt{\langle \psi(0) | e^{i H_\mathrm{eff}^\dagger t} e^{-i H_\mathrm{eff} t} |\psi(0)\rangle}} |\psi(0) \rangle,
+$$
+{#eq:theory:quantum-trajectories-deterministic}
+
+where I have introduced the nonhermitian Hamiltonian:
+
+$$
+H_\mathrm{eff} = H -\frac{i}{2} \sum_\alpha \gamma_\alpha A^\dagger_\alpha A_\alpha.
+$$
+
+Clearly, Eq. (-@eq:theory:quantum-trajectories-deterministic) gives a deterministic evolution. To reproduce the correct Lindblad dynamics, it is necessary to interrupt the deterministic dynamics with stochastic events (jumps). Defining the total probability of a jump to occur within the time interval $\delta t$,
+
+$$
+p_\mathrm{jump} = \delta t \sum_\alpha \gamma_\alpha,
+$$
+
+one needs to decide randomly which jump has occurred by updating the state according to
+
+$$
+|\tilde{\psi}(t + \delta t) \rangle  = A_\alpha |\psi(t) \rangle,
+$$
+
+to be normalized. The probability for the $\alpha$-jump to occur is given by
+
+$$
+p_\alpha = \frac{\gamma_\alpha \langle \psi(t) | A^\dagger_\alpha A_\alpha | \psi(t)  \rangle}{p_\mathrm{jump}/\delta t}.
+$$
+
 ![Numerical scheme for the propagation of one time step in the quantum trajectories (PDP) method.](figures/theory-quantum-trajectories.pdf){#fig:theory:quantum-trajectories}
 
-<!-- 
+If the jump has not occurred, the state is propagated according to Eq. (-@eq:theory:quantum-trajectories-deterministic). The numerical scheme is summarized in @fig:theory:quantum-trajectories, for the simplified case of a single jump operator $a$.  At time $t$, $p_\mathrm{jump}$ is computed. Then, a random number $r$ is generated. If $p_\mathrm{jump} < r$, a jump is assumed to have taken place. The jump operator $a$ is applied to the state, and it is then normalized, giving $|\psi(t + \delta t)\rangle$. Conversely, if $p_\mathrm{jump} \geq 1$, no jump has occurred and the nonunitary effective evolution with $H_\mathrm{eff}$ is assumed. 
 
-### Born approximation
+Formally, the procedure described above is described by a stochastic Schrödinger equation, given by [@Wiseman2010]
 
-Weak-coupling approximation: truncation to second order.
+$$
+|d \psi \rangle =\left( -i H_\mathrm{eff} + \frac{1}{2} \sum_\alpha \gamma_\alpha \langle \psi | A^\dagger_\alpha A_\alpha | \psi \rangle \right) | \psi \rangle dt + \sum_\alpha \left(  \frac{A_\alpha |\psi}{\sqrt{\langle \psi|A^\dagger_\alpha A_\alpha |\psi\rangle}} - |\psi\right) d N_\alpha.
+$$
+{#eq:theory:sse}
 
-:   We now perform the Born (or weak-coupling) approximation
-    \cite{Cohen-Tannoudji2004}. We assume that the system-environment coupling is
-    *weak*, such that we can neglect the third-order term in
-    Eq. \eqref{eq:theory:liouville-interaction-picture-third-order}. The condition
-    under which this approximation is valid will be clarified later. We
-    remain with
-    \begin{equation}
-        \label{eq:theory:liouville-interaction-picture-second-order}
-        \delta \rho_I (t) = -i \int_t^{t+\delta t} d\tau [H_I(\tau), \rho_I(t)] -
-        \int_t^{t+\delta t} d\tau \int_t^{\tau} d\tau' [H_I(\tau), [H_I(\tau'),
-        \rho_I(t)]],
-    \end{equation}
-    which is valid to *second order* in the interaction Hamiltonian $H_I(t)$. 
-    As we are interested in the dynamics of the *reduced* density matrix
-    $\rho_{S,I}(t)$, we trace over the Hilbert space of the environment
-    $\mathcal{H}_E$, obtaining
-    \begin{equation}
-        \label{eq:theory:system-liouville-interaction-picture-second-order}
-        \delta \rho_{S,I} (t) = -i \int_t^{t+\delta t} d\tau \Tr_E [H_I(\tau), \rho_I(t)] -
-        \int_t^{t+\delta t} d\tau \int_t^{\tau} d\tau' \Tr_E [H_I(\tau), [H_I(\tau'),
-        \rho_I(t)]].
-    \end{equation}
-    Equation \eqref{eq:theory:system-liouville-interaction-picture-second-order}
-    still contains the *full* density matrix at time $t$. 
+The $d N_\alpha$ are Poisson increments, satisfying
 
-Large-reservoir approximation: timescale separation.
+$$
+d N_\alpha d N_\beta = \delta_{\alpha \beta} d N_\alpha, \quad \mathrm{E} [d N_\alpha] = \delta t \gamma_\alpha \langle \psi | A^\dagger_\alpha A_\alpha| \psi\rangle,
+$$
 
-:   Next, we make a key assumption on the state of the environment, which is
-    obtained by tracing over the system degrees of freedom, $\rho_{E,I} (t) = \Tr_S
-    \rho_I(t)$: The environment has usually a very large number of degrees of
-    freedom, and is weakly coupled to the system. Hence, we may assume that the
-    state $\rho_{E,I}$ is not appreciably changed by the system, i.e., it is
-    constant in the interaction picture:
-    \begin{equation}
-        \rho_{E,I}(t)
-        \approx \rho_{E,I}(0).
-    \end{equation}
-    Furthermore, we consider that the $\rho_{E}$ is stationary, i.e., it commutes
-    with the environment Hamiltonian, $[\rho_{E}, H_E] = 0$. Equivalently, we may
-    say that the environment is in thermodynamic equilibrium. The consequence
-    of this large-reservoir approximation is that one can identify a separation
-    of timescales in the evolution of $\rho_{S,I}(t)$. We will call $\tau_B$
-    the typical timescale during which environmental correlations in the
-    reservoir exist. When this time has elapsed, the reservoir state has lost
-    dependence on its initial state. A second timescale, the relaxation time $\tau_R$,
-    characterizes the typical duration over which the state of the system
-    varies appreciably because of system-environment interaction, and is
-    roughly specified by
-    \begin{equation}
-        \frac{\delta \rho_{S,I}(t)}{\delta t} \approx \frac{1}{\tau_R}
-        \rho_{S,I}(t).
-    \end{equation}
+where $\mathrm{E}[\cdot]$ corresponds to the classical expectation value. 
+It is possible to show that the ensemble average $\mathrm{E} [|\psi \rangle \langle \psi| ]$ evolved with Eq. (-@eq:theory:sse), satisfies the Lindblad master equation (-@eq:theory:lindblad-equation-diagonal) [@Breuer2002;@Wiseman2010].
 
 
 
 
-### Markov approximation and Bloch-Redfield equation
-Equation ... is still nonlocal in time. We now employ the Markov approximation
-to make it local, allowing us to write to proceed further in the calculations.
+#### Steady-state solution
 
-### Secular approximation and Lindblad form of the master equation
+Of particular interest for this work is a method to look for the stationary state of the system $\rho_\mathrm{st}$, i.e., the state reached for $t \rightarrow \infty$. Instead of integrating numerically the master equation up to long times, one may focus on the steady equation
+
+$$
+\dot{\rho}  = \mathcal{L}\rho  \overset{!}{=} 0.
+$$
+
+In this way, we modify the problem into a linear algebra one, which consists in finding the null space (or kernel) of the Liouvillian operator $\mathcal{L}$, i.e., the right eigenvector associated to the zero eigenvalue of the matrix $\mathcal{L}$. Being a standard problem, many methods exist to solve it [@Saad2003]. The direct method, consisting in simply computing the inverse $\mathcal{L}^{-1}$, cannot be used as $\mathcal{L}$ is singular, and it would be a formidable numerical problem for a large system. An alternative is given by the Arnoldi iteration scheme to compute the zero-eigenvector of $\mathcal{L}$ by finding an orthonormal basis for the Krylov subspace from some initial guess state $\rho_0$. The Arnoldi scheme is the basis for the GMRES (generalized minimal residual) method, which is an efficient iterative procedure to compute $\rho_\mathrm{st}$ [@Saad1986].
+
+Note that these methods are valid to solve in general the linear system $Ax = b$, and can thus be used also to find the vector of steady populations which satisfies the stationary Pauli rate equations presented in @sec:theory:rate-equations. In this case, one needs to find the vector $\rho_\mathrm{st}$ satisfying
+
+$$
+\sum_m w_{n \leftarrow m} \rho_{mm} - \sum_m w_{m \leftarrow n} \rho_{nn} = 0,
+$$
+
+i.e., the kernel of the reduced Liouvillian $\mathcal{W}$ with entries 
+
+$$
+W_{nm} = w_{n \leftarrow m} - \delta_{nm} \sum_p w_{p \leftarrow m}.
+$$
 
 
-Main references:
-
-* Recent literature \cite{Timm2008,Hussein2014a,Cattaneo2019};
-* QuTiP \mcite{qutip, *Johansson2012, *Johansson2013}.
+<!--
 
 
-### Full-counting statistics for the evaluation of particle and heat currents
-
-* Early work in quantum optics \cite{Mandel1979,Cook1981};
-* Applications to quantum transport \cite{Levitov1993,Levitov1996,Blanter2000,Bagrets2003,Hussein2014a}
 
 ## Quantum trajectories method
 
@@ -758,4 +888,4 @@ b^\dagger)(b_k + b^\dagger_k)}_{H_I}.
 * Tunneling between dots and leads (discuss especially the form of the fermionic
   correlation functions \cite{Schoeller2000,Bevilacqua2016} and why Born-Markov
   is valid)
-* Double dot coupled to leads; --> -->
+* Double dot coupled to leads; -->
