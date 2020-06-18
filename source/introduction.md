@@ -10,32 +10,51 @@ interacting with the quantized electromagnetic field of optical and microwave
 cavities, within the framework commonly
 referred to as cavity quantum electrodynamics (cQED)
 [@Raimond2001;@Walther2006;@Haroche2006].
-
-
-![(a) Sketch of a cavity QED experiment. A two-level system is coupled to a cavity with strength $g$.](figures/intro-cqed.pdf){#fig:intro:cqed}
  
 The paradigmatic model for the light-matter interaction is represented by the Rabi Hamiltonian [@Rabi1936;@Rabi1937], given by
 
 $$
   H_\text{Rabi} = \frac{\Delta\epsilon}{2}\sigma_z + \omega_0 b^\dagger b + g
-  \sigma_x (b + b^\dagger)
+  (\sigma_+ + \sigma_-) (b + b^\dagger).
 $$
 {#eq:intro:rabi-hamiltonian}
 
-It describes the coherent interaction between a two-level system (the *matter*, e.g., two levels of an atom, a spin-1/2, a superconducting or semiconducting qubit) and the quantized field of a harmonic oscillator (the *light*, e.g., a microwave or optical cavity). In Eq. (-@eq:intro:rabi-hamiltonian), $\Delta \epsilon$ is the energy difference between the two levels and $\omega_0$ is the resonance frequency of the harmonic oscillator. The constant $g$ quantifies the strength of the interaction between light and matter.
+It describes the coherent interaction between a two-level system (the *matter*, e.g., two levels of an atom or a spin-1/2) and a quantum harmonic oscillator (the *light*, e.g., a single mode of a microwave or optical cavity). The Rabi Hamiltonian follows from the interaction between the dipole moment of an atom and the electric field of the cavity, in the dipole approximation [@Scully1997]. In Eq. (-@eq:intro:rabi-hamiltonian), $\Delta \epsilon$ is the energy difference between the two levels and $\omega_0$ is the resonance frequency of the harmonic oscillator. The constant $g$ quantifies the strength of the interaction between light and matter.
 
-The exact eigenenergies of the Rabi Hamiltonian have been found only recently and can only be written as the roots of a complex trascendental function [@Braak2011]. Later, the Rabi model has been extended to two-photon
+![(a) Sketch of a cavity QED setup. A two-level atom with energy separation $\Delta \epsilon$ is coupled with strength $g$ to a cavity with strength resonance frequency $\omega_0$. The atom ](figures/intro-cqed.pdf){#fig:intro:cqed}
+
+The two-level system is composed of an excited ($|e\rangle$) and a ground ($|g \rangle$) state, which can be represented by two column vectors $|e\rangle = (1, 0)^T$ and $|g\rangle = (0, 1)^T$. In the basis $\{|e\rangle, |g\rangle \}$, the qubit is described by the raising and lowering operators $\sigma_+ = |e \rangle \langle g|$ and $\sigma_- = |g \rangle \langle e |$, which generate the Pauli operators $\sigma_x = \sigma_+ + \sigma_-$, $\sigma_y = -i (\sigma_+ - \sigma_-)$ and $\sigma_z = [\sigma_+, \sigma_-]$, with matrix form
+
+$$
+\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad 
+\sigma_y = \begin{pmatrix} 0 & -i \\ i &  0 \end{pmatrix}, \quad
+\sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}.
+$$
+
+The harmonic oscillator is described by the bosonic field annihilation and creation operators, $b$ and $b^\dagger$. 
+
+The exact eigenenergies of Eq. (-@eq:intro:rabi-hamiltonian) have been found only several decades after the first works of Rabi, and can only be written as the roots of a complex trascendental function [@Braak2011]. The primary way of dealing with the Rabi Hamiltonian is to consider a *small* value of the coupling strength, $g \ll \{\omega_0; \Delta\epsilon\}$ and to tune the two systems close to resonance, i.e., $\Delta\epsilon \approx \omega_0$. This leads to the rotating-wave approximation (RWA) and to the Jaynes-Cummings Hamiltonian [@Jaynes1963]:
+
+$$
+H_\text{JC} = \frac{\Delta\epsilon}{2}\sigma_z + \omega_0 b^\dagger b + g
+   (\sigma_+ b + b^\dagger \sigma_-),
+$$
+{#eq:intro:jc-hamiltonian}
+
+which can be exactly solved, see Ch. -@sec:qdlaser.
+
+Later, the Rabi model has been extended to two-photon
 interactions, where $b$ and $b^\dagger$ are replaced by $b^2$ and
 $(b^\dagger)^2$ [@Travenec2012], and to $N$-level atoms [@Albert2012].
  
  * Jaynes-Cummings Hamiltonian [@Jaynes1963], extensions (Dicke [@Dicke1954] and
   Tavis-Cummings [@Tavis1968;@Tavis1969] models)
-  $$
-  H_\text{JC} = \frac{\Delta\epsilon}{2}\sigma_z + \omega_0 b^\dagger b + g
-   (\sigma_+ b + b^\dagger \sigma_-)
-  $$
-  {#eq:intro:jc-hamiltonian}
+
+  
+
   - Rydberg atoms; micromaser.
+
+When dealing with a cavity QED experiment, an important role is played by the surroundings of the light-matter system: Atoms and cavities are coupled not only to each other--which is desired--but also to the measurement apparati and to the thermal environment. 
 
 * Weak-coupling regime: $g \lesssim \gamma, \kappa$, Purcell effect
   (enhancement of the spontaneous emission rate of an atom due to the coupling
@@ -49,12 +68,13 @@ $(b^\dagger)^2$ [@Travenec2012], and to $N$-level atoms [@Albert2012].
   [@Niemczyk2010;@Kockum2019;@Forn-Diaz2019].
 * Deep strong-coupling regime: $g > \omega, \Delta\epsilon$ [@Casanova2010;@Bayer2017;@Yoshihara2017].
 
-* Circuit QED [@Blais2004;@Wallraff2004;@Paik2011]
-* Mesoscopic QED [@Childress2004;@Cottet2015;@Viennot2016;@Cottet2017;@Burkard2020]
-
 
 ## Light-matter coupling in hybrid systems: beyond the QED architecture
 
+In the last decades, the technological advance in fabrication and control of solid-state devices has paved the way for the realization of the QED protocol in several different platforms. 
+
+* Circuit QED [@Blais2004;@Wallraff2004;@Paik2011]
+* Mesoscopic QED [@Childress2004;@Cottet2015;@Viennot2016;@Cottet2017;@Burkard2020]
 * General overview of hybrid systems [@Xiang2013;@Treutlein2014;@Kurizki2015]
 
 To better understand the working principles and the physics underlying a typical
