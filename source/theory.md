@@ -229,7 +229,7 @@ $$
 Assuming hermitian bath operators $B_\alpha$, we will have additionally $C_{\alpha \beta}(\tau) = C^*_{\beta\alpha}(-\tau)$. The central idea behind the Markov approximation is that, when the environment is large and its spectrum becomes quasi-dense, the correlation functions $C_{\alpha\beta}(\tau)$ will by strongly peaked around $\tau = 0$ and will decay to zero *much faster* than the rate of variation of $\rho_S$. The consequence of this is twofold: first, we are allowed to replace $\rho_S(t')$ with $\rho_S(t)$ in Eq. (-@eq:theory:master-equation-born-approximation-corr-fun); second, we can push the integration limits to $t \rightarrow \infty$. In order to do this, we just make the change of variable $\tau = t - t'$ in Eq. (-@eq:theory:master-equation-born-approximation-corr-fun), obtaining
 
 $$
-\dot{\rho}_S = - \sum_{\alpha\beta} \int_0^\infty d\tau \{ C_{\alpha\beta} [A_\alpha(t), A_\beta(t - \tau) \rho_S (t)] + C_{\beta\alpha}(-\tau) [\rho_S(t)A_\beta(t - \tau),A_\alpha(t)]\}. 
+\dot{\rho}_S = - \sum_{\alpha\beta} \int_0^\infty d\tau \{ C_{\alpha\beta} (\tau) [A_\alpha(t), A_\beta(t - \tau) \rho_S (t)] + C_{\beta\alpha}(-\tau) [\rho_S(t)A_\beta(t - \tau),A_\alpha(t)]\}. 
 $$
 {#eq:theory:bloch-redfield}
 
@@ -467,7 +467,7 @@ $$
 
 where $a$ is the bosonic mode of the cavity.
 
-### Laplace transform
+#### Laplace transform
 
 The Laplace transform method [@Schiff1999] is especially useful if one wants to compute the stationary state of a system, satisfying $\dot{\rho} = 0$. The Laplace transform is defined as
 
@@ -537,7 +537,7 @@ possible to achieve this result in several ways, which correspond to different s
 *unravelings* of the master equation. The choice of the unraveling corresponds
 to a set of probabilistic decisions over time, which defines the evolution of
 the system (the "trajectory") and is inevitably lost in the ensemble-average
-representation of the density matrix. The numerical advantage of the quantum trajectories method lies in the fact that it does not require to store the full density matrix (consisting of $N^2$ elements for a $N$-dimensional Hilbert space), but consists instead in realizing a large number $M \gg 1$ of trajectories starting from a pure state, which requires only $N$ complex observables to be stored. For larger systems, $M \ll N^2$ trajectories are in general sufficient to guarantee a good ensemble statistics.
+representation of the density matrix. The numerical advantage of the quantum trajectories method is great when dealing with large systems: For a $N$-dimensional Hilbert space, solving numerically the full master equation requires the storage of $\mathcal{O}\{N^4\}$ elements of the Liouvillian. The PDP method involves only $\mathcal{O}\{N^2\}$ elements instead. One must anyway realize a large number $M \gg 1$ of trajectories starting from a pure state to guarantee a good ensemble statistics, but typically $M \ll N^2$ is sufficient. 
 
 A possible formulation of the quantum trajectories method can be devised in
 terms of photon counting from a cavity using a detector.
@@ -570,7 +570,7 @@ $$
 Clearly, Eq. (-@eq:theory:quantum-trajectories-deterministic) gives a deterministic evolution. To reproduce the correct Lindblad dynamics, it is necessary to interrupt the deterministic dynamics with stochastic events (jumps). Defining the total probability of a jump to occur within the time interval $\delta t$,
 
 $$
-p_\mathrm{jump} = \delta t \sum_\alpha \gamma_\alpha,
+p_\mathrm{jump} = \delta t \sum_\alpha \gamma_\alpha \langle \psi | A^\dagger_\alpha A_\alpha | \psi\rangle
 $$
 
 one needs to decide randomly which jump has occurred by updating the state according to
@@ -603,7 +603,7 @@ d N_\alpha d N_\beta = \delta_{\alpha \beta} d N_\alpha, \quad \mathrm{E} [d N_\
 $$
 
 where $\mathrm{E}[\cdot]$ corresponds to the classical expectation value. 
-It is possible to show that the ensemble average $\mathrm{E} [|\psi \rangle \langle \psi| ]$ evolved with Eq. (-@eq:theory:sse), satisfies the Lindblad master equation (-@eq:theory:lindblad-equation-diagonal) [@Breuer2002;@Wiseman2010].
+It is possible to show that the ensemble average $\mathrm{E} [|\psi \rangle \langle \psi| ]$ evolved with Eq. (-@eq:theory:sse) satisfies the Lindblad master equation (-@eq:theory:lindblad-equation-diagonal) [@Breuer2002;@Wiseman2010].
 
 
 

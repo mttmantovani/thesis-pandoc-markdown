@@ -1,4 +1,4 @@
-# Deutsche Zusammenfassung {.unnumbered}
+# Zusammenfassung {.unnumbered}
 
 In hybriden quanten Schaltkreisen können verschiedene mesoskopische Systeme kombiniert und dabei die Vorteile und Eigenschaften der einzelnen Komponenten genutzt werden, um das Auftreten neuer Phänomene zu ermöglichen, welche die üblichen Paradigmen der Licht-Materie Wechselwirkung umgehen.
 Speziell können sie komplexes Verhalten entfalten wenn sie weit entfernt von ihrem Gleichgewichtszustand arbeiten, und nichtlineare Wechselwirkungen können hervorgehen. 
