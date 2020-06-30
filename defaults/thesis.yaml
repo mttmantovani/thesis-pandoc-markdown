@@ -21,7 +21,7 @@ input-files:
    - parts/appendix.md
    - parts/contrib.md
    - parts/cv.md
-   - parts/acknowledgments.md
+#    - parts/acknowledgments.md
 
 abbreviations: abbreviations
 

@@ -886,6 +886,6 @@ b^\dagger)(b_k + b^\dagger_k)}_{H_I}.
 
 ### Transport through a double quantum dot
 * Tunneling between dots and leads (discuss especially the form of the fermionic
-  correlation functions \cite{Schoeller2000,Bevilacqua2016} and why Born-Markov
+  correlation functions \cite{Schoeller2000,Bevilacqua2016,Piovano2011,Avriller2018} and why Born-Markov
   is valid)
 * Double dot coupled to leads; -->
