@@ -1,4 +1,6 @@
-# Thesis
+# Nonequilibrium dynamics in nanoscale resonators driven by mesoscopic conductors
+
+PhD Thesis, Mattia Mantovani (Universität Konstanz, 2020)
 
 ## Requirements
 * TeXLive 2019;

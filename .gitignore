@@ -1,5 +1,4 @@
-# Main
-thesis.pdf
+# Main .tex
 thesis.tex
 
 # Parts folder
@@ -110,3 +109,5 @@ intermediate/*-converted-to.*
 __latexindent_*
 references.bib
 .vscode/*
+
+*.icloud
