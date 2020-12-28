@@ -36,6 +36,18 @@ $else$
 $endif$
 \blankpage
 $else$
+$if(published)$
+\clearpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{defenseinfo}
+Tag der mündlichen Prüfung: $defense-date$ \\
+1. Referent: $first-referee$ \\
+2. Referent: $second-referee$ \\
+\end{defenseinfo}
 \cleardoublepage
+$else$
+\cleardoublepage
+$endif$
 $endif$
 
