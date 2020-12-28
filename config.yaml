@@ -1,14 +1,16 @@
 ---
-print: false
+print: true
+published: true
 
 title: Nonequilibrium dynamics in nanoscale resonators driven by mesoscopic conductors
-title-alt: |
-    Nonequilibrium dynamics \\  
-    in nanoscale resonators \\ 
-    driven by mesoscopic conductors 
+title-alt: Nonequilibrium dynamics \\ in nanoscale resonators \\ driven by mesoscopic conductors
 date: Konstanz, 2020
 name: Mattia
 surname: Mantovani
+
+defense-date: 30.10.2020
+first-referee:  Dr. Gianluca Rastelli
+second-referee: Prof. Dr. Guido Burkard
 
 fontsize: 11pt
 papersize: a4paper

@@ -7,8 +7,8 @@ PARTS     := parts
 BUILD     := build
 
 
-PANDOC    := pandoc --data-dir $(DATADIR)
-LATEX     := latexmk --outdir=$(BUILD) -pdf -use-make -silent
+PANDOC    := pandoc --data-dir "$(DATADIR)"
+LATEX     := latexmk --outdir=$(BUILD) -pdf -use-make
 
 BIB		  := $(HOME)/library.bib
 CSL       := $(DATADIR)/aps.csl
@@ -21,7 +21,6 @@ FIGSRC      := $(SOURCE)/figures
 FIGS 		:= $(shell find $(FIGSRC) -mindepth 1 -maxdepth 1 -type d)
 FIGURES		:= $(addprefix $(FIGPATH)/,$(addsuffix .pdf, $(notdir $(FIGS))))
 EXTS		:= py tex tikz tikzstyle key
-
 
 all: $(MAIN).pdf
 

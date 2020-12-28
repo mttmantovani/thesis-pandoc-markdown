@@ -6,7 +6,7 @@
         \fontsize{25}{30}\selectfont
         \textbf{$title-alt$}\\[2.0cm]
         \fontsize{11}{13.2}\selectfont
-        {\Large \textbf{Dissertation $test$ zur Erlangung des} \\
+        {\Large \textbf{Dissertation zur Erlangung des} \\
          \textbf{akademischen Grades eines Doktors} \\
          \textbf{der Naturwissenschaften} \\
          \textbf{(Dr.rer.nat.)}} \\[1.5cm]
@@ -23,7 +23,17 @@
 
 $if(print)$
 \blankpage
+$if(published)$
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{defenseinfo}
+Tag der mündlichen Prüfung: $defense-date$ \\
+1. Referent: $first-referee$ \\
+2. Referent: $second-referee$ \\
+\end{defenseinfo}
+$else$
 \blankpage
+$endif$
 \blankpage
 $else$
 \cleardoublepage

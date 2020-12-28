@@ -110,6 +110,11 @@ $endif$
     \newpage
 }
 
+%  Defense info page
+\newenvironment{defenseinfo}[1][10em]
+  {\noindent\begin{tabular}{@{}l@{~\makebox[#1]{}}}}
+  {\end{tabular}}
+
 % Return local fontsize
 \newlength{\fsize}
 % https://tex.stackexchange.com/q/88001/5764
