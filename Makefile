@@ -49,7 +49,7 @@ $(FIGPATH)/%.pdf: $$(foreach ext,$$(EXTS),$$(wildcard $(FIGSRC)/%/*.$$(ext)))
 
 exportbib: $(BUILD)/$(MAIN).bcf
 	@biber --output-format=bibtex --output-resolve --output-fieldcase=lower \
-		   --output-directory=$(DATADIR) --output-file=references.bib -w -q \
+		   --output-directory="$(DATADIR)" --output-file=references.bib -w -q \
 		   $< 
 clean:
 	latexmk -c -pdf -quiet $(MAIN)
